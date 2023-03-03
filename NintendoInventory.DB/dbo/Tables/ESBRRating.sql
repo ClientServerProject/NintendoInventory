@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[ESBRRating] (
+    [ESBRRatingID]  INT           NOT NULL,
+    [ESBRRating]    VARCHAR (50)  NOT NULL,
+    [ESBRRatingURL] VARCHAR (200) NOT NULL,
+    CONSTRAINT [PK_ESBRRating] PRIMARY KEY CLUSTERED ([ESBRRatingID] ASC)
+);
+
