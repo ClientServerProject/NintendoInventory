@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Games\" />
-    <Folder Include="Pages\Consoles\" />
     <Folder Include="Pages\Timeline\" />
     <Folder Include="Pages\Wishlist\" />
   </ItemGroup>
