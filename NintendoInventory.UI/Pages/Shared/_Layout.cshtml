@@ -10,29 +10,29 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-danger border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">NintendoInventory</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand text-white" asp-area="" asp-page="/Index">NintendoInventory</a>
+                <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Games/Index">Games</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Games/Index">Games</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Consoles/Index">Consoles</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Consoles/Index">Consoles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Wishlist/Index">Wishlist</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Wishlist/Index">Wishlist</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Timeline/Index">Timeline</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Timeline/Index">Timeline</a>
                         </li>
                     </ul>
                 </div>
@@ -45,9 +45,10 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - NintendoInventory - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <footer class="border-top footer text-muted bg-danger py-3">
+        <div class="container text-white"> 
+            &copy; 2023 - NintendoInventory - <a class="text-white" asp-area="" asp-page="/Privacy">Privacy</a><br />
+            Created by Emily Morgan, Cierra Citizen, and Alejandra Hernandez
         </div>
     </footer>
 
