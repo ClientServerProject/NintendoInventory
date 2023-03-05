@@ -17,6 +17,14 @@ body {
   margin-bottom: 60px;
 }
 
-navbar-color {
-    background-color: #FF1A1A;
+bg-pink {
+    background-color: #e168f7;
+}
+
+bg-red {
+    background-color: #ff0000;
+}
+
+bg-light-gray {
+    background-color: #a1a1a1;
 }
