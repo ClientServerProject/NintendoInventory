@@ -16,3 +16,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+bg-pink {
+    background-color: #e168f7;
+}
+
+bg-red {
+    background-color: #ff0000;
+}
+
+bg-light-gray {
+    background-color: #a1a1a1;
+}
