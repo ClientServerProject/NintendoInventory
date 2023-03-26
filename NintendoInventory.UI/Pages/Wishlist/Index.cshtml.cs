@@ -1,13 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NintendoInventory.UI.Models;
+using System.Data.SqlClient;
 
 namespace NintendoInventory.UI.Pages.Wishlist
 {
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<WishlistItem> Wishlist { get; set; } = new List<WishlistItem>();
+        public List<Models.Wishlist> WishlistList { get; set; } = new List<Models.Wishlist>();
         public void OnGet()
         {
             /*
@@ -19,7 +20,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
              * 6. Close the SQL connection
              * 
              */
-            using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
                 string sql = "SELECT * FROM Author Order By AuthorName";
@@ -33,13 +34,13 @@ namespace NintendoInventory.UI.Pages.Wishlist
                 {
                     while (reader.Read())
                     {
-                        Author author = new Author();
-                        author.AuthorName = reader["AuthorName"].ToString();
+                        /*Models.Wishlist author = new Models.Wishlist();
+                        game.AuthorName = reader["AuthorName"].ToString();
                         author.AuthorBio = reader["AuthorBio"].ToString();
                         author.AuthorImageURL = reader["AuthorImageURL"].ToString();
                         author.AuthorWebsite = reader["AuthorWebsite"].ToString();
                         author.AuthorId = int.Parse(reader["AuthorId"].ToString());
-                        AuthorList.Add(author);
+                        AuthorList.Add(author);*/
                     }
                 }
             }
