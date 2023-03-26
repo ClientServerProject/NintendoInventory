@@ -3,7 +3,7 @@
     [GameTitle]    VARCHAR (250)  NOT NULL,
     [releaseDate]  DATETIME       NOT NULL,
     [ConsoleID]    INT            NOT NULL,
-    [description]  VARCHAR (2000) NOT NULL,
+    [GameDescription]  VARCHAR (2000) NOT NULL,
     [GameImageURL] VARCHAR (200)  NOT NULL,
     [ESBRRatingID] INT            NOT NULL,
     [Price]        MONEY          NOT NULL,
