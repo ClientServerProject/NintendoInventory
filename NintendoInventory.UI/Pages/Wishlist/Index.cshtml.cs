@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
 using NintendoInventory.UI.Models;
 
 namespace NintendoInventory.UI.Pages.Wishlist
@@ -19,7 +20,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
              * 6. Close the SQL connection
              * 
              */
-            using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
                 string sql = "SELECT * FROM Author Order By AuthorName";

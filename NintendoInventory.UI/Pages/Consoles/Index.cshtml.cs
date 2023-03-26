@@ -1,13 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NintendoInventory.UI.Models;
+using Microsoft.Data.SqlClient;
 
 namespace NintendoInventory.UI.Pages.Consoles
 {
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<Console> ConsoleList { get; set; } = new List<Console>();
+        public List<Models.Console> ConsoleList { get; set; } = new List<Models.Console>();
         public void OnGet()
         {
             /*
@@ -19,7 +20,7 @@ namespace NintendoInventory.UI.Pages.Consoles
              * 6. Close the SQL connection
              * 
              */
-            using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
                 string sql = "SELECT * FROM Console Order By ConsoleName";
@@ -33,11 +34,11 @@ namespace NintendoInventory.UI.Pages.Consoles
                 {
                     while (reader.Read())
                     {
-                        Console console = new Console();
+                        Models.Console console = new Models.Console();
                         console.ConsoleName = reader["ConsoleName"].ToString();
-                        console.ReleaseDate = reader["ReleaseDate"].ToString();
+                        console.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
                         console.ConsoleImageURL = reader["ConsoleImageURL"].ToString();
-                        console.Price = reader["Price"].ToString();
+                        console.Price = decimal.Parse(reader["Price"].ToString());
                         console.ConsoleId = int.Parse(reader["ConsoleId"].ToString());
                         ConsoleList.Add(console);
                     }

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Game] (
     [GameID]       INT            NOT NULL,
     [GameTitle]    VARCHAR (250)  NOT NULL,
-    [releaseDate]  DATETIME       NOT NULL,
+    [ReleaseDate]  DATETIME       NOT NULL,
     [ConsoleID]    INT            NOT NULL,
     [GameDescription]  VARCHAR (2000) NOT NULL,
     [GameImageURL] VARCHAR (200)  NOT NULL,
