@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NintendoInventory.UI.Models;
+using Microsoft.Data.SqlClient;
 
 namespace NintendoInventory.UI.Pages.Games
 {
@@ -19,7 +20,7 @@ namespace NintendoInventory.UI.Pages.Games
              * 6. Close the SQL connection
              * 
              */
-            using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
                 string sql = "SELECT * FROM Game Order By GameName";
@@ -33,14 +34,14 @@ namespace NintendoInventory.UI.Pages.Games
                 {
                     while (reader.Read())
                     {
-                        Game game = new game();
-                        game.GameName = reader["GameName"].ToString();
-                        game.ReleaseDate = reader["ReleaseDate"].ToString();
-                        game.ConsoleId = reader["ConsoleId"].ToString();
+                        Game game = new Game();
+                        game.GameTitle = reader["GameName"].ToString();
+                        game.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
+                        game.ConsoleId = int.Parse(reader["ConsoleId"].ToString());
                         game.GameImageURL = reader["GameImageURL"].ToString();
-                        game.Price = reader["Price"].ToString();
-                        game.Description = reader["Description"].ToString();
-                        game.ESRBRatingId = reader["ESRBRatingId"].ToString();
+                        game.Price = decimal.Parse(reader["Price"].ToString());
+                        game.GameDescription = reader["Description"].ToString();
+                        game.ESBRRatingID = int.Parse(reader["ESRBRatingId"].ToString());
                         game.GameId = int.Parse(reader["GameId"].ToString());
                         Wishlist.Add(game);
                     }
