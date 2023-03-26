@@ -2,3 +2,38 @@
 @model NintendoInventory.UI.Pages.Consoles.IndexModel
 @{
 }
+<div id="container">
+    <div class="col-sm-3">
+        <h1 class='title'>Consoles</h1>
+    </div>
+    <div class="col-sm-9">
+        <!--<h2 class='subtitle'>.</h2>-->
+    </div>
+</div>
+
+
+@foreach (var Console in Model.ConsoleList)
+{
+     <div class="row mb-3">
+        <div class="col-sm-3">
+            <img src="@Console.ConsoleImageURL">
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-12">
+                    @Console.ConsoleName
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    @Console.ReleaseDate
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    @Console.Price
+                </div>
+            </div>
+        </div>
+    </div>
+}
