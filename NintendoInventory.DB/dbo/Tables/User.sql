@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[User] (
-    [UserID]              INT           NOT NULL,
+    [UserID]              INT           IDENTITY (1, 1) NOT NULL,
     [Email]               VARCHAR (150) NOT NULL,
     [FirstName]           VARCHAR (150) NOT NULL,
     [LastName]            VARCHAR (150) NOT NULL,
@@ -8,4 +8,6 @@
     [WishlistID]          INT           NOT NULL,
     CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED ([UserID] ASC)
 );
+
+
 
