@@ -43,11 +43,11 @@ namespace NintendoInventory.UI.Pages.Games
                         game.GameDescription = reader["Description"].ToString();
                         game.ESBRRatingID = int.Parse(reader["ESRBRatingId"].ToString());
                         game.GameId = int.Parse(reader["GameId"].ToString());
-                        Wishlist.Add(game);
+                        //WishlistItem.Add(game);
                     }
                 }
             }
         }
     }
 }
-}
+
