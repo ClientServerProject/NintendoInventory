@@ -11,7 +11,6 @@ namespace NintendoInventory.UI.Models
         public string GameDescription { get; set; } = string.Empty;
         [Required]
         public string GameImageURL { get; set; } = string.Empty;
-        [Required]
         public int ESBRRatingID { get; set; }
         public int ConsoleID { get; set; }
         public string ReleaseDate { get; set; } = string.Empty;
