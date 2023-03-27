@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Microsoft.Identity.Client;
 using NintendoInventory.UI.Models;
+using Console = NintendoInventory.UI.Models.Console;
 
 namespace NintendoInventory.UI.Pages.Consoles
 {
     public class addModel : PageModel
     {
-        public Models.Console NewConsole { get; set; } = new Models.Console();
+        [BindProperty]
+        public Console NewConsole { get; set; } = new Console();
         public void OnGet()
         {
 
