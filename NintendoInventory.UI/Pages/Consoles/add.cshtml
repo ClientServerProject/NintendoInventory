@@ -5,13 +5,13 @@
 }
 <form method="post">
     <div class="row mb-3">
-        <label for="inputConsoleName" class="col-sm-2 col-form-label">Console Name:</label>
+        <label id="labelText" for="inputConsoleName" class="col-sm-2 col-form-label">Console Name:</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="inputConsoleName" asp-for="NewConsole.ConsoleName" />
         </div>
     </div>
     <div class="row mb-3">
-        <label for="inputConsoleImageURL" class="col-sm-2 col-form-label">Console Image URL:</label>
+        <label id="labelText" for="inputConsoleImageURL" class="col-sm-2 col-form-label">Console Image URL:</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="inputConsoleName" asp-for="NewConsole.ConsoleImageURL" />
         </div>
@@ -23,10 +23,22 @@
         </div>
     </div>-->
     <div class="row mb-3">
-        <label for="inputPrice" class="col-sm-2 col-form-label">Price:</label>
+        <label id="labelText" for="inputPrice" class="col-sm-2 col-form-label">Price:</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="inputPrice" asp-for="NewConsole.Price" />
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Add Console</button>
+    <button id="addButton" type="submit" class="btn btn-primary">Add Console</button>
 </form>
+
+        <style>
+            #addButton{
+                background-color: mediumblue;
+                border-radius: 10px;
+            }
+            #labelText{
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+        </style>
