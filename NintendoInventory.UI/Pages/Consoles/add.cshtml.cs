@@ -11,13 +11,14 @@ namespace NintendoInventory.UI.Pages.Consoles
         public Models.Console NewConsole { get; set; } = new Models.Console();
         public void OnGet()
         {
-            
+
         }
         //Adds games/consoles to the wishlist. Probably will be used in games and consoles page and not wishlist.
 
         public IActionResult OnPost()
         {
             //if (LikeButton is selected) //pseudocode
+            if (ModelState.IsValid)
             {
                 /*
                              * 1. Create a SQL connection object
@@ -47,9 +48,12 @@ namespace NintendoInventory.UI.Pages.Consoles
                     // step 5
                     cmd.ExecuteNonQuery();
                 }
+                return RedirectToPage("Index");
             }
-            return Page();
-
+            else
+            {
+                return Page();
+            }
 
         }
     }
