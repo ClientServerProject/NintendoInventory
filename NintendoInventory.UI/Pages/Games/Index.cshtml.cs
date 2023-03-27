@@ -36,10 +36,10 @@ namespace NintendoInventory.UI.Pages.Games
                     {
                         Game game = new Game();
                         game.GameTitle = reader["GameTitle"].ToString();
-                        game.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
+                        game.ReleaseDate = DateOnly.Parse(reader["ReleaseDate"].ToString());
                         game.ConsoleID = int.Parse(reader["ConsoleID"].ToString());
                         game.GameImageURL = reader["GameImageURL"].ToString();
-                        game.Price = decimal.Parse(reader["Price"].ToString());
+                        game.Price = reader["Price"].ToString();
                         game.GameDescription = reader["Description"].ToString();
                         game.ESBRRatingID = int.Parse(reader["ESRBRatingId"].ToString());
                         game.GameId = int.Parse(reader["GameId"].ToString());

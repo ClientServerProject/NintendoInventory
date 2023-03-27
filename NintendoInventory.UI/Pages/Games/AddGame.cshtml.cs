@@ -8,6 +8,7 @@ namespace NintendoInventory.UI.Pages.Games
     public class AddGameModel : PageModel
     {
         public Game NewGame { get; set; } = new Game();
+
         public void OnGet()
         {
         }
