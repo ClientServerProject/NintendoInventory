@@ -4,7 +4,7 @@
 
 }
 
-<form method="post" >
+<form method="post" id="form">
     <div class="form-group row mb-3">
         <label id="labelText" for="inputConsoleName">Console Name:</label>
         <input type="text" class="form-control" id="inputConsoleName" placeholder="Console Name" asp-for="NewConsole.ConsoleName" />
@@ -30,6 +30,14 @@
     #labelText {
         font-size: 20px;
         font-weight: bold;
+    }
+
+    #form {
+        width: 550px;
+        padding: 2em 0 2em 0;
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-left: auto;
     }
 </style>
 
