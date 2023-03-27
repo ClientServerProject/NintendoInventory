@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
+using NintendoInventory.UI.Models;
 
 namespace NintendoInventory.UI.Pages.Wishlist
 {
@@ -10,7 +12,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
         }
         //Adds games/consoles to the wishlist. Probably will be used in games and consoles page and not wishlist.
 
-       /* public IActionResult OnPost()
+        public IActionResult OnPost()
         {
             if (LikeButton is selected) //pseudocode
             {
@@ -23,7 +25,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
                              * 6. Close the SQL connection
                              * 
                              */
-               /* using (SqlConnection conn = new SqlConnection(DBHelper.GetConnectionString()))
+                using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
                 {
                     // step 1
                     // step 2
@@ -44,6 +46,6 @@ namespace NintendoInventory.UI.Pages.Wishlist
             return Page();
 
 
-        }*/
+        }
     }
 }
