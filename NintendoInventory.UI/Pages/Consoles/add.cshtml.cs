@@ -1,20 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using Microsoft.Identity.Client;
 using NintendoInventory.UI.Models;
 
-namespace NintendoInventory.UI.Pages.Games
+namespace NintendoInventory.UI.Pages.Consoles
 {
-    public class AddGameModel : PageModel
+    public class addModel : PageModel
     {
-        public Game NewGame { get; set; } = new Game();
-
+        public Models.Console NewConsole { get; set; } = new Models.Console();
         public void OnGet()
         {
+            
         }
+        //Adds games/consoles to the wishlist. Probably will be used in games and consoles page and not wishlist.
+
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            //if (LikeButton is selected) //pseudocode
             {
                 /*
                              * 1. Create a SQL connection object
@@ -29,26 +32,21 @@ namespace NintendoInventory.UI.Pages.Games
                 {
                     // step 1
                     // step 2
-                    string sql = "INSERT INTO Game(GameTitle, GameDescription, GameImageURL, ReleaseDate) " +
-                        "VALUES (@GameTitle, @GameDescription, @GameImageURL, @ReleaseDate, @Price)";
+                    string sql = "INSERT INTO Consoles(ConsoleImageURL, ConsoleName, ReleaseDate, Price) " +
+                        "VALUES (@ConsoleImageURL, @ConsoleName, @ReleaseDate, @Price)";
                     // step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@GameTitle", NewGame.GameTitle);
-                    cmd.Parameters.AddWithValue("@GameDescription", NewGame.GameDescription);
-                    cmd.Parameters.AddWithValue("@GameImageURL", NewGame.GameImageURL);
-                    cmd.Parameters.AddWithValue("@ReleaseDate", NewGame.ReleaseDate);
-                    cmd.Parameters.AddWithValue("@Price", NewGame.Price);
+                    cmd.Parameters.AddWithValue("@ConsoleImageURL", NewConsole.ConsoleImageURL);
+                    cmd.Parameters.AddWithValue("@ConsoleName", NewConsole.ConsoleName);
+                    cmd.Parameters.AddWithValue("@ReleaseDate", NewConsole.ReleaseDate);
+                    cmd.Parameters.AddWithValue("@Price", NewConsole.Price);
                     // step 4
                     conn.Open();
                     // step 5
                     cmd.ExecuteNonQuery();
                 }
-                return RedirectToPage("Index");
             }
-            else
-            {
-                return Page();
-            }
+            return Page();
 
 
         }

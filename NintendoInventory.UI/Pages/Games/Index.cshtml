@@ -1,4 +1,4 @@
-﻿@page
+﻿ @page
 @model NintendoInventory.UI.Pages.Games.IndexModel
 @{
 }
@@ -11,7 +11,14 @@
         <!--<h2 class='subtitle'>.</h2>-->
     </div>
 </div>
-
+<div class="row">
+    <div class="col-sm-3">
+        <h2>Game List</h2>
+    </div>
+    <div class="col-sm-9">
+        <a class="btn btn-primary" asp-page="AddGame">Add Game</a>
+    </div>
+</div>
 
 @foreach (var Game in Model.GameList)
 {

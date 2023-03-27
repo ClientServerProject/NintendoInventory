@@ -1,0 +1,32 @@
+﻿@page
+@model NintendoInventory.UI.Pages.Consoles.addModel
+@{
+
+}
+<form method="post">
+    <div class="row mb-3">
+        <label for="inputConsoleName" class="col-sm-2 col-form-label">Console Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputConsoleName" asp-for="NewConsole.ConsoleName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputConsoleImageURL" class="col-sm-2 col-form-label">Console Image URL:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputConsoleName" asp-for="NewConsole.ConsoleImageURL" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputReleaseDate" class="col-sm-2 col-form-label">Release Date:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputReleaseDate" asp-for="NewConsole.ReleaseDate" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPrice" class="col-sm-2 col-form-label">Price:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPrice" asp-for="NewConsole.Price" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Console</button>
+</form>
