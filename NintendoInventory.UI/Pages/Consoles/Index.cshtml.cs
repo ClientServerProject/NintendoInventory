@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NintendoInventory.UI.Models;
 using Microsoft.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace NintendoInventory.UI.Pages.Consoles
 {
@@ -36,10 +37,10 @@ namespace NintendoInventory.UI.Pages.Consoles
                     {
                         Models.Console console = new Models.Console();
                         console.ConsoleName = (string)reader["ConsoleName"];
-                        console.ReleaseDate = (DateOnly)reader["ReleaseDate"];
+                        console.ReleaseDate = SqlDateTime.Parse(reader["ReleaseDate"].ToString());
                         console.ConsoleImageURL = (string)reader["ConsoleImageURL"];
-                        console.Price = (string)reader["Price"];
-                        console.ConsoleID = int.Parse((string)reader["ConsoleId"]);
+                        console.Price = (decimal)reader["Price"];
+                        console.ConsoleID = (int)reader["ConsoleID"];
                         ConsoleList.Add(console);
                     }
                 }
