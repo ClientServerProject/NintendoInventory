@@ -17,16 +17,16 @@
     {
 
         var URL = @Console.ConsoleImageURL;
-        <div id="consoleDiv" class="col-md-2">
-            <div class="mx-3">
-                <img class="image" src="https://fs-prod-cdn.nintendo-europe.com/media/images/08_content_images/systems_5/nintendo_switch_3/nintendo_switch_oled/CI_NSwitch_family_hardware_had.png">
-                <img class="image" src= URL>
+        <div id="consoleDiv" class="col-md-2 ">
+            <div class="mx-3" style="display: flex; flex-direction: row;">
+                <div class="" style="text-align: justify;">
+                    <img class="image" src=@URL>
+                </div>
             </div>
             <div class="row mx-3">
                 <div class="d-inline col-sm-10">
                     <div class="row">
-                        <div id="consoleName" class="col-sm-12">
-                            Name
+                        <div id="consoleName" class="col-sm-12">                           
                             @Console.ConsoleName
                         </div>
                     </div>
@@ -37,8 +37,7 @@
                     </div>-->
                     <div class="row">
                         <div id="price" class="col-sm-12">
-                            Price
-                            @Console.Price
+                            $@Console.Price
                         </div>
                     </div>
                 </div>
