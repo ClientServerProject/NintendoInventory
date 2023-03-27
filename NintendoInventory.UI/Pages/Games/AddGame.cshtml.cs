@@ -29,7 +29,7 @@ namespace NintendoInventory.UI.Pages.Games
                 {
                     // step 1
                     // step 2
-                    string sql = "INSERT INTO Game(GameTitle, GameDescription, GameImageURL, ReleaseDate) " +
+                    string sql = "INSERT INTO Game(GameTitle, GameDescription, GameImageURL, ReleaseDate, Price) " +
                         "VALUES (@GameTitle, @GameDescription, @GameImageURL, @ReleaseDate, @Price)";
                     // step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
@@ -38,7 +38,7 @@ namespace NintendoInventory.UI.Pages.Games
                     cmd.Parameters.AddWithValue("@GameImageURL", NewGame.GameImageURL);
                     cmd.Parameters.AddWithValue("@ReleaseDate", NewGame.ReleaseDate);
                     cmd.Parameters.AddWithValue("@Price", NewGame.Price);
-                    // step 4
+                    // step 4s
                     conn.Open();
                     // step 5
                     cmd.ExecuteNonQuery();
