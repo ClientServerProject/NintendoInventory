@@ -9,7 +9,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<Models.Wishlist> WishlistList { get; set; } = new List<Models.Wishlist>();
+        public List<Models.WishlistItem> WishlistList { get; set; } = new List<Models.WishlistItem>();
         public void OnGet()
         {
             /*

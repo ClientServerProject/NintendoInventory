@@ -14,7 +14,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
 
         public IActionResult OnPost()
         {
-            if (LikeButton is selected) //pseudocode
+           // if (LikeButton is selected) //pseudocode
             {
                 /*
                              * 1. Create a SQL connection object
