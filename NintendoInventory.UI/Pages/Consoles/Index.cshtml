@@ -13,10 +13,9 @@
 
 <div class="row">
     <div class="col-sm-3">
-        <h2>Console List</h2>
     </div>
     <div class="col-sm-9">
-        <a class="btn btn-primary" asp-page="Add">Add Console</a>
+        <a id="addButton" class="btn btn-primary" asp-page="Add">Add Console</a>
     </div>
 </div>
 
@@ -61,6 +60,11 @@
     .image{
         width: 100%;
         height: auto;
+    }
+
+    #addButton {
+        background-color: mediumblue;
+        border-radius: 10px;
     }
 
 
