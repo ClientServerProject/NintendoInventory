@@ -5,17 +5,17 @@
 }
 
 <form method="post" id="form">
-    <div class="form-group row mb-3">
+    <div class="form-group mb-3">
         <label id="labelText" for="inputConsoleName">Console Name:</label>
         <input type="text" class="form-control" id="inputConsoleName" placeholder="Console Name" asp-for="NewConsole.ConsoleName" />
     </div>
-    <div class="form-group row mb-3">
+    <div class="form-group mb-3">
         <label id="labelText" for="inputConsoleImageURL">Console Image URL:</label>
-        <input type="text" class="form-control" id="inputConsoleName" placeholder="Console Image URL" asp-for="NewConsole.ConsoleImageURL" />
+        <input type="url" class="form-control" id="inputConsoleName" placeholder="Console Image URL" asp-for="NewConsole.ConsoleImageURL" />
     </div>
-    <div class="form-group row mb-3">
+    <div class="form-group mb-3">
         <label id="labelText" for="inputPrice">Console Price:</label>
-        <input type="text" class="form-control" id="inputPrice" placeholder="Console Price" asp-for="NewConsole.Price" />
+        <input type="number" class="form-control" id="inputPrice" placeholder="Console Price" asp-for="NewConsole.Price" />
     </div>
     <button type="submit" id="addButton" class="btn btn-primary">Add Console</button>
 </form>
@@ -23,11 +23,12 @@
 
 <style>
     #addButton {
-        background-color: mediumblue;
+        background-color: #00BBE2;
         border-radius: 10px;
     }
 
     #labelText {
+        
         font-size: 20px;
         font-weight: bold;
     }
