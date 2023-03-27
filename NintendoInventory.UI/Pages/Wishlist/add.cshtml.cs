@@ -33,10 +33,10 @@ namespace NintendoInventory.UI.Pages.Wishlist
                         "VALUES (@wLItemImageURL, @wLItemName, @wLItemReleaseDate, @wLItemPrice)";
                     // step 3
                    SqlCommand cmd = new SqlCommand(sql, conn);
-                   cmd.Parameters.AddWithValue("@wLItemImageUR", NewWLItem.WLItemImageUR);
-                   cmd.Parameters.AddWithValue("@wLItemName", NewWLItem.WLItemName);
-                   cmd.Parameters.AddWithValue("@wLItemReleaseDateL", NewWLItem.WLItemReleaseDate);
-                   cmd.Parameters.AddWithValue("@wLItemPrice", NewWLItem.WLItemPrice);
+                   //cmd.Parameters.AddWithValue("@wLItemImageUR", NewWLItem.WLItemImageUR);
+                   //cmd.Parameters.AddWithValue("@wLItemName", NewWLItem.WLItemName);
+                   //cmd.Parameters.AddWithValue("@wLItemReleaseDateL", NewWLItem.WLItemReleaseDate);
+                   //cmd.Parameters.AddWithValue("@wLItemPrice", NewWLItem.WLItemPrice);
                     // step 4
                     conn.Open();
                     // step 5

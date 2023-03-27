@@ -14,26 +14,43 @@
 
 @foreach (var Console in Model.ConsoleList)
 {
-     <div class="row mb-3">
+    
+    
         <div class="col-sm-3">
-            <img src="@Console.ConsoleImageURL">
+            <img class ="image"src="@Console.ConsoleImageURL">
         </div>
         <div class="col-sm-9">
             <div class="row">
-                <div class="col-sm-12">
+                <div id="consoleName" class="col-sm-12">
                     @Console.ConsoleName
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div id="releaseDate" class="col-sm-12">
                     @Console.ReleaseDate
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div id= "price" class="col-sm-12">
                     @Console.Price
                 </div>
             </div>
         </div>
-    </div>
+ 
 }
+
+
+<style>
+    #consoleName{
+        font-size: 15px;
+        font-weight: bold;
+    }
+  
+    .image{
+        width: 100%;
+        height: auto;
+    }
+
+ 
+    
+</style>

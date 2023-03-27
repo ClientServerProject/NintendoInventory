@@ -23,7 +23,7 @@ namespace NintendoInventory.UI.Pages.Games
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM Game Order By GameTitle";
+                string sql = "SELECT * FROM Game Order By GameName";
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 // step 4
@@ -35,19 +35,18 @@ namespace NintendoInventory.UI.Pages.Games
                     while (reader.Read())
                     {
                         Game game = new Game();
-                        game.GameTitle = reader["GameTitle"].ToString();
+                        game.GameTitle = reader["GameName"].ToString();
                         game.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
-                        game.ConsoleID = int.Parse(reader["ConsoleID"].ToString());
+                        game.ConsoleID = int.Parse(reader["ConsoleId"].ToString());
                         game.GameImageURL = reader["GameImageURL"].ToString();
                         game.Price = decimal.Parse(reader["Price"].ToString());
                         game.GameDescription = reader["Description"].ToString();
                         game.ESBRRatingID = int.Parse(reader["ESRBRatingId"].ToString());
                         game.GameId = int.Parse(reader["GameId"].ToString());
-                        //WishlistItem.Add(game);
+                        GameList.Add(game);
                     }
                 }
             }
         }
     }
 }
-
