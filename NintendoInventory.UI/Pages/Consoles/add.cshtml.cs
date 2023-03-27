@@ -32,7 +32,7 @@ namespace NintendoInventory.UI.Pages.Consoles
                 {
                     // step 1
                     // step 2
-                    string sql = "INSERT INTO Consoles(ConsoleImageURL, ConsoleName, ReleaseDate, Price) " +
+                    string sql = "INSERT INTO Console(ConsoleImageURL, ConsoleName, ReleaseDate, Price) " +
                         "VALUES (@ConsoleImageURL, @ConsoleName, @ReleaseDate, @Price)";
                     // step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
