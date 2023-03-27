@@ -14,7 +14,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
 
         public IActionResult OnPost()
         {
-            //if (LikeButton is selected) //pseudocode
+            // if (LikeButton is selected) //pseudocode
             {
                 /*
                              * 1. Create a SQL connection object
@@ -32,7 +32,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
                     string sql = "INSERT INTO Wishlist(WLItemImageURL, WLItemName, WLItemReleaseDate, WLItemPrice) " +
                         "VALUES (@wLItemImageURL, @wLItemName, @wLItemReleaseDate, @wLItemPrice)";
                     // step 3
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+                   SqlCommand cmd = new SqlCommand(sql, conn);
                    //cmd.Parameters.AddWithValue("@wLItemImageUR", NewWLItem.WLItemImageUR);
                    //cmd.Parameters.AddWithValue("@wLItemName", NewWLItem.WLItemName);
                    //cmd.Parameters.AddWithValue("@wLItemReleaseDateL", NewWLItem.WLItemReleaseDate);
