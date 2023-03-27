@@ -10,7 +10,7 @@ namespace NintendoInventory.UI.Models
         [Required]
         public string ConsoleImageURL { get; set; } = string.Empty;
         [Required] 
-        public DateTime ReleaseDate { get; set; }
-        public decimal Price { get; set; }
+        public DateOnly ReleaseDate { get; set; }
+        public string Price { get; set; }
     }
 }
