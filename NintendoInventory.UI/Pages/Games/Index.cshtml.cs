@@ -37,7 +37,7 @@ namespace NintendoInventory.UI.Pages.Games
                         Game game = new Game();
                         game.GameTitle = reader["GameName"].ToString();
                         game.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
-                        game.ConsoleId = int.Parse(reader["ConsoleId"].ToString());
+                        game.ConsoleID = int.Parse(reader["ConsoleId"].ToString());
                         game.GameImageURL = reader["GameImageURL"].ToString();
                         game.Price = decimal.Parse(reader["Price"].ToString());
                         game.GameDescription = reader["Description"].ToString();
