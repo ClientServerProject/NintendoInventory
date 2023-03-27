@@ -1,0 +1,37 @@
+﻿@page
+@model NintendoInventory.UI.Pages.Games.AddGameModel
+@{
+}
+<form method="post">
+    <div class="row mb-3">
+        <label for="inputAuthorName" class="col-sm-2 col-form-label">Game Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGameName" asp-for="NewGame.GameTitle" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputAuthorBio" class="col-sm-2 col-form-label">Author Bio:</label>
+        <div class="col-sm-10">
+            <textarea rows="3" class="form-control" id="inputAuthorBio" asp-for="NewGame.GameDescription"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputAuthorImage" class="col-sm-2 col-form-label">Author Image:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputAuthorName" asp-for="NewGame.GameImageURL" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputAuthorWebsite" class="col-sm-2 col-form-label">Author Website:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputReleaseDate" asp-for="NewGame.ReleaseDate" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputAuthorWebsite" class="col-sm-2 col-form-label">Author Website:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPrice" asp-for="NewGame.Price" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Author</button>
+</form>
