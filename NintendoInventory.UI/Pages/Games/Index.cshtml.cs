@@ -35,14 +35,15 @@ namespace NintendoInventory.UI.Pages.Games
                     while (reader.Read())
                     {
                         Game game = new Game();
-                        game.GameTitle = reader["GameTitle"].ToString();
-                        game.ReleaseDate = DateOnly.Parse(reader["ReleaseDate"].ToString());
-                        game.ConsoleID = int.Parse(reader["ConsoleID"].ToString());
-                        game.GameImageURL = reader["GameImageURL"].ToString();
-                        game.Price = reader["Price"].ToString();
-                        game.GameDescription = reader["Description"].ToString();
-                        game.ESBRRatingID = int.Parse(reader["ESRBRatingId"].ToString());
+                        game.GameTitle = (string)reader["GameTitle"];
+                        game.ReleaseDate = (string)reader["ReleaseDate"];
+                        game.ConsoleID = (int)reader["ConsoleID"];
+                        game.GameImageURL = (string)reader["GameImageURL"];
+                        game.Price = (string)reader["Price"];
+                        game.GameDescription = (string)reader["Description"];
+                        game.ESBRRatingID = (int)reader["ESRBRatingId"];
                         game.GameId = int.Parse(reader["GameId"].ToString());
+                        GameList.Add(game);
                         //WishlistItem.Add(game);
                     }
                 }
