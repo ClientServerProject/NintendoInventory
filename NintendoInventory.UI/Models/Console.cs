@@ -5,12 +5,11 @@ namespace NintendoInventory.UI.Models
     public class Console
     {
         public int ConsoleID { get; set; }
-        [Required]
         public string ConsoleName { get; set; } = string.Empty;
         [Required]
         public string ConsoleImageURL { get; set; } = string.Empty;
         [Required] 
-        public DateTime ReleaseDate { get; set; }
-        public decimal Price { get; set; }
+        public DateOnly ReleaseDate { get; set; }
+        public string Price { get; set; } = string.Empty;
     }
 }
