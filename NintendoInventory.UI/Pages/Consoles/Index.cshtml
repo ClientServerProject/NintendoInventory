@@ -13,10 +13,9 @@
 
 <div class="row">
     <div class="col-sm-3">
-        <h2>Console List</h2>
     </div>
     <div class="col-sm-9">
-        <a class="btn btn-primary" asp-page="add">Add Console</a>
+        <a id="addButton" class="btn btn-primary" asp-page="Add">Add Console</a>
     </div>
 </div>
 
@@ -26,21 +25,24 @@
     
     
         <div class="col-sm-3">
+            Image
             <img class ="image"src="@Console.ConsoleImageURL">
         </div>
         <div class="col-sm-9">
             <div class="row">
                 <div id="consoleName" class="col-sm-12">
+                    Name
                     @Console.ConsoleName
                 </div>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div id="releaseDate" class="col-sm-12">
-                    @Console.ReleaseDate
+                     Console.ReleaseDate
                 </div>
-            </div>
+            </div>-->
             <div class="row">
                 <div id= "price" class="col-sm-12">
+                    Price
                     @Console.Price
                 </div>
             </div>
@@ -54,12 +56,17 @@
         font-size: 15px;
         font-weight: bold;
     }
-  
+
     .image{
         width: 100%;
         height: auto;
     }
 
- 
-    
+    #addButton {
+        background-color: mediumblue;
+        border-radius: 10px;
+    }
+
+
+
 </style>
