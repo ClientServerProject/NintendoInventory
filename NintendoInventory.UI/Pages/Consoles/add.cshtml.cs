@@ -32,13 +32,15 @@ namespace NintendoInventory.UI.Pages.Consoles
                 {
                     // step 1
                     // step 2
-                    string sql = "INSERT INTO Console(ConsoleImageURL, ConsoleName, ReleaseDate, Price) " +
-                        "VALUES (@ConsoleImageURL, @ConsoleName, @ReleaseDate, @Price)";
+                    //string sql = "INSERT INTO Console(ConsoleImageURL, ConsoleName, ReleaseDate, Price) " +
+                    //    "VALUES (@ConsoleImageURL, @ConsoleName, @ReleaseDate, @Price)";
+                    string sql = "INSERT INTO Console(ConsoleImageURL, ConsoleName, Price) " +
+                        "VALUES (@ConsoleImageURL, @ConsoleName, @Price)";
                     // step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@ConsoleImageURL", NewConsole.ConsoleImageURL);
                     cmd.Parameters.AddWithValue("@ConsoleName", NewConsole.ConsoleName);
-                    cmd.Parameters.AddWithValue("@ReleaseDate", NewConsole.ReleaseDate);
+                    //cmd.Parameters.AddWithValue("@ReleaseDate", NewConsole.ReleaseDate); 
                     cmd.Parameters.AddWithValue("@Price", NewConsole.Price);
                     // step 4
                     conn.Open();
