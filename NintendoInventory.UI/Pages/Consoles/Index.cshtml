@@ -18,13 +18,11 @@
 
         var URL = @Console.ConsoleImageURL;
         <div id="consoleDiv" class="col-md-2 ">
-            <div class="mx-3" style="display: flex; flex-direction: row;">
-                <div class="" style="text-align: justify;">
+            <div id="consImgDiv" class="mx-3" style="display: flex; flex-direction: row;">
                     <img class="image" src=@URL>
-                </div>
             </div>
             <div class="row mx-3">
-                <div class="d-inline col-sm-10">
+                <div id="consNamePrice" class="d-inline col-sm-10">
                     <div class="row">
                         <div id="consoleName" class="col-sm-12">                           
                             @Console.ConsoleName
@@ -36,14 +34,14 @@
                         </div>
                     </div>-->
                     <div class="row">
-                        <div id="price" class="col-sm-12">
+                        <div id="consPrice" class="col-sm-12">
                             $@Console.Price
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-2 d-flex align-items-end justify-content-center">
                     <Button id="ATWLbtn" class="btn btn-primary rounded-circle d-flex align-items-center text-center justify-content-center">
-                        <i class="material-icons">add</i>
+                        <i class="bi bi-plus"></i>
                     </Button>
                 </div>
             </div>
@@ -51,44 +49,3 @@
     }
 </div>
 
-<style>
-    #consoleName{
-        font-size: 15px;
-        font-weight: bold;
-    }
-
-    .image{
-        width: 100%;
-        height: auto;
-    }
-
-    #addButton {
-        background-color: #00BBE2;
-        border-radius: 10px;
-        border-color:transparent;
-        padding-right:10px;
-    }
-    #deleteButton {
-        background-color: #FF3333;
-        border-radius: 10px;
-        border-color:transparent;
-    }
-    #ATWLbtn {
-        background-color: #58FA86;
-        border-color:#D8D8D8;
-        width: 30px;
-        height: 30px;
-        flex-shrink: 0;
-        color: #595959;
-        font-size: 25px;
-        font-weight: bold;
-
-    }
-    #consoleDiv {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin: 15px;
-        background-color: #FEFDED;
-        border: 2px Solid #D8D8D8;
-    }
-</style>
