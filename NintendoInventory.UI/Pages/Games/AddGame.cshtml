@@ -2,36 +2,65 @@
 @model NintendoInventory.UI.Pages.Games.AddGameModel
 @{
 }
-<form method="post">
-    <div class="row mb-3">
-        <label for="inputGameTitle" class="col-sm-2 col-form-label">Game Title:</label>
-        <div class="col-sm-5">
-            <input onclick="focus" type="text" class="form-control" id="inputGameTitle" asp-for="NewGame.GameTitle" />
-        </div>
+
+<script type="text/javascript">
+    function validateInput() {
+        var isValid = true;
+        var gameTitle = document.getElementById("inputGameTitle");
+        var gameImageURL = document.getElementById("inputGameImageURL");
+        var gamePrice = document.getElementById("inputPrice");
+        if (gameTitle.value === "") {
+            document.getElementById("gameTitleError").innerHTML = "Game Title is required.";
+            isValid = false;
+        }
+        if (gameImageURL.value === "") {
+            document.getElementById("gameImageURLError").innerHTML = "Game Image URL is required.";
+            isValid = false;
+        }
+        if (gamePrice.value === "") {
+            document.getElementById("gamePriceError").innerHTML = "Game Price is required.";
+            isValid = false;
+        }
+        return isValid;
+    }
+</script>
+
+<form method="post" id="form">
+    <div class="form-group mb-3">
+        <label id="labelText" for="inputGameTitle">Game Title:</label>
+        <input type="text" class="form-control" id="inputGameTitle" placeholder="Game Title" asp-for="NewGame.GameTitle" />
+        <span asp-validation-for="NewGame.GameTitle" class="text-danger" id="gameTitleError"></span>
     </div>
-    <div class="row mb-3">
-        <label for="inputGameDescription" class="col-sm-2 col-form-label">Game Description:</label>
-        <div class="col-sm-5">
-            <textarea rows="3" class="form-control" id="inputGameDescription" asp-for="NewGame.GameDescription"></textarea>
-        </div>
+    <div class="form-group mb-3">
+        <label id="labelText" for="inputGameImageURL">Game Image URL:</label>
+        <input type="text" class="form-control" id="inputGameImageURL" placeholder="Game Image URL" asp-for="NewGame.GameImageURL" />
+        <span asp-validation-for="NewGame.GameImageURL" class="text-danger" id="gameImageURLError"></span>
     </div>
-    <div class="row mb-3">
-        <label for="inputGameImageURL" class="col-sm-2 col-form-label">Game Image URL:</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputGameImageURL" asp-for="NewGame.GameImageURL" />
-        </div>
+    <div class="form-group mb-3">
+        <label id="labelText" for="inputPrice">Game Price:</label>
+        <input type="text" class="form-control" id="inputPrice" placeholder="Game Price" asp-for="NewGame.Price" />
+        <span asp-validation-for="NewGame.Price" class="text-danger" id="gamePriceError"></span>
     </div>
-    <div class="row mb-3">
-        <label for="inputReleaseDate" class="col-sm-2 col-form-label">Release Date:</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputReleaseDate" asp-for="NewGame.ReleaseDate" />
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputPrice" class="col-sm-2 col-form-label">Price:</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputPrice" asp-for="NewGame.Price" />
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Add Game</button>
+    <button type="submit" id="addButton" class="btn btn-primary">Add Game</button>
 </form>
+
+
+<style>
+    #addButton {
+        background-color: #00BBE2;
+        border-radius: 10px;
+    }
+
+    #labelText {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #form {
+        width: 550px;
+        padding: 2em 0 2em 0;
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-left: auto;
+    }
+</style>

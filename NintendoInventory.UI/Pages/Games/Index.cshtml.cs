@@ -3,13 +3,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using NintendoInventory.UI.Models;
 using Microsoft.Data.SqlClient;
 using System;
+using System.Data.SqlTypes;
+using Game = NintendoInventory.UI.Models.Game;
 
 namespace NintendoInventory.UI.Pages.Games
 {
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<Game> GameList { get; set; } = new List<Game>();
+        public List<Models.Game> GameList { get; set; } = new List<Models.Game>();
         public void OnGet()
         {
             /*
