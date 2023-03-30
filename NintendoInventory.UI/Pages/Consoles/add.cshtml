@@ -3,19 +3,43 @@
 @{
 
 }
+<script type="text/javascript">
+    function validateInput(){
+        var isValid = true;
+        var consoleName = document.getElementById("inputConsoleName");
+        var consoleImageURL = document.getElementById("inputConsoleImageURL");
+        var consolePrice = document.getElementById("inputPrice");
+        if (consoleName.value === ""){
+            document.getElementById("consoleNameError").innerHTML="Console Name is required.";
+            isValid = false;
+        }
+        if (consoleImageURL.value === ""){
+            document.getElementById("consoleImageURLError").innerHTML = "Console Image URL is required.";
+            isValid = false;
+        }
+        if (consolePriceL.value === ""){
+            document.getElementById("consolePriceError").innerHTML = "Console Price is required.";
+            isValid = false;
+        }
+        return isValid;        
+    }
+</script>
 
 <form method="post" id="form">
     <div class="form-group mb-3">
         <label id="labelText" for="inputConsoleName">Console Name:</label>
         <input type="text" class="form-control" id="inputConsoleName" placeholder="Console Name" asp-for="NewConsole.ConsoleName" />
+        <span asp-validation-for="NewConsole.ConsoleName" class="text-danger" id="consoleNameError"></span>
     </div>
     <div class="form-group mb-3">
         <label id="labelText" for="inputConsoleImageURL">Console Image URL:</label>
         <input type="text" class="form-control" id="inputConsoleName" placeholder="Console Image URL" asp-for="NewConsole.ConsoleImageURL" />
+        <span asp-validation-for="NewConsole.ConsoleImageURL" class="text-danger" id="consoleImageURLError"></span>
     </div>
     <div class="form-group mb-3">
         <label id="labelText" for="inputPrice">Console Price:</label>
         <input type="text" class="form-control" id="inputPrice" placeholder="Console Price" asp-for="NewConsole.Price" />
+        <span asp-validation-for="NewConsole.Price" class="text-danger" id="consolePriceError"></span>
     </div>
     <button type="submit" id="addButton" class="btn btn-primary">Add Console</button>
 </form>

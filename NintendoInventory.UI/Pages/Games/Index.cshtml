@@ -3,45 +3,49 @@
 @{
 }
 
-<div id="container">
+<div id="container" class="d-inline m-auto">
     <div class="col-sm-3">
         <h1 class='title'>Games</h1>
     </div>
-    <div class="col-sm-9">
-        <!--<h2 class='subtitle'>.</h2>-->
-    </div>
-</div>
-<div class="row">
     <div class="col-sm-3">
-        <h2>Game List</h2>
-    </div>
-    <div class="col-sm-9">
-        <a class="btn btn-primary" asp-page="AddGame">Add Game</a>
+        <a id="addButton" class="btn btn-primary" asp-page="Add">Add Game</a>
+        <a id="deleteButton" class="btn btn-primary">Delete Game</a>
     </div>
 </div>
 
-@foreach (var Game in Model.GameList)
-{
-     <div class="row mb-3">
-        <div class="col-sm-3">
-            <img src="@Game.GameImageURL"> 
+<div class="row m-4">
+    @foreach (var Game in Model.GameList)
+    {
+
+        var URL = @Game.GameImageURL;
+        <div id="gameDiv" class="col-md-2 ">
+            <div id="gameImgDiv" class="mx-3" style="display: flex; flex-direction: row;">
+                <img class="image" src=@URL>
+            </div>
+            <div class="row mx-3">
+                <div id="gameTitlePrice" class="d-inline col-sm-10">
+                    <div class="row">
+                        <div id="gameTitle" class="col-sm-12">
+                            @Game.GameTitle
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <div id="releaseDate" class="col-sm-12">
+                             Game.ReleaseDate
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div id="gamePrice" class="col-sm-12">
+                            $@Game.Price
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 d-flex align-items-end justify-content-center">
+                    <Button id="ATWLbtn" class="btn btn-primary rounded-circle d-flex align-items-center text-center justify-content-center">
+                        <i class="bi bi-plus"></i>
+                    </Button>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-9">
-            <div class="row">
-                <div class="col-sm-12">
-                    @Game.GameTitle
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    @Game.ReleaseDate
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    @Game.Price
-                </div>
-            </div>
-        </div>
-    </div>
-}
+    }
+</div>

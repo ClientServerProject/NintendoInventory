@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NintendoInventory.UI.Models;
 using Microsoft.Data.SqlClient;
+using System;
 
 namespace NintendoInventory.UI.Pages.Games
 {
@@ -35,13 +36,13 @@ namespace NintendoInventory.UI.Pages.Games
                     while (reader.Read())
                     {
                         Game game = new Game();
-                        game.GameTitle = (string)reader["GameTitle"];
-                        game.ReleaseDate = (string)reader["ReleaseDate"];
+                        game.GameTitle = reader["GameTitle"].ToString();
+                        //game.ReleaseDate = (string)reader["ReleaseDate"];
                         game.ConsoleID = (int)reader["ConsoleID"];
                         game.GameImageURL = (string)reader["GameImageURL"];
-                        game.Price = (string)reader["Price"];
-                        game.GameDescription = (string)reader["Description"];
-                        game.ESBRRatingID = (int)reader["ESRBRatingId"];
+                        game.Price = reader["Price"].ToString();
+                        game.GameDescription = (string)reader["GameDescription"];
+                        //game.ESBRRatingID = (int)reader["ESBRRatingID"];
                         game.GameId = int.Parse(reader["GameId"].ToString());
                         GameList.Add(game);
                         //WishlistItem.Add(game);
