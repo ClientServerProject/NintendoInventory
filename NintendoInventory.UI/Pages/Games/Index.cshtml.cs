@@ -2,13 +2,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NintendoInventory.UI.Models;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Data.SqlTypes;
+using Game = NintendoInventory.UI.Models.Game;
 
 namespace NintendoInventory.UI.Pages.Games
 {
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<Game> GameList { get; set; } = new List<Game>();
+        public List<Models.Game> GameList { get; set; } = new List<Models.Game>();
         public void OnGet()
         {
             /*
@@ -35,13 +38,13 @@ namespace NintendoInventory.UI.Pages.Games
                     while (reader.Read())
                     {
                         Game game = new Game();
-                        game.GameTitle = (string)reader["GameTitle"];
-                        game.ReleaseDate = (string)reader["ReleaseDate"];
+                        game.GameTitle = reader["GameTitle"].ToString();
+                        //game.ReleaseDate = (string)reader["ReleaseDate"];
                         game.ConsoleID = (int)reader["ConsoleID"];
                         game.GameImageURL = (string)reader["GameImageURL"];
-                        game.Price = (string)reader["Price"];
-                        game.GameDescription = (string)reader["Description"];
-                        game.ESBRRatingID = (int)reader["ESRBRatingId"];
+                        game.Price = reader["Price"].ToString();
+                        game.GameDescription = (string)reader["GameDescription"];
+                        //game.ESBRRatingID = (int)reader["ESBRRatingID"];
                         game.GameId = int.Parse(reader["GameId"].ToString());
                         GameList.Add(game);
                         //WishlistItem.Add(game);
