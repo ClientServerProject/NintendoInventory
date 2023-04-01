@@ -18,13 +18,21 @@
 
         var URL = @Console.ConsoleImageURL;
         <div id="consoleDiv" class="col-md-2 ">
-            <div id="consImgDiv" class="mx-3" style="display: flex; flex-direction: row;">
+            <div>
+                <div id="consButtons">
+                    <Button id="ATWLbtn" class="btn btn-primary rounded-circle d-flex align-items-center text-center justify-content-center">
+                        <i class="bi bi-plus"></i>
+                    </Button>
+                    <Button id="consDelbtn" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-plus"></i>
+                    </Button>
+                </div>
+                <div id="consImgDiv">
                     <img class="image" src=@URL>
-            </div>
-            <div class="row mx-3">
-                <div id="consNamePrice" class="d-inline col-sm-10">
+                </div>
+                <div id="consBotRow">
                     <div class="row">
-                        <div id="consoleName" class="col-sm-12">                           
+                        <div id="consoleName" class="col-sm-12">
                             @Console.ConsoleName
                         </div>
                     </div>
@@ -38,11 +46,6 @@
                             $@Console.Price
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-2 d-flex align-items-end justify-content-center">
-                    <Button id="ATWLbtn" class="btn btn-primary rounded-circle d-flex align-items-center text-center justify-content-center">
-                        <i class="bi bi-plus"></i>
-                    </Button>
                 </div>
             </div>
         </div>
