@@ -21,6 +21,10 @@
             document.getElementById("gamePriceError").innerHTML = "Game Price is required.";
             isValid = false;
         }
+        if (gameReleaseDate.value === "") {
+            document.getElementById("gameReleaseDateError").innerHTML = "Game Release Date is required.";
+            isValid = false;
+        }
         return isValid;
     }
 </script>
@@ -40,6 +44,11 @@
         <label id="labelText" for="inputPrice">Game Price:</label>
         <input type="text" class="form-control" id="inputPrice" placeholder="Game Price" asp-for="NewGame.Price" />
         <span asp-validation-for="NewGame.Price" class="text-danger" id="gamePriceError"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label id="labelText" for="inputReleaseDate">Game Release Date:</label>
+        <input type="text" class="form-control" id="inputReleaseDate" placeholder="Game Release Date" asp-for="NewGame.ReleaseDate" />
+        <span asp-validation-for="NewGame.ReleaseDate" class="text-danger" id="gameReleaseDateError"></span>
     </div>
     <button type="submit" id="addButton" class="btn btn-primary">Add Game</button>
 </form>

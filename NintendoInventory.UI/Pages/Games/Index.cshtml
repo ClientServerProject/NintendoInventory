@@ -16,36 +16,18 @@
 <div class="row m-4">
     @foreach (var Game in Model.GameList)
     {
-
+        
         var URL = @Game.GameImageURL;
-        <div id="gameDiv" class="col-md-2 ">
-            <div id="gameImgDiv" class="mx-3">
-                <img class="image" src=@URL>
-            </div>
-            <div id="" class="row mx-3">
-                <div id="gameTitlePrice" class="d-inline col-sm-10">
-                    <div class="row">
-                        <div id="gameTitle" class="col-sm-12">
-                            @Game.GameTitle
-                        </div>
-                    </div>
-                    <!--<div class="row">
-                        <div id="releaseDate" class="col-sm-12">
-                             Game.ReleaseDate
-                        </div>
-                    </div>-->
-                    <div class="row">
-                        <div id="gamePrice" class="col-sm-12">
-                            $@Game.Price
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2 d-flex align-items-end justify-content-center">
-                    <Button id="ATWLbtn" class="btn btn-primary rounded-circle d-flex align-items-center text-center justify-content-center">
-                        <i class="bi bi-plus"></i>
-                    </Button>
-                </div>
-            </div>
-        </div>
+        <div class="card">
+        <img class="card-img-top" src=@URL>
+        <div class="card-body">
+            <h5 class="card-title">@Game.GameTitle</h5>
+        <div class="card-text">@Game.ReleaseDate</div>
+            <button class="btn btn-primary">Add</button>
+        <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
+    </div>
+</div>
     }
 </div>
+
+

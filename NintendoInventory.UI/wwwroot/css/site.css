@@ -92,5 +92,77 @@ body {
     border-color: transparent;
 }
 
+/*Games*/
+.card {
+ 
+ width:288px;
+ margin:10px;
+    
+}
+
+#gameButtons {
+    background-color: palevioletred;
+}
+
+#ATWLbtn {
+    background-color: #58FA86;
+    border-color: #D8D8D8;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    color: #595959;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#gameTitlePrice {
+
+    background-color: blueviolet;
+
+}
+
+#gameImgDiv {
+    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100px;
+    width: 200px;
+}
+
+#gameBotRow {
+    background-color: deepskyblue;
+    padding: 1px;
+}
+
+#gameTitle {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#gamePrice {
+    text-align: right;
+}
+
+.image {
+    object-fit:cover;
+    
+}
+
+#addButton {
+    background-color: #00BBE2;
+    border-radius: 10px;
+    border-color: transparent;
+    padding-right: 10px;
+}
+
+#deleteButton {
+    background-color: #FF3333;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
 
 
