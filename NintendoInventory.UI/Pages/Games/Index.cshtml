@@ -19,14 +19,15 @@
         
         var URL = @Game.GameImageURL;
         <div class="card">
-        <img class="card-img-top" src=@URL>
-        <div class="card-body">
-            <h5 class="card-title">@Game.GameTitle</h5>
-        <div class="card-text">@Game.ReleaseDate</div>
-            <button class="btn btn-primary">Add</button>
-        <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
-    </div>
-</div>
+            <img class="card-img-top" src=@URL>
+            <div class="card-body">
+                <h5 class="card-title">@Game.GameTitle</h5>
+                <h7 class="card-date">@Game.ReleaseDate</h7>
+            </div>
+                <button id="gamesATWLbtn" class="btn btn-primary rounded-circle "><i class="bi bi-plus"></i></button>
+            <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
+            
+        </div>
     }
 </div>
 
