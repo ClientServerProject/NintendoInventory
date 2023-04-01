@@ -77,3 +77,65 @@ body {
     background-color: #FEFDED;
     border: 2px Solid #D8D8D8;
 }
+/*Game*/
+#gameTitlePrice {
+    width: max-content;
+    height: max-content;
+    background-color: blueviolet;
+
+}
+
+#gameImgDiv {
+    background-color: yellow;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    height: contain;
+}
+
+#gameTitle {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#gamePrice {
+    text-align: left;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+#addButton {
+    background-color: #00BBE2;
+    border-radius: 10px;
+    border-color: transparent;
+    padding-right: 10px;
+}
+
+#deleteButton {
+    background-color: #FF3333;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+#ATWLbtn {
+    background-color: #58FA86;
+    border-color: #D8D8D8;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    color: #595959;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#gameDiv {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 15px;
+    background-color: #FEFDED;
+    border: 2px Solid #D8D8D8;
+}
