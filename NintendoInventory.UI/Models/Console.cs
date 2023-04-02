@@ -11,7 +11,7 @@ namespace NintendoInventory.UI.Models
         [Required(ErrorMessage = "This field is required.")]
         public string ConsoleImageURL { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is required.")]
-        //public SqlDateTime ReleaseDate { get; set; } 
+        //public DateTime ReleaseDate { get; set; } 
         public decimal Price { get; set; }
     }
 }
