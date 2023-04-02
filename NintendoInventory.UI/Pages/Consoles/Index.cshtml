@@ -8,7 +8,6 @@
     </div>
     <div class="col-sm-3">
         <a id="addButton" class="btn btn-primary" asp-page="Add">Add Console</a>
-        <a id="deleteButton" class="btn btn-primary">Delete Console</a>
     </div>
 </div>
 
@@ -20,14 +19,15 @@
         <div id="consoleDiv" class="col-md-2 ">
             <div>
                 <div id="consButtons">
-                    <Button id="ATWLbtn" class="btn btn-primary rounded-circle d-flex align-items-center text-center justify-content-center">
-                        <i class="bi bi-plus"></i>
+                    <Button id="consDelBtn" class="btn btn-primary rounded-circle align-items-center justify-content-center" asp-page="delete">
+                        <i class="bi bi-x-lg"></i>
                     </Button>
-                    <Button id="consDelbtn" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-plus"></i>
+                    <Button id="ATWLbtn" onclick="addConsoleToWL(@Console.ConsoleName)" class="btn btn-primary rounded-circle align-items-center justify-content-center ">
+                        <i class="bi bi-plus-lg"></i>
                     </Button>
+                    
                 </div>
-                <div id="consImgDiv">
+                <div id="consImgDiv" class="overflow-auto">
                     <img class="image" src=@URL>
                 </div>
                 <div id="consBotRow">
@@ -52,3 +52,9 @@
     }
 </div>
 
+<script>
+    function addConsoleToWL(ConsoleName){
+        document.getElementById("ATWLbtn").style.visibility = "hidden";
+        print(ConsoleName);
+    }
+</script>

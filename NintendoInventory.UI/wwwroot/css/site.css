@@ -31,7 +31,18 @@ body {
 }
 
 #consButtons{
-    background-color: palevioletred;
+    justify-content: space-between;
+}
+
+#consDelBtn {
+    background-color: #FF3333;
+    border-color: #D8D8D8;
+    width: 30px;
+    height: 30px;
+    color: #D8D8D8;
+    font-weight: bold;
+    display: inline-flex;
+    
 }
 
 #ATWLbtn {
@@ -39,21 +50,18 @@ body {
     border-color: #D8D8D8;
     width: 30px;
     height: 30px;
-    flex-shrink: 0;
     color: #595959;
-    font-size: 25px;
     font-weight: bold;
+    display: inline-flex;
+    float: right;
 }
 #consNamePrice {
     height: max-content;
     background-color: blueviolet;
-    align-items:
 }
 
 #consImgDiv{
-    background-color: purple;
     margin: auto;
-    padding: 10px ;
     text-align:center;
     height: 200px ;
     display: flex;
@@ -62,11 +70,9 @@ body {
 }
 
 #consBotRow{
-    background-color:deepskyblue;
     padding:1px;
 }
 #consoleName {
-    font-size: 15px;
     font-weight: bold;
     text-align:left;
 }
@@ -81,13 +87,6 @@ body {
 
 #addButton {
     background-color: #00BBE2;
-    border-radius: 10px;
-    border-color: transparent;
-    padding-right: 10px;
-}
-
-#deleteButton {
-    background-color: #FF3333;
     border-radius: 10px;
     border-color: transparent;
 }
