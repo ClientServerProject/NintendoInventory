@@ -9,8 +9,8 @@
         var gameTitle = document.getElementById("inputGameTitle");
         var gameImageURL = document.getElementById("inputGameImageURL");
         var gamePrice = document.getElementById("inputPrice");
-        var gameReleaseDate = document.getElementById("inputReleaseDate");
-        var gameDescription = document.getElementById("inputDescription");
+        //var gameReleaseDate = document.getElementById("inputReleaseDate");
+        //var gameDescription = document.getElementById("inputDescription");
         if (gameTitle.value === "") {
             document.getElementById("gameTitleError").innerHTML = "Game Title is required.";
             isValid = false;
@@ -23,11 +23,11 @@
             document.getElementById("gamePriceError").innerHTML = "Game Price is required.";
             isValid = false;
         }
-        if (gameReleaseDate.value === "") {
+        /*if (gameReleaseDate.value === "") {
             document.getElementById("gameReleaseDateError").innerHTML = "Game Release Date is required.";
             isValid = false;
         }
-        /*if (gameDescription.value === "") {
+        if (gameDescription.value === "") {
             document.getElementById("gameDescriptionError").innerHTML = "Game Description is required.";
             isValid = false;
         }*/
