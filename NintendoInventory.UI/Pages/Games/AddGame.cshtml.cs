@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using Microsoft.Identity.Client;
 using NintendoInventory.UI.Models;
 using Game = NintendoInventory.UI.Models.Game;
 
@@ -8,6 +9,7 @@ namespace NintendoInventory.UI.Pages.Games
 {
     public class AddGameModel : PageModel
     {
+        [BindProperty]
         public Game NewGame { get; set; } = new Game();
 
         public void OnGet()
@@ -30,14 +32,17 @@ namespace NintendoInventory.UI.Pages.Games
                 {
                     // step 1
                     // step 2
-                    string sql = "INSERT INTO Game(GameTitle, GameDescription, GameImageURL, Price) " +
-                        "VALUES (@GameTitle, @GameDescription, @GameImageURL, @ReleaseDate, @Price)";
+                    /*string sql = "INSERT INTO Game(GameTitle, GameDescription, GameImageURL, ReleaseDate, Price) " +
+                        "VALUES (@GameTitle, @GameDescription, @GameImageURL, @ReleaseDate, @Price)";*/
+                    string sql = "INSERT INTO Game(GameTitle, GameImageURL, Price) " +
+                        "VALUES (@GameTitle, @GameImageURL, @Price)";
+                    //DateTime releaseDate = DateTime.Parse(NewGame.ReleaseDate);
                     // step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@GameTitle", NewGame.GameTitle);
-                    cmd.Parameters.AddWithValue("@GameDescription", NewGame.GameDescription);
+                    //cmd.Parameters.AddWithValue("@GameDescription", NewGame.GameDescription);
                     cmd.Parameters.AddWithValue("@GameImageURL", NewGame.GameImageURL);
-                    cmd.Parameters.AddWithValue("@ReleaseDate", NewGame.ReleaseDate);
+                    //cmd.Parameters.AddWithValue("@ReleaseDate", NewGame.ReleaseDate);
                     cmd.Parameters.AddWithValue("@Price", NewGame.Price);
                     // step 4s
                     conn.Open();

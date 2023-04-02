@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Game] (
     [GameID]          INT             IDENTITY (1, 1) NOT NULL,
     [GameTitle]       VARCHAR (250)   NOT NULL,
-    [releaseDate]     DATETIME        NOT NULL,
-    [ConsoleID]       INT             NOT NULL,
-    [GameDescription] VARCHAR (2000)  NOT NULL,
+    [ReleaseDate]     DATETIME        NULL,
+    [ConsoleID]       INT             NULL,
+    [GameDescription] VARCHAR (2000)  NULL,
     [GameImageURL]    VARCHAR (200)   NOT NULL,
     [ESBRRatingID]    INT             NULL,
     [Price]           DECIMAL (19, 2) NOT NULL,
