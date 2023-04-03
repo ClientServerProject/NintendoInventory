@@ -8,9 +8,10 @@
     [ESBRRatingID]    INT             NULL,
     [Price]           DECIMAL (19, 2) NOT NULL,
     CONSTRAINT [PK_Game] PRIMARY KEY CLUSTERED ([GameID] ASC),
-    CONSTRAINT [FK_Game_Console] FOREIGN KEY ([ConsoleID]) REFERENCES [dbo].[Console] ([ConsoleID]),
-    CONSTRAINT [FK_Game_ESBRRating] FOREIGN KEY ([ESBRRatingID]) REFERENCES [dbo].[ESBRRating] ([ESBRRatingID])
+    CONSTRAINT [FK_Game_Console] FOREIGN KEY ([ConsoleID]) REFERENCES [dbo].[Console] ([ConsoleID])
 );
+
+
 
 
 
