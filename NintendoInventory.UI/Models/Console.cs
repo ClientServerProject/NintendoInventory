@@ -6,6 +6,8 @@ namespace NintendoInventory.UI.Models
     public class Console
     {
         public int ConsoleID { get; set; }
+
+        [StringLength(50, MinimumLength = 2)]
         [Required(ErrorMessage = "This field is required.")]
         public string ConsoleName { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is required.")]

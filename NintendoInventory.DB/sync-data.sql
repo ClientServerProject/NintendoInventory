@@ -9,6 +9,24 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+SET IDENTITY_INSERT [dbo].[Console] ON 
+GO
+INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1, N'Nintendo Switch', CAST(N'2017-03-03T00:00:00.000' AS DateTime), N'https://www.nintendo.com/sg/switch/index/img/switch_img.png', CAST(299.99 AS Decimal(19, 2)))
+GO
+INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (2, N'WiiU', CAST(N'2012-11-18T00:00:00.000' AS DateTime), N'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/systems_11/wii_u_11/H2x1_generic_WiiU_image1280w.jpg', CAST(173.99 AS Decimal(19, 2)))
+GO
+INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1004, N'Wii', CAST(N'2006-11-19T00:00:00.000' AS DateTime), N'https://www.gannett-cdn.com/authoring/2006/12/05/NAUG/ghows-GA-a30ec536-7c8a-4cf9-a7b7-478984a2067b-07499223.jpeg?width=660&height=516&fit=crop&format=pjpg&auto=webp', CAST(107.99 AS Decimal(19, 2)))
+GO
+INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1008, N'Nintendo 64', CAST(N'1996-09-26T00:00:00.000' AS DateTime), N'https://commondatastorage.googleapis.com/images.pricecharting.com/AMIfv9591Rdih281jdoM-rpS6jatdwMuh56LKgxn93m_7xlww6_8MQe3C9ZfKXBr0eJN2XCUI1P5PROZexyFOCCy2CKIcFRO34B32TztjNLeF53qew0-c_9QvsKELFHTkkEXJwKx6iuTyi1h8yfP6xJjyNaozNuVLw/240.jpg', CAST(142.96 AS Decimal(19, 2)))
+GO
+INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1010, N'GameCube', CAST(N'2001-09-14T00:00:00.000' AS DateTime), N'https://upload.wikimedia.org/wikipedia/commons/d/d1/GameCube-Set.jpg', CAST(159.95 AS Decimal(19, 2)))
+GO
+INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1011, N'Super Nintendo', CAST(N'1990-11-21T00:00:00.000' AS DateTime), N'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1-D7gM97WqupL2qx9UI60Gqq3Ax5yu-KtO6WLQD3Z&s', CAST(89.00 AS Decimal(19, 2)))
+GO
+INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1012, N'NES', CAST(N'1985-10-18T00:00:00.000' AS DateTime), N'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg', CAST(89.95 AS Decimal(19, 2)))
+GO
+SET IDENTITY_INSERT [dbo].[Console] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Game] ON 
 GO
 INSERT [dbo].[Game] ([GameID], [GameTitle], [ReleaseDate], [ConsoleID], [GameDescription], [GameImageURL], [ESBRRatingID], [Price]) VALUES (3, N'Splatoon 3', CAST(N'2022-09-08T00:00:00.000' AS DateTime), 1, N'Enter 4-on-4* ink-slinging battles in this colorful action shooter packed with style and attitude. As a squid-like Inkling, quickly cover your surroundings (and opponents) in ink with wild weaponry and swim through your own color to sneak and splat. Dive into the fresh fun with family and friends and make waves as a team. Get splatted by an opponent? No sweat! The goal in Turf War is to cover the most ground, so respawn and jump back into the inky action.', N'https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000046395/94a4095cda06c4d85c637d1af451979f9933302b6b17174d97c45de7a68584a2', 1, CAST(59.99 AS Decimal(19, 2)))
@@ -117,31 +135,9 @@ INSERT [dbo].[Game] ([GameID], [GameTitle], [ReleaseDate], [ConsoleID], [GameDes
 GO
 INSERT [dbo].[Game] ([GameID], [GameTitle], [ReleaseDate], [ConsoleID], [GameDescription], [GameImageURL], [ESBRRatingID], [Price]) VALUES (63, N'Skylanders: SuperChargers', CAST(N'2015-09-20T00:00:00.000' AS DateTime), 2, N'Skylanders plus vehicles equals SuperChargers! Fly, swim and drive across the land as you perform insane stunts with your favorite Skylander characters.', N'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81lz4TqDolL.jpg', NULL, CAST(29.99 AS Decimal(19, 2)))
 GO
+INSERT [dbo].[Game] ([GameID], [GameTitle], [ReleaseDate], [ConsoleID], [GameDescription], [GameImageURL], [ESBRRatingID], [Price]) VALUES (4065, N'Hogwarts Legacy', NULL, NULL, NULL, N'https://s2.gaming-cdn.com/images/products/12622/orig/hogwarts-legacy-switch-switch-game-nintendo-eshop-europe-cover.jpg?v=1660393949', NULL, CAST(59.99 AS Decimal(19, 2)))
+GO
 SET IDENTITY_INSERT [dbo].[Game] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Console] ON 
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1, N'Nintendo Switch', CAST(N'2017-03-03T00:00:00.000' AS DateTime), N'https://www.nintendo.com/sg/switch/index/img/switch_img.png', CAST(299.99 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (2, N'WiiU', CAST(N'2012-11-18T00:00:00.000' AS DateTime), N'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/systems_11/wii_u_11/H2x1_generic_WiiU_image1280w.jpg', CAST(173.99 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1004, N'Wii', CAST(N'2006-11-19T00:00:00.000' AS DateTime), N'https://www.gannett-cdn.com/authoring/2006/12/05/NAUG/ghows-GA-a30ec536-7c8a-4cf9-a7b7-478984a2067b-07499223.jpeg?width=660&height=516&fit=crop&format=pjpg&auto=webp', CAST(107.99 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1008, N'Nintendo 64', CAST(N'1996-09-26T00:00:00.000' AS DateTime), N'https://commondatastorage.googleapis.com/images.pricecharting.com/AMIfv9591Rdih281jdoM-rpS6jatdwMuh56LKgxn93m_7xlww6_8MQe3C9ZfKXBr0eJN2XCUI1P5PROZexyFOCCy2CKIcFRO34B32TztjNLeF53qew0-c_9QvsKELFHTkkEXJwKx6iuTyi1h8yfP6xJjyNaozNuVLw/240.jpg', CAST(142.96 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1010, N'GameCube', CAST(N'2001-09-14T00:00:00.000' AS DateTime), N'https://upload.wikimedia.org/wikipedia/commons/d/d1/GameCube-Set.jpg', CAST(159.95 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1011, N'Super Nintendo', CAST(N'1990-11-21T00:00:00.000' AS DateTime), N'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1-D7gM97WqupL2qx9UI60Gqq3Ax5yu-KtO6WLQD3Z&s', CAST(89.00 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1012, N'NES', CAST(N'1985-10-18T00:00:00.000' AS DateTime), N'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg', CAST(89.95 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (1013, N'wiiu', NULL, N'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/systems_11/wii_u_11/H2x1_generic_WiiU_image1280w.jpg', CAST(123.99 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (2013, N'wiiu', NULL, N'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/systems_11/wii_u_11/H2x1_generic_WiiU_image1280w.jpg', CAST(219.99 AS Decimal(19, 2)))
-GO
-INSERT [dbo].[Console] ([ConsoleID], [ConsoleName], [ReleaseDate], [ConsoleImageURL], [Price]) VALUES (2014, N'wiiu', NULL, N'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/systems_11/wii_u_11/H2x1_generic_WiiU_image1280w.jpg', CAST(129.99 AS Decimal(19, 2)))
-GO
-SET IDENTITY_INSERT [dbo].[Console] OFF
 GO
 SET IDENTITY_INSERT [dbo].[ESBRRating] ON 
 GO

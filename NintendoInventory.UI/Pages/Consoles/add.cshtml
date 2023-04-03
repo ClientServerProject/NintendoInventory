@@ -41,7 +41,7 @@
         <input type="text" class="form-control" id="inputPrice" placeholder="Console Price" asp-for="NewConsole.Price" />
         <span asp-validation-for="NewConsole.Price" class="text-danger" id="consolePriceError"></span>
     </div>
-    <button type="submit" id="addButton" class="btn btn-primary">Add Console</button>
+    <button type="submit" id="addButton" class="btn btn-primary" onclick="return validateInput()">Add Console</button>
 </form>
 
 
