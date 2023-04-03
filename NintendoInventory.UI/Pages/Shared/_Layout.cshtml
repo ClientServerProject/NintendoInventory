@@ -11,9 +11,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-danger border-bottom box-shadow mb-3">
+        <nav id="header" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand text-white" asp-area="" asp-page="/Index">NintendoInventory</a>
+                <a class="navbar-brand text-white" asp-area="" asp-page="/Index">
+                    <img id="logo" alt="Nintendo Inventory Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Nintendo.svg/1024px-Nintendo.svg.png" />
+                </a>
                 <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -46,7 +48,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-danger py-3 fixed-bottom">
+    <footer id="footer" class="border-top footer text-muted py-3 fixed-bottom">
         <div class="container text-white"> 
             &copy; 2023 - NintendoInventory - <a class="text-white" asp-area="" asp-page="/Privacy">Privacy</a><br />
             Created by Emily Morgan, Cierra Citizen, and Alejandra Hernandez
