@@ -20,13 +20,27 @@ body {
     font-family: 'Pretendo';
     src: url(../lib/fonts/pretendo.otf) format('opentype')
 }
+/*Privacy Policy*/
+#privacy{
+    font-size:20px;
+}
 /*layout*/
 #header {
     background-color: #E7000A;
 }
+#body{
+    padding-bottom: 90px;
+}
 
 #footer {
     background-color: #E7000A;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #logo{
     width:150px;
