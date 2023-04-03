@@ -61,7 +61,7 @@
         <input type="text" class="form-control" id="inputGameDescription" placeholder="Game Description" asp-for="NewGame.GameDescription" />
         <span asp-validation-for="NewGame.GameDescription" class="text-danger" id="gameDescriptionError"></span>
     </div>-->
-    <button type="submit" id="addButton" class="btn btn-primary">Add Game</button>
+    <button type="submit" id="addButton" class="btn btn-primary" onclick="return validateInput()">Add Game</button>
 </form>
 
 
