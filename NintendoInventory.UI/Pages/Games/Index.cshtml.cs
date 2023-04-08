@@ -45,11 +45,25 @@ namespace NintendoInventory.UI.Pages.Games
                         game.Price = reader["Price"].ToString();
                         //game.GameDescription = (string)reader["GameDescription"];
                         //game.ESBRRatingID = (int)reader["ESBRRatingID"];
-                        //game.GameId = int.Parse(reader["GameId"].ToString());
+                        game.GameID = int.Parse(reader["GameId"].ToString());
                         GameList.Add(game);
                         //WishlistItem.Add(game);
                     }
                 }
+            }
+        }
+
+
+        public IActionResult onPost(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            {
+                string sql = "DELETE FROM Game WHERE GameID = @gameID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@gameID", id);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                return RedirectToPage("Index");
             }
         }
     }

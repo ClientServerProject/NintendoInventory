@@ -144,7 +144,6 @@ li:hover:after{
 
 /*Games*/
 .card {
- 
  width:288px;
  margin:10px;
     
@@ -175,6 +174,22 @@ li:hover:after{
     position: absolute;
     bottom: 0;
     left: 10px;
+    margin-bottom: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#delButton {
+    background-color: red;
+    border-color: #D8D8D8;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    margin-left: 35px;
     margin-bottom: 8px;
     width: 30px;
     height: 30px;

@@ -78,7 +78,4 @@
   <ItemGroup>
     <RefactorLog Include="NintendoInventory.DB.refactorlog" />
   </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="sync-data.sql" />
-  </ItemGroup>
 </Project>
