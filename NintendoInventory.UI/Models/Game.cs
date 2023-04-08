@@ -4,7 +4,7 @@ namespace NintendoInventory.UI.Models
 {
     public class Game
     {
-        //public int GameId { get; set; }
+        public int GameID { get; set; }
         [StringLength(80, MinimumLength = 2)]
         [Required(ErrorMessage = "This field is required.")]
         public string GameTitle { get; set; } = string.Empty;
