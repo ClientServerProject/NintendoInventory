@@ -24,12 +24,11 @@
                 <h5 class="card-title">@Game.GameTitle</h5>
                 <!--<h7 class="card-date">Game.ReleaseDate</h7>-->
             </div>
+            <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
             <form method="post">
                 <button type="submit" id="gamesATWLbtn" class="btn btn-primary rounded-circle "><i class="bi bi-plus"></i></button>
                 <a asp-page="DeleteGame" asp-route-id="@Game.GameID" id="delButton" class="btn btn-primary rounded-circle" onclick="return confirm('Are you sure you want to delete this game?')"><i class="bi bi-x"></i></a>
             </form>
-            <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
-            
         </div>
     }
 </div>

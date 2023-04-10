@@ -144,11 +144,19 @@ li:hover:after{
 
 /*Games*/
 .card {
- width:288px;
- margin:10px;
-    
+    width: 288px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
+.card:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(127, 186, 254, 1);
+    top: -4px;
+    border: 1px solid #cccccc;
+    background-color: white;
+}
+    
 .card-img-top {
     aspect-ratio: 16/9;
     margin-top: 10px;
