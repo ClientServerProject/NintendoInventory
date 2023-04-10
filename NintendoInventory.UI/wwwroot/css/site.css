@@ -250,6 +250,15 @@ li {
         background-color: white;
     }
 
+.card_Link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
 .card-img-top {
     aspect-ratio: 16/9;
     margin-top: 10px;
