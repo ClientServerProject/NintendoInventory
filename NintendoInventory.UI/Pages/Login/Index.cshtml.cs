@@ -4,13 +4,13 @@ using NintendoInventory.UI.Models;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Data.SqlTypes;
-using Login = NintendoInventory.UI.Models.Login;
+//using Login = NintendoInventory.UI.Models.Login;
 namespace NintendoInventory.UI.Pages.Login
 {
     public class IndexModel : PageModel
     {
-        [BindProperty]
-        public List<Models.Login> LoginList { get; set; } = new List<Models.Login>();
+       // [BindProperty]
+        //public List<Models.Login> LoginList { get; set; } = new List<Models.Login>();
         public void OnGet()
         {
             /*
