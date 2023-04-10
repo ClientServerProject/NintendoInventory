@@ -25,44 +25,21 @@
     }
 </script>
 
-<form method="post" id="form">
+<form method="post" id="consForm">
     <div class="form-group mb-3">
-        <label id="labelText" for="inputConsoleName">Console Name:</label>
+        <label id="consLabelText" for="inputConsoleName">Console Name:</label>
         <input type="text" class="form-control" id="inputConsoleName" placeholder="Console Name" asp-for="NewConsole.ConsoleName" />
         <span asp-validation-for="NewConsole.ConsoleName" class="text-danger" id="consoleNameError"></span>
     </div>
     <div class="form-group mb-3">
-        <label id="labelText" for="inputConsoleImageURL">Console Image URL:</label>
+        <label id="consLabelText" for="inputConsoleImageURL">Console Image URL:</label>
         <input type="text" class="form-control" id="inputConsoleImageURL" placeholder="Console Image URL" asp-for="NewConsole.ConsoleImageURL" />
         <span asp-validation-for="NewConsole.ConsoleImageURL" class="text-danger" id="consoleImageURLError"></span>
     </div>
     <div class="form-group mb-3">
-        <label id="labelText" for="inputPrice">Console Price:</label>
+        <label id="consLabelText" for="inputPrice">Console Price:</label>
         <input type="text" class="form-control" id="inputPrice" placeholder="Console Price" asp-for="NewConsole.Price" />
         <span asp-validation-for="NewConsole.Price" class="text-danger" id="consolePriceError"></span>
     </div>
-    <button type="submit" id="addButton" class="btn btn-primary" onclick="return validateInput()">Add Console</button>
+    <button type="submit" id="consAddButton" class="btn btn-primary" onclick="return validateInput()">Add Console</button>
 </form>
-
-
-<style>
-    #addButton {
-        background-color: #00BBE2;
-        border-radius: 10px;
-    }
-
-    #labelText {
-        
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    #form {
-        width: 550px;
-        padding: 2em 0 2em 0;
-        margin-right: auto;
-        margin-bottom: 0;
-        margin-left: auto;
-    }
-</style>
-

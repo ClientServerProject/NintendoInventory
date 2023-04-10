@@ -1,34 +1,36 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
-@font-face{
+
+@font-face {
     font-family: 'Pretendo';
     src: url(../lib/fonts/pretendo.otf) format('opentype')
 }
 /*Privacy Policy*/
-#privacy{
-    font-size:20px;
+#privacy {
+    font-size: 20px;
 }
 /*layout*/
 #header {
     background-color: #E7000A;
 }
-#body{
+
+#body {
     padding-bottom: 90px;
 }
 
@@ -42,10 +44,12 @@ body {
     align-items: center;
     justify-content: center;
 }
-#logo{
-    width:150px;
+
+#logo {
+    width: 150px;
     height: 50px;
 }
+
 li {
     color: #000000;
     text-decoration: none;
@@ -54,6 +58,7 @@ li {
     text-align: left;
     padding: 0px 20px;
 }
+
     li::after {
         content: '';
         width: 0%;
@@ -64,11 +69,71 @@ li {
         transition: 0.5s;
     }
 
-li:hover:after{
-    width: 100%;
+    li:hover:after {
+        width: 100%;
+    }
+
+/*Console------------------------------------------------------------------------------*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/*Console*/
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 50px;
+    border: 2px solid #595959;
+    width: fit-content; /* Could be more or less, depending on screen size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#delPrompt {
+    font-weight: bold;
+}
+
+#modalButtons {
+    display: inline;
+}
+
+#confirmBtn {
+    background-color: #E7000A;
+    color: white;
+    border-color: transparent;
+}
+
+#cancelBtn {
+    color: aliceblue;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
 #consoleDiv {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -81,7 +146,7 @@ li:hover:after{
     justify-content: center;
 }
 
-#consButtons{
+#consButtons {
     justify-content: space-between;
 }
 
@@ -93,7 +158,6 @@ li:hover:after{
     color: #D8D8D8;
     font-weight: bold;
     display: inline-flex;
-    
 }
 
 #ATWLbtn {
@@ -106,31 +170,34 @@ li:hover:after{
     display: inline-flex;
     float: right;
 }
+
 #consNamePrice {
     height: max-content;
     background-color: blueviolet;
 }
 
-#consImgDiv{
+#consImgDiv {
     margin: auto;
-    text-align:center;
-    height: 200px ;
+    text-align: center;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#consBotRow{
-    padding:1px;
+#consBotRow {
+    padding: 1px;
 }
+
 #consoleName {
     font-weight: bold;
-    text-align:left;
+    text-align: left;
 }
 
 #consPrice {
     text-align: left;
 }
+
 .image {
     width: 100%;
     height: auto;
@@ -142,11 +209,31 @@ li:hover:after{
     border-color: transparent;
 }
 
-/*Games*/
+/*Console- Add*/
+
+#consAddButton {
+    background-color: #00BBE2;
+    border-radius: 10px;
+    border-color:transparent;
+}
+
+#consLabelText {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#consForm {
+    width: 550px;
+    padding: 2em 0 2em 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+}
+
+/*Games---------------------------------------------------------------------------------------------------*/
 .card {
- width:288px;
- margin:10px;
-    
+    width: 288px;
+    margin: 10px;
 }
 
 .card-img-top {
@@ -154,19 +241,22 @@ li:hover:after{
     margin-top: 10px;
 }
 
-.card-body{
+.card-body {
     aspect-ratio: 16/9;
 }
-.card-title{
+
+.card-title {
     margin-bottom: -2px;
 }
-.card-date{
+
+.card-date {
     font-size: 12px;
-    
 }
+
 #gameButtons {
     background-color: palevioletred;
 }
+
 #gamesATWLbtn {
     background-color: #58FA86;
     border-color: #D8D8D8;
@@ -197,11 +287,12 @@ li:hover:after{
     justify-content: center;
     align-items: center;
 }
-#gamePrice{
+
+#gamePrice {
     position: absolute;
     bottom: 0;
     left: 230px;
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 #gameAddButton {
@@ -221,11 +312,3 @@ li:hover:after{
     margin-bottom: 0;
     margin-left: auto;
 }
-
-
-
-
-
-
-
-
