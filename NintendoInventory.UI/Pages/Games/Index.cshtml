@@ -18,7 +18,7 @@
     {
         
         var URL = @Game.GameImageURL;
-        <div class="card">
+        <div onclick="showGameDetails()" class="card">
             <a href="#" class="card_Link"></a>
             <img class="card-img-top" src=@URL>
             <div class="card-body">
@@ -32,8 +32,26 @@
             </form>
         </div>
     }
+    
+    <div id="gameDetails" class="modal">
+        <div class="modal-content">
+            <p>
+                Game Details will go here!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        var gameDetails = document.getElementById("gameDetails")
+        function showGameDetails() {
+            gameDetails.style.display = "block";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == gameDetails) {
+                gameDetails.style.display = "none";
+            }
+        }
+    </script>
 </div>
-
-
-
 
