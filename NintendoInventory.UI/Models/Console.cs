@@ -13,7 +13,8 @@ namespace NintendoInventory.UI.Models
         [Required(ErrorMessage = "This field is required.")]
         public string ConsoleImageURL { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is required.")]
-        public int ReleaseYear { get; set; } 
+        public string ReleaseYear { get; set; } = string.Empty;
+        [Required(ErrorMessage = "This field is required.")]
         public string Price { get; set; } = string.Empty;
         public string ConsoleDescription { get; set; } = string.Empty;
     }
