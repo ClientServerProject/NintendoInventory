@@ -38,10 +38,11 @@ namespace NintendoInventory.UI.Pages.Consoles
                     {
                         Console console = new Console();
                         console.ConsoleName = reader["ConsoleName"].ToString();
-                        //console.ReleaseDate = (DateTime)reader["ReleaseDate"];
+                        console.ReleaseYear = (int)reader["ReleaseYear"];
                         console.ConsoleImageURL = reader["ConsoleImageURL"].ToString();
                         console.Price = reader["Price"].ToString();
                         console.ConsoleID = (int)reader["ConsoleID"];
+                        console.ConsoleDescription = reader["ConsoleDescription"].ToString();
                         ConsoleList.Add(console);
                     }
                 }
