@@ -108,13 +108,18 @@ li {
     display: inline;
 }
 
-#confirmBtn {
+.confirmBtn {
     background-color: #E7000A;
     color: white;
     border-color: transparent;
 }
 
-#cancelBtn {
+    .confirmBtn:hover {
+        transition: all 0.2s ease-out;
+        background-color: #E7000A99;
+    }
+
+.cancelBtn {
     color: aliceblue;
 }
 
@@ -134,7 +139,7 @@ li {
     }
 
 
-#consoleDiv {
+.consoleDiv {
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 15px;
@@ -146,16 +151,16 @@ li {
     justify-content: center;
 }
 
-    #consoleDiv:hover {
-        transition: all 0.2s ease-out;
-        box-shadow: 0px 4px 8px rgba(127, 186, 254, 1);
-    }
+#consoleDiv:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px #000000AA;
+}
 
 #consButtons {
     justify-content: space-between;
 }
 
-#consDelBtn {
+.consDelBtn {
     background-color: #FF3333;
     border-color: #D8D8D8;
     width: 30px;
@@ -164,6 +169,11 @@ li {
     font-weight: bold;
     display: inline-flex;
 }
+    .consDelBtn:hover {
+        transition: all 0.2s ease-out;
+        background-color: #FF3333;
+        border-color: transparent;
+    }
 
 #ATWLbtn {
     background-color: #58FA86;
