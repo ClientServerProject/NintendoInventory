@@ -2,3 +2,54 @@
 @model NintendoInventory.UI.Pages.Timeline.IndexModel
 @{
 }
+<div class="timeline-info">
+    <h1>timeline information</h1>
+    <p>
+        Lorem ipsum dolor sit amet, quo ei simul congue exerci,
+        ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto.
+        Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto
+        primis ea eam.
+    </p>
+</div>
+
+<div class="timelinesDiv">
+    <!--Console Timeline-->
+    <h3>Consoles</h3>
+    <div class="timeline-container">
+        @foreach (var Console in Model.ConsoleTimeline)
+        {
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2>@Console.ReleaseYear</h2>
+                    @*<div class="image timeline-item-img">
+                <img src=@Console.ConsoleImageURL>
+                </div>*@
+                    <p>@Console.ConsoleName</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!--Game Timeline-->
+    <h3>Games</h3>
+    <div class="timeline-container">
+
+        @foreach (var Game in Model.GameTimeline)
+        {
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2>@Game.ReleaseYear</h2>
+                    @*<div class="image timeline-item-img">
+                <img src=@Game.GameImageURL>
+                </div>*@
+                    <p>@Game.GameTitle</p>
+                </div>
+            </div>
+        }
+    </div>
+    <!--Games modal-->
+    <div>
+
+    </div>
+
+</div>
