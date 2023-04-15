@@ -28,7 +28,7 @@
             <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
             <div>
                 <a id="gamesATWLbtn" asp-route-id="@Game.GameID" onclick="addGameToWL()" class="btn btn-primary rounded-circle "><i class="bi bi-plus"></i></a>
-                <a  id="delButton"  onclick="showDeleteModal(@Game.GameID)" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>
+                <a  id="delButton"  onclick="showDeleteModal('deleteModal_@Game.GameID')" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>
             </div>
         </div>
         <!-- details Modal -->
@@ -47,14 +47,14 @@
 
         </div>
         <!-- delete Modal -->
-        <div id="deleteModal" class="modal">
+        <div id="deleteModal_@Game.GameID" class="modal">
             <!-- Modal content -->
-            <div class="modal-content">
-                <h5 class="fw-bold">Are you sure you want to delete?</h5>
+            <div class="modal-content px-5 py-3">
+                <h5 class="fw-bold">Are you sure you want to delete @Game.GameTitle?</h5>
                 <p> This action cannot be undone.</p>
                 <div id="modalButtons">
                     <a asp-page="DeleteGame" asp-route-id="@Game.GameID" class="confirmBtn btn btn-primary">Confirm</a>
-                    <button id="cancelBtn_@Game.GameID" onclick="closeDeleteModal()" class="cancelBtn btn btn-secondary">Cancel</button>
+                    <button id="cancelBtn_@Game.GameID" onclick="closeDeleteModal('deleteModal_@Game.GameID')" class="cancelBtn btn btn-secondary">Cancel</button>
                 </div>
             </div>
         </div>
@@ -81,23 +81,23 @@
         }
 
         var deleteID;
-        function showDeleteModal(GameId) {
+        function showDeleteModal(deleteModalID) {
             event.stopPropagation();
-            var deleteModal = document.getElementById("deleteModal");
+            var deleteModal = document.getElementById(deleteModalID);
             deleteModal.style.display = "block";
             deleteID = deleteModal;
         }
 
         function closeDeleteModal(detailsModalID) {
-            var detailsModal = document.getElementById(detailsModalID)
-            detailsModal.style.display = "none";
+            var deleteModal = document.getElementById(detailsModalID)
+            deleteModal.style.display = "none";
             return false;
         }
 
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-            if (event.target == modal) {
+            if (event.target == deleteID) {
                 deleteID.style.display = "none";
             }
             if (event.target == detailsID) {
