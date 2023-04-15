@@ -152,10 +152,10 @@ li {
     justify-content: center;
 }
 
-#consoleDiv:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px #000000AA;
-}
+    .consoleDiv:hover {
+        transition: all 0.2s ease-out;
+        box-shadow: 0px 4px 8px #E7000AAA;
+    }
 
 #consButtons {
     justify-content: space-between;
@@ -170,6 +170,7 @@ li {
     font-weight: bold;
     display: inline-flex;
 }
+
     .consDelBtn:hover {
         transition: all 0.2s ease-out;
         background-color: #FF3333;
@@ -345,4 +346,93 @@ li {
     margin-right: auto;
     margin-bottom: 0;
     margin-left: auto;
+}
+/*Wishlist------------------------------------------------------------------------------------------------------*/
+
+
+/*Timeline------------------------------------------------------------------------------------------------------*/
+
+.timeline-container {
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+    overflow-x: hidden;
+    display: flex;
+    border: 3px solid #343444;
+    border-radius: 5px;
+    margin-bottom: 80px;
+    background-color: #E7000A;
+}
+
+
+.timeline-item {
+    max-width: 300px;
+    height: 200px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    align-self: flex-start;
+    background: #FFF;
+    position: relative;
+    border-radius: 10px;
+    margin-right: 300px;
+    border: 3px solid #737373;
+    scroll-snap-align: center;
+}
+
+    .timeline-item::after {
+        content: " ";
+        width: 300px;
+        height: 5px;
+        background: #00BBE2;
+        margin: auto;
+        position: absolute;
+        right: -303px;
+        align-items: center;
+        text-align:center;
+        
+    }
+
+    .timeline-item:hover {
+        transition: all 0.2s ease-out;
+        background-color: #00BBE2;
+        color: white;
+    }
+
+.timeline-content {
+    flex: 0 0 auto;
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.timeline-item-img {
+    margin: auto;
+    text-align: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+}
+
+.timeline-content p {
+    margin-bottom: 0;
+}
+
+.timeline-line {
+    content: '';
+    width: 500px;
+    height: 5px;
+    background: #00BBE2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    overflow-inline: auto;
 }
