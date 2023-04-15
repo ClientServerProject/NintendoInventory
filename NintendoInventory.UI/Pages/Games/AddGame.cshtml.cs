@@ -34,15 +34,15 @@ namespace NintendoInventory.UI.Pages.Games
                     // step 2
                     /*string sql = "INSERT INTO Game(GameTitle, GameDescription, GameImageURL, ReleaseDate, Price) " +
                         "VALUES (@GameTitle, @GameDescription, @GameImageURL, @ReleaseDate, @Price)";*/
-                    string sql = "INSERT INTO Game(GameTitle, GameImageURL, Price) " +
-                        "VALUES (@GameTitle, @GameImageURL, @Price)";
+                    string sql = "INSERT INTO Game(GameTitle, GameDescription, GameImageURL, ReleaseYear, Price) " +
+                        "VALUES (@GameTitle, @GameDescription, @GameImageURL, @ReleaseYear, @Price)";
                     //DateTime releaseDate = DateTime.Parse(NewGame.ReleaseDate);
                     // step 3
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@GameTitle", NewGame.GameTitle);
-                    //cmd.Parameters.AddWithValue("@GameDescription", NewGame.GameDescription);
+                    cmd.Parameters.AddWithValue("@GameDescription", NewGame.GameDescription);
                     cmd.Parameters.AddWithValue("@GameImageURL", NewGame.GameImageURL);
-                    //cmd.Parameters.AddWithValue("@ReleaseDate", NewGame.ReleaseDate);
+                    cmd.Parameters.AddWithValue("@ReleaseYear", NewGame.ReleaseYear);
                     cmd.Parameters.AddWithValue("@Price", NewGame.Price);
                     // step 4s
                     conn.Open();
