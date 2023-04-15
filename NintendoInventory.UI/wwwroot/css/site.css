@@ -93,7 +93,7 @@ li {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 10px;
-    border: 2px solid #595959;
+    border: 5px solid #E7000A;
     max-width: 50%;
     width: fit-content; /* Could be more or less, depending on screen size */
     display: flex;
