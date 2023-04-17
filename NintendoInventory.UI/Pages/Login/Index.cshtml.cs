@@ -4,13 +4,14 @@ using NintendoInventory.UI.Models;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Data.SqlTypes;
-//using Login = NintendoInventory.UI.Models.Login;
+using Login = NintendoInventory.UI.Models.Login;
+
 namespace NintendoInventory.UI.Pages.Login
 {
     public class IndexModel : PageModel
     {
-       // [BindProperty]
-        //public List<Models.Login> LoginList { get; set; } = new List<Models.Login>();
+        [BindProperty]
+        public List<Models.Login> LoginList { get; set; } = new List<Models.Login>();
         public void OnGet()
         {
             /*
@@ -22,10 +23,10 @@ namespace NintendoInventory.UI.Pages.Login
              * 6. Close the SQL connection
              * 
              */
-           /* using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            /* using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
-                 step 2
-               // string sql = "SELECT * FROM Game Order By GameTitle";
+                // step 2
+                string sql = "SELECT * FROM Game Order By GameTitle";
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 // step 4
@@ -36,19 +37,34 @@ namespace NintendoInventory.UI.Pages.Login
                 {
                     while (reader.Read())
                     {
-                        Login login = new Login();
+                        Game game = new Game();
                         game.GameTitle = reader["GameTitle"].ToString();
-                        //game.ReleaseDate = reader["ReleaseDate"].ToString();
+                        game.ReleaseYear = reader["ReleaseYear"].ToString();
                         //game.ConsoleID = (int)reader["ConsoleID"];
                         game.GameImageURL = (string)reader["GameImageURL"];
                         game.Price = reader["Price"].ToString();
-                        //game.GameDescription = (string)reader["GameDescription"];
+                        game.GameDescription = reader["GameDescription"].ToString();
                         //game.ESBRRatingID = (int)reader["ESBRRatingID"];
-                        //game.GameId = int.Parse(reader["GameId"].ToString());
+                        game.GameID = int.Parse(reader["GameId"].ToString());
                         GameList.Add(game);
                         //WishlistItem.Add(game);
                     }
-                } */
-            } 
-    }
+                }
+            }
+        }
+
+
+        public IActionResult onPost(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            {
+                string sql = "DELETE FROM Game WHERE GameID = @gameID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@gameID", id);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                return RedirectToPage("Index");
+            }
+        } */
+    } 
 }
