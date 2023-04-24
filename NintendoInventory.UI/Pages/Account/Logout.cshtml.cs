@@ -8,7 +8,7 @@ namespace NintendoInventory.UI.Pages.Account
     {
         public async Task<IActionResult> OnGet()
         { 
-            await HttpContext.SignOutAsync("NintendoInventroyCookie");
+            await HttpContext.SignOutAsync("NintendoInventoryCookie");
             return RedirectToPage("/Index");
         }
     }
