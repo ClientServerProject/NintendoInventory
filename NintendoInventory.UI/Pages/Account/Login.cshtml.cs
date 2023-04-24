@@ -28,7 +28,7 @@ namespace NintendoInventory.UI.Pages.Account
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Email, LoginInfo.Email),
-                        new Claim(ClaimTypes.Name, "Cierra"),
+                        new Claim(ClaimTypes.Name, "User name"),
                         new Claim("Username", "Admin")
                     };
 
