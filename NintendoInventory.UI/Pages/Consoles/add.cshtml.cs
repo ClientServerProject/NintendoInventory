@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -7,6 +8,7 @@ using Console = NintendoInventory.UI.Models.Console;
 
 namespace NintendoInventory.UI.Pages.Consoles
 {
+    [Authorize]
     public class addModel : PageModel
     {
         [BindProperty]
