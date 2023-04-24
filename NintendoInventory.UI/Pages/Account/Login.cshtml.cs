@@ -21,7 +21,7 @@ namespace NintendoInventory.UI.Pages.Account
             if (ModelState.IsValid)
             {
                 //verify user creditianl
-                if (LoginInfo.Email == "admin@mysite.com" && LoginInfo.Password == "CSCI3321NintendoInventory1988!")
+                if (LoginInfo.Email == "admin@mysite.com" && LoginInfo.Password == "NintendoInventory1988!")
                 {
                     //create security context
 
