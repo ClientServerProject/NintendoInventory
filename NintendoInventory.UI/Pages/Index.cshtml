@@ -2,16 +2,78 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    if(HttpContext.User.Identity != null)
+    if (HttpContext.User.Identity != null)
     {
-       Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenicatedLayout" : "_Layout";
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenicatedLayout" : "_Layout";
     }
-}
+}        
+<h1 class="display-4 mt-5 text-center preview-title">Browse Games</h1>
+<div class="preview">
+<div class="preview-img-container mx-4 my-4">
 
-<div class="text-center">
-    <h1 class="display-4 text-secondary fw-bold">This is where our Home page will be</h1>
-    <div class="bg-danger bg-opacity-10 text-secondary rounded pb-5">
-        <h2>Login</h2>
-        <img src="https://cdn.discordapp.com/attachments/1068621068559982623/1089802335796068422/image.png" />
+    @foreach (var Game in Model.GamePreview)
+    {
+        var URL = @Game.GameImageURL;
+        <div class="preview-item">
+            <div class="preview-content">
+                <img class="image" src=@Game.GameImageURL>
+            </div>
+        </div>
+    }
+    </div>
+    <div class="preview-side-container">
+        <p class="text-center">Browse a variety of different games for the Switch, N64, GameCube, and many more nintendo consoles!</p>
+        <a class="btn btn-primary preview-btn" asp-page="/Games/Index">View Games</a>
     </div>
 </div>
+
+<h1 class="display-4 mt-5 text-center preview-title">Browse Consoles</h1>
+<div class="preview">
+    <div class="preview-side-container">
+        <p class="text-center">Browse many of the famous Nintendo Consoles from all of Nintendo's history! </p>
+        <a class="btn btn-primary preview-btn" asp-page="/Consoles/Index">View Consoles</a>
+    </div>
+    <div class="preview-img-container mx-4 my-4">
+
+        @foreach (var Console in Model.ConsolePreview)
+        {
+            var URL = @Console.ConsoleImageURL;
+            <div class="preview-item">
+                <div class="preview-content">
+                    <img class="image" src=@URL>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+<h1 class="display-4 mt-5 text-center preview-title">Wish list</h1>
+<div class="preview">
+
+    <div class="preview-img-container mx-4 my-4">
+
+            <div class="preview-item">
+                <div class="preview-content">
+                    <img class="image" src= "~/lib/images/nintendo.png">
+                </div>
+            </div>
+    </div>
+    <div class="preview-side-container">
+        <p class="text-center">Customize your own personalized Wishlist by adding Games and Consoles and many more!</p>
+        <a class="btn btn-primary preview-btn" asp-page="/Account/Login">Create an account</a>
+    </div>
+</div>
+<script>
+    const container = document.querySelector('.preview-img-container');
+    const items = container.querySelectorAll('.preview-item');
+
+    let currentItemIndex = 0;
+    setInterval(() => {
+        container.scroll({
+            left: items[currentItemIndex].offsetLeft,
+            behavior: 'smooth'
+        });
+        currentItemIndex = (currentItemIndex + 1) % items.length;
+    }, 4000);
+</script>
