@@ -29,6 +29,37 @@
                 <!--<a id="removeGame_@game.GameID" asp-page-handler="RemoveFromWishlist" asp-route-id="game.GameID" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>-->
             </div>
         </div>
-    }
-</div>
 
+        <!-- delete Modal -->
+        <div id="deleteModal_@game.GameID" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content px-5 py-3">
+                <h5 class="fw-bold">Are you sure you want to delete @game.GameTitle?</h5>
+                <p> You can always add it back from the Games page.</p>
+                <div id="modalButtons">
+                    <a asp-page="DeleteGame" asp-route-id="@game.GameID" class="confirmBtn btn btn-primary">Confirm</a>
+                    <button id="cancelBtn_@game.GameID" onclick="closeDeleteModal('deleteModal_@game.GameID')" class="cancelBtn btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <script>
+
+        var deleteID;
+        function showDeleteModal(deleteModalID) {
+            event.stopPropagation();
+            var deleteModal = document.getElementById(deleteModalID);
+            deleteModal.style.display = "block";
+            deleteID = deleteModal;
+        }
+
+        function closeDeleteModal(detailsModalID) {
+            var deleteModal = document.getElementById(detailsModalID)
+            deleteModal.style.display = "none";
+            return false;
+        }
+    </script>
+
+</div>
