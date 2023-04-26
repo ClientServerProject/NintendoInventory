@@ -66,5 +66,6 @@ namespace NintendoInventory.UI.Pages.Login
                 return RedirectToPage("Index");
             }
         } */
-    } 
+        }
+    }
 }
