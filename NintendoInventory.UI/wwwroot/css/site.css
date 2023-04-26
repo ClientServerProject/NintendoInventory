@@ -72,6 +72,151 @@ li {
     li:hover:after {
         width: 100%;
     }
+/*Home Page------------------------------------------------------------------------------*/
+.preview-title {
+    color: #777;
+    font-weight: bold;
+    
+}
+.preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-img-container {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    display: flex;
+    scroll-snap-type: x mandatory;
+}
+
+.preview-side-container {
+    font-size: x-large;
+    background-color: #E7000A;
+    color: #FFF;
+    padding: 50px 10px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px #000000AA;
+}
+
+.preview-btn {
+    font-size: xx-large;
+    width: 50%;
+    height: 30%;
+    margin: auto;
+    display: block;
+    text-align: center;
+    background-color: #00BBE2;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+    .preview-btn:hover {
+        background-color: #00BBE2;
+        border-radius: 10px;
+        border-color: transparent;
+        box-shadow: 0px 4px 8px #000000AA;
+    }
+
+.preview-item {
+    width: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    align-self: flex-start;
+    background: #FFF;
+    position: relative;
+    scroll-snap-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+    .preview-item:hover {
+        transition: all 0.2s ease-out;
+        color: white;
+    }
+
+.preview-content {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    align-content: space-evenly;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-img-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: #FFF;
+}
+
+.preview-img {
+    width: 100%;
+    height: auto;
+}
+
+/*.preview-container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+    overflow-x: hidden;
+    display: flex;
+    border: 3px solid #343444;
+    border-radius: 5px;
+    margin-bottom: 80px;
+    background-color: #E7000A;
+}
+
+.preview-item {
+    background-color: #FFF;
+    height: 200px;
+    width: 200px;
+    border: 2px solid #000;
+    margin: 20px;
+    position: relative;
+}
+
+.preview-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    position: absolute;
+}
+
+    .preview-content:hover {
+        transition: .2s;
+        opacity: 1;
+        background-image: none;
+    }
+
+.preview-img-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: #FFF;
+}
+
+    .preview-img-div:hover {
+        transition: .2s;
+        opacity: 0;
+    }
+
+.preview-img {
+    width: 100%;
+    height: auto;
+}*/
 
 /*Console------------------------------------------------------------------------------*/
 /* The Modal (background) */
@@ -371,13 +516,24 @@ li {
 .timeline-item {
     margin-bottom: 20px;
     position: relative;
-    background-color: white;
-    border-radius: 25px;
-    border: 1px solid black;
-    margin: auto;
-    text-align: center;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-right: 300px;
+    border: 3px solid #737373;
+    scroll-snap-align: center;
 }
+
+    .timeline-item::after {
+        content: " ";
+        width: 300px;
+        height: 5px;
+        background: #00BBE2;
+        margin: auto;
+        position: absolute;
+        right: -303px;
+        align-items: center;
+        text-align:center;
+        
+    }
 
     .timeline-item:hover {
         transition: all 0.2s ease-out;
