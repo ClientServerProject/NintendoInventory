@@ -7,12 +7,12 @@ namespace NintendoInventory.UI.Pages.Wishlist
 {
     public class addModel : PageModel
     {
-        public void OnGet()
-        {
-        }
+        
         //Adds games/consoles to the wishlist. Probably will be used in games and consoles page and not wishlist.
+        [BindProperty]
+        public GameWishlistItem NewWLItem { get; set; } = new GameWishlistItem();
 
-        public IActionResult OnPost()
+        public IActionResult OnGet(int gameid, int wishlistid)
         {
             // if (LikeButton is selected) //pseudocode
             {
@@ -25,7 +25,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
                              * 6. Close the SQL connection
                              * 
                              */
-                using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+                /*using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
                 {
                     // step 1
                     // step 2
@@ -37,6 +37,21 @@ namespace NintendoInventory.UI.Pages.Wishlist
                    //cmd.Parameters.AddWithValue("@wLItemName", NewWLItem.WLItemName);
                    //cmd.Parameters.AddWithValue("@wLItemReleaseDateL", NewWLItem.WLItemReleaseDate);
                    //cmd.Parameters.AddWithValue("@wLItemPrice", NewWLItem.WLItemPrice);
+                    // step 4
+                    conn.Open();
+                    // step 5
+                    cmd.ExecuteNonQuery();
+                }*/
+
+                using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+                {
+                    // step 1
+                    // step 2
+                    string sql = "INSERT INTO GameWishlist(GameID, WishlistID) " +
+                        "VALUES (@GameID, @WishlistID)";
+                    // step 3
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@GameID", NewWLItem.GameID);
                     // step 4
                     conn.Open();
                     // step 5

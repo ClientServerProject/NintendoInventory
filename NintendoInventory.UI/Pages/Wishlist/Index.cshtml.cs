@@ -9,8 +9,8 @@ namespace NintendoInventory.UI.Pages.Wishlist
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<Models.WishlistItem> WishlistList { get; set; } = new List<Models.WishlistItem>();
-        public void OnGet()
+        public List<Models.GameWishlistItem> WishlistList { get; set; } = new List<Models.GameWishlistItem>();
+        public void OnGet(int id)
         {
             /*
              * 1. Create a SQL connection object
@@ -24,9 +24,10 @@ namespace NintendoInventory.UI.Pages.Wishlist
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM Author Order By AuthorName";
+                string sql = "SELECT * FROM Game Where GameID = @GameID"; //"INSERT INTO GameWishlist(GameID) VALUES (@GameID);
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@GameID", id);
                 // step 4
                 conn.Open();
                 // step 5
@@ -35,13 +36,16 @@ namespace NintendoInventory.UI.Pages.Wishlist
                 {
                     while (reader.Read())
                     {
-                        /*Models.Wishlist author = new Models.Wishlist();
-                        game.AuthorName = reader["AuthorName"].ToString();
-                        author.AuthorBio = reader["AuthorBio"].ToString();
-                        author.AuthorImageURL = reader["AuthorImageURL"].ToString();
-                        author.AuthorWebsite = reader["AuthorWebsite"].ToString();
-                        author.AuthorId = int.Parse(reader["AuthorId"].ToString());
-                        AuthorList.Add(author);*/
+                        GameWishlistItem game = new Models.GameWishlistItem();
+                        game.GameID = int.Parse(reader["GameId"].ToString());
+                        game.GameTitle = reader["GameTitle"].ToString();
+                        game.ReleaseYear = reader["ReleaseYear"].ToString();
+                        game.GameImageURL = (string)reader["GameImageURL"];
+                        game.Price = reader["Price"].ToString();
+                        game.GameDescription = reader["GameDescription"].ToString();
+                        //game.ESBRRatingID = (int)reader["ESBRRatingID"];
+                        game.GameID = int.Parse(reader["GameId"].ToString());
+                        WishlistList.Add(game);
                     }
                 }
             }
