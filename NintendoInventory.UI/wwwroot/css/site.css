@@ -526,14 +526,13 @@ li {
 
     .timeline-item::after {
         content: " ";
-        width: 300px;
-        height: 5px;
+        width: 10px;
+        height: 40px;
         background: #00BBE2;
         margin: auto;
         position: absolute;
-        right: -303px;
-        align-items: center;
-        text-align:center;
+        
+        
         
     }
 
