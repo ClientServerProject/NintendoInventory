@@ -497,44 +497,43 @@ li {
 
 /*Timeline------------------------------------------------------------------------------------------------------*/
 
+.timeline-info{
+    text-align: center;
+}
 .timeline-container {
-    width: 100%;
-    height: 100%;
+    list-style: none;
     padding: 20px;
-    scroll-snap-type: x mandatory;
-    overflow-x: hidden;
-    display: flex;
-    border: 3px solid #343444;
-    border-radius: 5px;
-    margin-bottom: 80px;
-    background-color: #E7000A;
+    position: relative;
+    background-color: indianred;
+    border-radius: 25px;
+    border: 5px dashed black;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 20px;
 }
 
-
 .timeline-item {
-    max-width: 300px;
-    height: 200px;
-    flex-shrink: 0;
-    flex-grow: 0;
-    align-self: flex-start;
-    background: #FFF;
+    margin-bottom: 20px;
     position: relative;
-    border-radius: 10px;
-    margin-right: 300px;
-    border: 3px solid #737373;
-    scroll-snap-align: center;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
     .timeline-item::after {
         content: " ";
-        width: 300px;
-        height: 5px;
+        width: 10px;
+        height: 40px;
         background: #00BBE2;
         margin: auto;
         position: absolute;
-        right: -303px;
-        align-items: center;
-        text-align: center;
+        
+        
+        
     }
 
     .timeline-item:hover {
@@ -544,12 +543,9 @@ li {
     }
 
 .timeline-content {
-    flex: 0 0 auto;
-    width: 300px;
     padding: 20px;
     margin: 20px;
-    box-sizing: border-box;
-    align-content: space-evenly;
+    
 }
 
 .timeline-item-img {
@@ -570,14 +566,3 @@ li {
     margin-bottom: 0;
 }
 
-.timeline-line {
-    content: '';
-    width: 500px;
-    height: 5px;
-    background: #00BBE2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    overflow-inline: auto;
-}
