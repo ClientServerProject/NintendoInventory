@@ -1,14 +1,16 @@
 ﻿@page
 @model NintendoInventory.UI.Pages.Timeline.IndexModel
 @{
+    if (HttpContext.User.Identity != null)
+    {
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenicatedLayout" : "_Layout";
+    }
 }
 <div class="timeline-info">
-    <h1>timeline information</h1>
+    <h1>Timeline Information</h1>
     <p>
-        Lorem ipsum dolor sit amet, quo ei simul congue exerci,
-        ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto.
-        Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto
-        primis ea eam.
+        Here we have a timeline of all console releases from the Nintendo company, excluding
+        the handheld devices.
     </p>
 </div>
 
@@ -22,8 +24,8 @@
                 <div class="timeline-content">
                     <h2>@Console.ReleaseYear</h2>
                     @*<div class="image timeline-item-img">
-                <img src=@Console.ConsoleImageURL>
-                </div>*@
+                        <img src=@Console.ConsoleImageURL>
+                    </div>*@
                     <p>@Console.ConsoleName</p>
                 </div>
             </div>
@@ -39,9 +41,9 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h2>@Game.ReleaseYear</h2>
-                    @*<div class="image timeline-item-img">
-                <img src=@Game.GameImageURL>
-                </div>*@
+                   @* <div class="image timeline-item-img">
+                        <img src=@Game.GameImageURL>
+                    </div>*@
                     <p>@Game.GameTitle</p>
                 </div>
             </div>

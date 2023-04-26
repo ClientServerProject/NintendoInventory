@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -7,6 +8,7 @@ using Game = NintendoInventory.UI.Models.Game;
 
 namespace NintendoInventory.UI.Pages.Games
 {
+    [Authorize]
     public class AddGameModel : PageModel
     {
         [BindProperty]
