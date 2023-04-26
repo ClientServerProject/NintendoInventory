@@ -24,7 +24,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM (Game Inner Join GameWishlist on Game.GameID = GameWishlist.GameID)"; //INSERT INTO GameWishlist(GameID) VALUES (@GameID); 
+                string sql = "SELECT * FROM (Game Inner Join GameWishlist on Game.GameID = GameWishlist.GameID) Order by GameTitle"; //INSERT INTO GameWishlist(GameID) VALUES (@GameID); 
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@GameID", id);
