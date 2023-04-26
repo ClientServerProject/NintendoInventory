@@ -31,7 +31,7 @@
             </div>
             <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
             <div>
-                <a id="gamesATWLbtn" asp-route-id="@Game.GameID" onclick="addGameToWL()" class="btn btn-primary rounded-circle "><i class="bi bi-plus"></i></a>
+                <a id="gamesATWLbtn" asp-page="/Wishlist/AddGame" asp-route-id="@Game.GameID" onclick="addGameToWL('addGame_@Game.GameID')" class="btn btn-primary rounded-circle "><i class="bi bi-plus"></i></a>
                 <a  id="delButton"  onclick="showDeleteModal('deleteModal_@Game.GameID')" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>
             </div>
         </div>
