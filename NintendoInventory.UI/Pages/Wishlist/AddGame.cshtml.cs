@@ -9,12 +9,12 @@ namespace NintendoInventory.UI.Pages.Wishlist
 {
     public class addModel : PageModel
     {
-        
+
         //Adds games/consoles to the wishlist. Probably will be used in games and consoles page and not wishlist.
         [BindProperty]
         public List<Models.GameWishlistItem> WishlistList { get; set; } = new List<Models.GameWishlistItem>();
 
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
             /*
              * 1. Create a SQL connection object
@@ -28,7 +28,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "INSERT INTO GameWishlist(GameID) VALUES (@GameID)"; 
+                string sql = "INSERT INTO GameWishlist(GameID) VALUES (@GameID)";
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@GameID", id);
@@ -52,7 +52,10 @@ namespace NintendoInventory.UI.Pages.Wishlist
                         WishlistList.Add(game);
                     }
                 }
+
+
             }
+            return RedirectToPage("/Games/Index");
         }
     }
 }
