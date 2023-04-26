@@ -25,7 +25,7 @@ namespace NintendoInventoryUI.Pages
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM Game Order By GameTitle";
+                string sql = "SELECT * FROM Game";
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 // step 4
@@ -34,7 +34,7 @@ namespace NintendoInventoryUI.Pages
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    while (reader.Read() && GamePreview.Count < 5)
+                    while (reader.Read() && GamePreview.Count < 10)
                     {
                         Game game = new Game();
                         game.GameTitle = reader["GameTitle"].ToString();
@@ -53,7 +53,7 @@ namespace NintendoInventoryUI.Pages
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM Console Order By ConsoleName";
+                string sql = "SELECT * FROM Console  where ConsoleName != 'Nintendo 64' Order By ConsoleName";
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 // step 4
@@ -62,7 +62,7 @@ namespace NintendoInventoryUI.Pages
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    while (reader.Read() && ConsolePreview.Count < 5)
+                    while (reader.Read() && ConsolePreview.Count < 3)
                     {
                         Console console = new Console();
                         console.ConsoleName = reader["ConsoleName"].ToString();
