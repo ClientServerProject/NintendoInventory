@@ -8,8 +8,10 @@
     [ESBRRatingID]    INT             NULL,
     [Price]           DECIMAL (19, 2) NOT NULL,
     CONSTRAINT [PK_Game] PRIMARY KEY CLUSTERED ([GameID] ASC),
-    CONSTRAINT [FK_Game_Console] FOREIGN KEY ([ConsoleID]) REFERENCES [dbo].[Console] ([ConsoleID]) ON DELETE SET NULL
+    CONSTRAINT [FK_Game_Console] FOREIGN KEY ([ConsoleID]) REFERENCES [dbo].[Console] ([ConsoleID])
 );
+
+
 
 
 

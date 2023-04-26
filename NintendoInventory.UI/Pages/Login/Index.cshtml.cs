@@ -1,16 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Data.SqlClient;
 using NintendoInventory.UI.Models;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Data.SqlTypes;
+using Login = NintendoInventory.UI.Models.Login;
 
-namespace NintendoInventory.UI.Pages.Wishlist
+namespace NintendoInventory.UI.Pages.Login
 {
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<Models.GameWishlistItem> WishlistList { get; set; } = new List<Models.GameWishlistItem>();
-        public void OnGet(int id)
+        public List<Models.Login> LoginList { get; set; } = new List<Models.Login>();
+        public void OnGet()
         {
             /*
              * 1. Create a SQL connection object
@@ -21,13 +23,12 @@ namespace NintendoInventory.UI.Pages.Wishlist
              * 6. Close the SQL connection
              * 
              */
-            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            /* using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
                 // step 2
-                string sql = "SELECT * FROM (Game Inner Join GameWishlist on Game.GameID = GameWishlist.GameID) Order by GameTitle"; //INSERT INTO GameWishlist(GameID) VALUES (@GameID); 
+                string sql = "SELECT * FROM Game Order By GameTitle";
                 // step 3
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@GameID", id);
                 // step 4
                 conn.Open();
                 // step 5
@@ -36,19 +37,35 @@ namespace NintendoInventory.UI.Pages.Wishlist
                 {
                     while (reader.Read())
                     {
-                        GameWishlistItem game = new Models.GameWishlistItem();
-                        game.GameID = int.Parse(reader["GameId"].ToString());
+                        Game game = new Game();
                         game.GameTitle = reader["GameTitle"].ToString();
                         game.ReleaseYear = reader["ReleaseYear"].ToString();
+                        //game.ConsoleID = (int)reader["ConsoleID"];
                         game.GameImageURL = (string)reader["GameImageURL"];
                         game.Price = reader["Price"].ToString();
                         game.GameDescription = reader["GameDescription"].ToString();
                         //game.ESBRRatingID = (int)reader["ESBRRatingID"];
                         game.GameID = int.Parse(reader["GameId"].ToString());
-                        WishlistList.Add(game);
+                        GameList.Add(game);
+                        //WishlistItem.Add(game);
                     }
                 }
             }
+        }
+
+
+        public IActionResult onPost(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            {
+                string sql = "DELETE FROM Game WHERE GameID = @gameID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@gameID", id);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                return RedirectToPage("Index");
+            }
+        } */
         }
     }
 }
