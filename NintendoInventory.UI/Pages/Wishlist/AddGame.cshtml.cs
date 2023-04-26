@@ -14,7 +14,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
         [BindProperty]
         public List<Models.GameWishlistItem> WishlistList { get; set; } = new List<Models.GameWishlistItem>();
 
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
             /*
              * 1. Create a SQL connection object
@@ -53,6 +53,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
                     }
                 }
             }
+            return RedirectToPage("/Games/Index");
         }
     }
 }
