@@ -516,10 +516,12 @@ li {
 .timeline-item {
     margin-bottom: 20px;
     position: relative;
-    border-radius: 10px;
-    margin-right: 300px;
-    border: 3px solid #737373;
-    scroll-snap-align: center;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
     .timeline-item::after {
