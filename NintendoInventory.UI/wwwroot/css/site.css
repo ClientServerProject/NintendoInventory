@@ -160,44 +160,60 @@ li {
     height: auto;
 }
 /*Login------------------------------------------------------------------------------*/
+.login-page {
+    background-color: #EEEEEE;
+}
 .login {
-    background-color: #E7000A;
+    background-color: #FFF;
     margin: 15% auto; /* 15% from the top and centered */
-    padding-bottom: 5%;
-    padding-top: 5%;
+    padding: 20px;
+    border: 2px solid black;
     border-radius: 15px;
-    max-width: 50%;
-    max-height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    max-width: 30%;
+
 }
 .login-title {
     text-align: center;
-    font-family: Pretendo;
-    color: #FFF;
-    text-shadow: 0px 4px 8px #000000AA;
-    margin-bottom: 30%;
+    color: #E7000A;
+    text-shadow: 0px 3px 6px #000000AA;
+    margin-bottom: 30px;
 }
 .login-content {
-    padding: 10px;
-    background-color: gray;
+    max-width: 400px;
+    margin: auto;
+}
+
+.input-icons i {
+    position: absolute;
+}
+.input-icons {
     width: 100%;
+    margin-bottom: 10px;
+}
+.icon {
+    padding: 10px;
+    min-width: 40px;
 }
 .login-input {
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+    margin-bottom: 3px;
+}
+.login-input-box {
     margin: 10px;
     width: 100%;
-    background-color: blue;
+    border-radius: 10px;
+    border-color: transparent;
 }
 .login-validation {
     color: #FFF;
 }
 .login-button {
     margin: 10px;
-    background-color: #00BBE2;
-    border-radius: 5px;
+    background-color: #E7000A;
+    border-radius: 15px;
     border-color: transparent;
-    font-weight: bold;
 }
 
 
