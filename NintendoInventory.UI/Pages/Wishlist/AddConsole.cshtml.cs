@@ -9,8 +9,8 @@ namespace NintendoInventory.UI.Pages.Wishlist
     public class AddConsoleModel : PageModel
     {
        
-    [BindProperty]
-    public List<Models.ConsoleWishlistItem> ConsoleWishlistList { get; set; } = new List<Models.ConsoleWishlistItem>();
+        [BindProperty]
+        public List<Models.ConsoleWishlistItem> ConsoleWishlistList { get; set; } = new List<Models.ConsoleWishlistItem>();
 
         public IActionResult OnGet(int id)
         {
