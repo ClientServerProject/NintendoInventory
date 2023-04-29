@@ -22,5 +22,6 @@ namespace NintendoInventory.UI.Models
         [Required(ErrorMessage = "This field is required.")]
         public string Price { get; set; } = string.Empty;
 
+
     }
 }
