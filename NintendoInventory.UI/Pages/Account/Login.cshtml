@@ -2,7 +2,7 @@
 @model NintendoInventory.UI.Pages.Account.LoginModel
 @{
 }
-<div class="container border p-3">
+@*<div class="container border p-3">
     <form method="post">
         <div class="row mb-3">
             <div class="col-sm-2">
@@ -27,5 +27,25 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>
         </div>
+    </form>
+</div>*@
+
+<div class="login">
+    <form method="post">
+        <div class="login-content">
+            <div class="text-danger login-validation" asp-validation-summary="All"></div>
+            <div class="form-group input-icons">
+                <i class="bi bi-person-fill icon"></i>
+                <input type="email" placeholder="Email" class="form-control login-input" asp-for="LoginInfo.Email" />
+                <span class="text-danger login-validation" asp-validation-for="LoginInfo.Email"></span>
+            </div>
+            <div class="form-group input-icons">
+                <i class="bi bi-lock-fill icon"></i>
+                <input type="password" placeholder="Password" class="form-control login-input" asp-for="LoginInfo.Password" />
+                <span class="text-danger login-validation" asp-validation-for="LoginInfo.Password"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary login-button">Login</button>
+        <a asp-page="Register">Create an account</a>
     </form>
 </div>
