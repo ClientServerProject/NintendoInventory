@@ -6,7 +6,7 @@ namespace NintendoInventory.UI.Models
     {
         //public int WishlistID = { get; set; }
 
-    [Required]
+        [Required]
         public int GameID { get; set; }
 
         public string GameTitle { get; set; } = string.Empty;
