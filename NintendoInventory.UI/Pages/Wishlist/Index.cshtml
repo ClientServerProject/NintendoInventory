@@ -28,7 +28,7 @@
             <div id="consolePrice" class="col-sm-12">$@console.Price</div>
             <div>
                 <a id="delButtonWL" onclick="showDeleteModal('deleteModal_@console.ConsoleID')" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>
-                <!--<a id="removeGame_@console.ConsoleID" asp-page-handler="RemoveFromWishlist" asp-route-id="game.GameID" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>-->
+                <!--<a id="removeGame_@console.ConsoleID" asp-page-handler="RemoveFromWishlist" asp-route-id="Console.ConsoleID" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>-->
             </div>
         </div>
         <!-- details Modal -->
@@ -53,7 +53,7 @@
                 <h5 class="fw-bold">Are you sure you want to delete @console.ConsoleName?</h5>
                 <p> This action cannot be undone.</p>
                 <div id="modalButtons">
-                    <a asp-page="DeleteGame" asp-route-id="@console.ConsoleID" class="confirmBtn btn btn-primary">Confirm</a>
+                    <a asp-page="DeleteConsole" asp-route-id="@console.ConsoleID" class="confirmBtn btn btn-primary">Confirm</a>
                     <button id="cancelBtn_@console.ConsoleID" onclick="closeDeleteModal('deleteModal_@console.ConsoleID')" class="cancelBtn btn btn-secondary">Cancel</button>
                 </div>
             </div>

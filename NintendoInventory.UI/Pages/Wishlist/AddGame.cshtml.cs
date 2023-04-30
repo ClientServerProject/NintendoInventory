@@ -39,7 +39,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
                 {
                     // Game already exists in the wishlist, handle the scenario (e.g., show an alert, redirect to a specific page)
                     // For example, you can set a TempData message and handle it in the target page or show an alert using JavaScript
-                    TempData["AlertMessage"] = "This console is already added to the wishlist.";
+                    TempData["AlertMessage"] = "This game is already added to the wishlist.";
                     return RedirectToPage("/Games/Index");
                 }
                 else
