@@ -68,12 +68,13 @@ namespace NintendoInventory.UI.Pages.Account
                     }
 
                     conn.Close();
-                    sql = "INSERT INTO [User] (Email, FirstName, LastName, DateJoined) " +
-                        "VALUES (@email, @firstName, @lastName, @dateJoined)";
+                    sql = "INSERT INTO [User] (Email, FirstName, LastName, ProfileImageID, DateJoined) " +
+                        "VALUES (@email, @firstName, @lastName, @profileImageID, @dateJoined)";
                     cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@email", NewUser.Email);
                     cmd.Parameters.AddWithValue("@firstName", NewUser.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", NewUser.LastName);
+                    cmd.Parameters.AddWithValue("@profileImageID", NewUser.ProfileImageID);
                     cmd.Parameters.AddWithValue("@dateJoined", DateTime.Now);
                     conn.Open();
                     cmd.ExecuteNonQuery();

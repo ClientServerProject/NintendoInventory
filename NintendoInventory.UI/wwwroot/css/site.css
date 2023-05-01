@@ -165,7 +165,6 @@ body {
     margin: 10% auto; /* 15% from the top and centered */
     max-width: 30%;
     padding: 20px;
-
 }
 
 .login {
@@ -174,7 +173,6 @@ body {
     padding: 20px;
     border: 2px solid black;
     border-radius: 15px;
-
 }
 
 .login-title {
@@ -235,6 +233,7 @@ body {
 .profile-images {
     height: 250px;
     overflow-y: scroll;
+    margin-bottom: 20px;
 }
 
 .profile-img {
@@ -245,9 +244,60 @@ body {
 }
 
     .profile-img:hover {
-        opacity: 0.3;
         text-shadow: 0px 3px 6px #000000AA;
     }
+
+.profile-img-label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+    .profile-img-label:hover {
+        opacity: 0.9;
+        border: 2px solid #777;
+        border-radius: 6px;
+
+    }
+    .profile-img-label input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .profile-img-label img {
+        pointer-events: none;
+    }
+
+    .profile-img-label::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    .profile-img-label input[type="radio"]:checked + img {
+        border: 4px solid #777;
+        opacity: 1;
+    }
+
+        .profile-img-label input[type="radio"]:checked + img::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #000;
+            opacity: 1;
+        }
 /*Console------------------------------------------------------------------------------*/
 /* The Modal (background) */
 .modal {
