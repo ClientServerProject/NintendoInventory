@@ -14,6 +14,6 @@ namespace NintendoInventory.UI.Models
         [Required]
         public string Password { get; set; } = string.Empty;
         [Required]
-        public int ProfileImageID { get; set; }
+        public int ProfileImageID { get; set; } = -1;
     }
 }
