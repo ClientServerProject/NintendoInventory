@@ -10,6 +10,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
     {
         [BindProperty]
         public List<Models.GameWishlistItem> WishlistList { get; set; } = new List<Models.GameWishlistItem>();
+        [BindProperty]
         public List<Models.ConsoleWishlistItem> ConsoleWishlistList { get; set; } = new List<Models.ConsoleWishlistItem>();
         public void OnGet(int id, string itemType)
         {
@@ -24,7 +25,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
              */
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
-                 if(itemType == "game")
+                if(itemType == "game")
                 {
                     // step 2
                     string sql = "SELECT * FROM (Game Inner Join GameWishlist on Game.GameID = GameWishlist.GameID) Order by GameTitle"; //INSERT INTO GameWishlist(GameID) VALUES (@GameID); 
@@ -84,7 +85,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
                     string sql = "SELECT * FROM (Game Inner Join GameWishlist on Game.GameID = GameWishlist.GameID) Order by GameTitle"; //INSERT INTO GameWishlist(GameID) VALUES (@GameID); 
                     string sql2 = "SELECT * FROM (Console Inner Join ConsoleWishlist on Console.ConsoleID = ConsoleWishlist.ConsoleID) Order by ConsoleName";
                     // step 3
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlCommand cmd = new SqlCommand($"{sql}; {sql2}", conn);
                     cmd.Parameters.AddWithValue("@GameID", id);
                     cmd.Parameters.AddWithValue("@ConsoleID", id);
                     // step 4
