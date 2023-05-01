@@ -473,6 +473,17 @@ body {
     float: right;
 }
 
+#consoleDeleteFromWL {
+    background-color: red;
+    border-color: #D8D8D8;
+    width: 30px;
+    height: 30px;
+    color: #595959;
+    font-weight: bold;
+    display: inline-flex;
+    float: right;
+}
+
 #consNamePrice {
     height: max-content;
     background-color: blueviolet;
@@ -579,6 +590,21 @@ body {
 
 #gamesATWLbtn {
     background-color: #58FA86;
+    border-color: #D8D8D8;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    margin-bottom: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#deleteFromWL {
+    background-color: red;
     border-color: #D8D8D8;
     color: black;
     position: absolute;
