@@ -56,7 +56,7 @@
             <div>
                 @if (wishlistGameIds.Contains(Game.GameID))
                 {
-                    <a id="deleteFromWL" asp-page="/Wishlist/DeleteGame" asp-route-id="@Game.GameID" asp-route-itemType="game" class="btn btn-danger rounded-circle"><i class="bi bi-x"></i></a>
+                    <a id="deleteFromWL" asp-page="/Wishlist/DeleteGame" asp-route-id="@Game.GameID" asp-route-itemType="game" onclick="delGameFromWL('addGame_@Game.GameID')" class="btn btn-danger rounded-circle"><i class="bi bi-x"></i></a>
                 }
                 else
                 {
@@ -100,6 +100,11 @@
         function addGameToWL() {
             event.stopPropagation();
             gameATWLbtn.style.display = "none";
+        }
+        var deleteFromWL = document.getElementById("deleteFromWL");
+        function delGameFromWL() {
+            event.stopPropagation();
+            deleteFromWL.style.display = "none";
         }
 
         var detailsID;
