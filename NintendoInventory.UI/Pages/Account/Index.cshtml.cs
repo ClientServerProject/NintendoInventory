@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace NintendoInventory.UI.Pages.Shared
+namespace NintendoInventory.UI.Pages.Account
 {
-    public class _AuthenicatedLayoutModel : PageModel
+    public class IndexModel : PageModel
     {
         public void OnGet()
         {

@@ -19,7 +19,10 @@
                     {
                         var URL = @profileImage.ProfileImageURL;
                         <div class="profile-img col-md-2">
-                            <img class="img-thumbnail" src="@URL" />
+                            <label class="profile-img-label">
+                                <input type="radio" asp-for="NewUser.ProfileImageID" value="@profileImage.ProfileImageID" />
+                                <img class="img-thumbnail" src="@URL" />
+                            </label>
                         </div>
                     }
                 </div>

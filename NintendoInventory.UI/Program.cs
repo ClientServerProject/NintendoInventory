@@ -2,6 +2,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSession();
 
 builder.Services.AddAuthentication("NintendoInventoryCookie").AddCookie("NintendoInventoryCookie", options =>
 {
@@ -26,6 +27,8 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapRazorPages();
 

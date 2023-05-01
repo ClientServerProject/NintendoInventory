@@ -125,7 +125,8 @@ namespace NintendoInventory.UI.Pages.Account
                     {
                         new Claim(ClaimTypes.Email, LoginInfo.Email),
                         new Claim(ClaimTypes.Name, "Admin"),
-                        new Claim("Username", "Admin")
+                        new Claim("Username", "Admin"),
+                        new Claim(ClaimTypes.NameIdentifier, userID.ToString())
                     };
 
                         var identity = new ClaimsIdentity(claims, "NintendoInventoryCookie");
@@ -196,13 +197,16 @@ namespace NintendoInventory.UI.Pages.Account
                     {
                         new Claim(ClaimTypes.Email, LoginInfo.Email),
                         new Claim(ClaimTypes.Name, "User"),
-                        new Claim("Username", "User")
+                        new Claim("Username", "User"),
+                        new Claim(ClaimTypes.NameIdentifier, userID.ToString())
+
                     };
 
                         var identity = new ClaimsIdentity(claims, "NintendoInventoryCookie");
                         ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
                         await HttpContext.SignInAsync("NintendoInventoryCookie", principal);
+                        HttpContext.Session.SetInt32("UserID", userID);
 
                         return RedirectToPage("/Index");
                     }
