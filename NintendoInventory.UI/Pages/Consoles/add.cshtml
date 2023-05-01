@@ -1,7 +1,10 @@
 ﻿@page
 @model NintendoInventory.UI.Pages.Consoles.addModel
 @{
-
+    if (HttpContext.User.Identity != null)
+    {
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenicatedLayout" : "_Layout";
+    }
 }
 <script type="text/javascript">
     function validateInput(){
