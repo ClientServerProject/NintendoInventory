@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using NintendoInventory.UI.Models;
@@ -7,9 +8,9 @@ namespace NintendoInventory.UI.Pages.Wishlist
 {
     public class AddConsoleModel : PageModel
     {
-        //Adds games/consoles to the wishlist. Probably will be used in games and consoles page and not wishlist.
+       
         [BindProperty]
-        public List<Models.ConsoleWishlistItem> ConsoleWishlistItem { get; set; } = new List<Models.ConsoleWishlistItem>();
+        public List<Models.ConsoleWishlistItem> ConsoleWishlistList { get; set; } = new List<Models.ConsoleWishlistItem>();
 
         public IActionResult OnGet(int id)
         {
@@ -22,35 +23,73 @@ namespace NintendoInventory.UI.Pages.Wishlist
              * 6. Close the SQL connection
              * 
              */
+
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
-                // step 2
-                string sql = "INSERT INTO ConsoleWishlist(ConsoleID) VALUES (@ConsoleID)";
-                // step 3
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@ConsoleID", id);
-                // step 4
+                // Check if the game already exists in the wishlist
+                string selectSql = "SELECT COUNT(*) FROM ConsoleWishlist WHERE ConsoleID = @ConsoleID";
+                SqlCommand selectCmd = new SqlCommand(selectSql, conn);
+                selectCmd.Parameters.AddWithValue("@ConsoleID", id);
                 conn.Open();
-                // step 5
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+                int existingCount = (int)selectCmd.ExecuteScalar();
+
+                if (existingCount > 0)
                 {
-                    while (reader.Read())
+                    // Game already exists in the wishlist, handle the scenario (e.g., show an alert, redirect to a specific page)
+                    // For example, you can set a TempData message and handle it in the target page or show an alert using JavaScript
+                    TempData["AlertMessage"] = "This console is already added to the wishlist.";
+                    return RedirectToPage("/Consoles/Index");
+                }
+                else
+                {
+                    // Game doesn't exist in the wishlist, add it
+                    string insertSql = "INSERT INTO ConsoleWishlist(ConsoleID) VALUES (@ConsoleID)";
+                    SqlCommand insertCmd = new SqlCommand(insertSql, conn);
+                    insertCmd.Parameters.AddWithValue("@ConsoleID", id);
+                    int rowsAffected = insertCmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
                     {
-                        ConsoleWishlistItem console = new Models.ConsoleWishlistItem();
-                        console.ConsoleID = int.Parse(reader["ConsoleID"].ToString());
-                        console.ConsoleName = reader["ConsoleName"].ToString();
-                        console.ReleaseYear = reader["ReleaseYear"].ToString();
-                        console.ConsoleImageURL = (string)reader["ConsoleImageURL"];
-                        console.Price = reader["Price"].ToString();
-                        console.ConsoleDescription = reader["ConsoleDescription"].ToString();
-                        ConsoleWishlistItem.Add(console);
+                        // Game added successfully
+                        // You can perform additional actions if needed
                     }
                 }
+                /* using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+             {
 
-
+                 // step 2
+                 string sql = "INSERT INTO GameWishlist(GameID) VALUES (@GameID)"; 
+                 // step 3
+                 SqlCommand cmd = new SqlCommand(sql, conn);
+                 cmd.Parameters.AddWithValue("@GameID", id);
+                 // step 4
+                 conn.Open();
+                 // step 5
+                 SqlDataReader reader = cmd.ExecuteReader();
+                 if (reader.HasRows)
+                 {
+                     while (reader.Read())
+                     {
+                         GameWishlistItem game = new Models.GameWishlistItem();
+                         game.GameID = int.Parse(reader["GameId"].ToString());
+                         game.GameTitle = reader["GameTitle"].ToString();
+                         game.ReleaseYear = reader["ReleaseYear"].ToString();
+                         game.GameImageURL = (string)reader["GameImageURL"];
+                         game.Price = reader["Price"].ToString();
+                         game.GameDescription = reader["GameDescription"].ToString();
+                         //game.ESBRRatingID = (int)reader["ESBRRatingID"];
+                         game.GameID = int.Parse(reader["GameId"].ToString());
+                         WishlistList.Add(game);
+                     }
+                 }*/
             }
-            return RedirectToPage("/Consoles/Index");
+            return RedirectToPage("/Consoles/Index"); //new { alertMessage = TempData["AlertMessage"});
+        }
+    
+        public void OnGetAlertMessage()
+        {
+            // Method to render the alert message in the Razor view
+            ViewData["AlertMessage"] = TempData["AlertMessage"];
         }
     }
 }

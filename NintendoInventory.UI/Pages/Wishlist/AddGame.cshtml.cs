@@ -27,35 +27,71 @@ namespace NintendoInventory.UI.Pages.Wishlist
              */
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
-                // step 2
-                string sql = "INSERT INTO GameWishlist(GameID) VALUES (@GameID)";
-                // step 3
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@GameID", id);
-                // step 4
+
+                // Check if the game already exists in the wishlist
+                string selectSql = "SELECT COUNT(*) FROM GameWishlist WHERE GameID = @GameID";
+                SqlCommand selectCmd = new SqlCommand(selectSql, conn);
+                selectCmd.Parameters.AddWithValue("@GameID", id);
                 conn.Open();
-                // step 5
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+                int existingCount = (int)selectCmd.ExecuteScalar();
+
+                if (existingCount > 0)
                 {
-                    while (reader.Read())
+                    // Game already exists in the wishlist, handle the scenario (e.g., show an alert, redirect to a specific page)
+                    // For example, you can set a TempData message and handle it in the target page or show an alert using JavaScript
+                    TempData["AlertMessage"] = "This console is already added to the wishlist.";
+                    return RedirectToPage("/Games/Index");
+                }
+                else
+                {
+                    // Game doesn't exist in the wishlist, add it
+                    string insertSql = "INSERT INTO GameWishlist(GameID) VALUES (@GameID)";
+                    SqlCommand insertCmd = new SqlCommand(insertSql, conn);
+                    insertCmd.Parameters.AddWithValue("@GameID", id);
+                    int rowsAffected = insertCmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
                     {
-                        GameWishlistItem game = new Models.GameWishlistItem();
-                        game.GameID = int.Parse(reader["GameId"].ToString());
-                        game.GameTitle = reader["GameTitle"].ToString();
-                        game.ReleaseYear = reader["ReleaseYear"].ToString();
-                        game.GameImageURL = (string)reader["GameImageURL"];
-                        game.Price = reader["Price"].ToString();
-                        game.GameDescription = reader["GameDescription"].ToString();
-                        //game.ESBRRatingID = (int)reader["ESBRRatingID"];
-                        game.GameID = int.Parse(reader["GameId"].ToString());
-                        WishlistList.Add(game);
+                        // Game added successfully
+                        // You can perform additional actions if needed
                     }
                 }
+                /* using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+             {
 
-
+                 // step 2
+                 string sql = "INSERT INTO GameWishlist(GameID) VALUES (@GameID)"; 
+                 // step 3
+                 SqlCommand cmd = new SqlCommand(sql, conn);
+                 cmd.Parameters.AddWithValue("@GameID", id);
+                 // step 4
+                 conn.Open();
+                 // step 5
+                 SqlDataReader reader = cmd.ExecuteReader();
+                 if (reader.HasRows)
+                 {
+                     while (reader.Read())
+                     {
+                         GameWishlistItem game = new Models.GameWishlistItem();
+                         game.GameID = int.Parse(reader["GameId"].ToString());
+                         game.GameTitle = reader["GameTitle"].ToString();
+                         game.ReleaseYear = reader["ReleaseYear"].ToString();
+                         game.GameImageURL = (string)reader["GameImageURL"];
+                         game.Price = reader["Price"].ToString();
+                         game.GameDescription = reader["GameDescription"].ToString();
+                         //game.ESBRRatingID = (int)reader["ESBRRatingID"];
+                         game.GameID = int.Parse(reader["GameId"].ToString());
+                         WishlistList.Add(game);
+                     }
+                 }*/
             }
             return RedirectToPage("/Games/Index");
         }
+        public void OnGetAlertMessage()
+        {
+            // Method to render the alert message in the Razor view
+            ViewData["AlertMessage"] = TempData["AlertMessage"];
+        }
+
     }
 }
