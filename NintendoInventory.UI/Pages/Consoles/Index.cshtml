@@ -6,6 +6,30 @@
         Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenicatedLayout" : "_Layout";
     }
 }
+
+@using Microsoft.Data.SqlClient
+@{
+    List<int> wishlistConsoleIds = new List<int>();
+    string connectionString = NintendoInventory.UI.Models.DBhelper.GetConnectionString(); // Replace with your actual connection string
+
+    // Execute SQL Query and retrieve GameIDs
+    using (SqlConnection connection = new SqlConnection(connectionString))
+    {
+        string query = "SELECT ConsoleID FROM ConsoleWishlist"; // Replace with your actual SQL query
+        using (SqlCommand command = new SqlCommand(query, connection))
+        {
+            connection.Open();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int consoleId = reader.GetInt32(0);
+                    wishlistConsoleIds.Add(consoleId);
+                }
+            }
+        }
+    }
+}
 <div id="container" class="d-inline m-auto">
     <div class="col-sm-3">
         <h1 class='title'>Consoles</h1>
@@ -26,9 +50,17 @@
                     <a onclick="showDeleteModal('deleteModal_@Console.ConsoleID')" class="consDelBtn btn btn-primary rounded-circle align-items-center justify-content-center">
                         <i class="bi bi-x-lg"></i>
                     </a>
-                    <a id="ATWLbtn" asp-page="/Wishlist/AddConsole" asp-route-id="@Console.ConsoleID" asp-route-itemType="console" onclick="addConsoleToWL()" class="btn btn-primary rounded-circle align-items-center justify-content-center ">
+                    @if (wishlistConsoleIds.Contains(Console.ConsoleID))
+                    {
+                        <a id="consoleDeleteFromWL" asp-page="/Wishlist/DeleteConsole" asp-route-id="@Console.ConsoleID" asp-route-itemType="console" class="btn btn-primary rounded-circle align-items-center justify-content-center"><i class="bi bi-x"></i></a>
+                    }
+                    else
+                    {
+                        <a id="ATWLbtn" asp-page="/Wishlist/AddConsole" asp-route-id="@Console.ConsoleID" asp-route-itemType="console" onclick="addConsoleToWL()" class="btn btn-primary rounded-circle align-items-center justify-content-center ">
                         <i class="bi bi-plus-lg"></i>
                     </a>
+                    }
+                    
 
                 </div>
                 <div id="consImgDiv" class="overflow-auto">
