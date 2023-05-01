@@ -51,9 +51,26 @@ namespace NintendoInventory.UI.Pages.Account
 
                 using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
                 {
-                    string sql = "INSERT INTO [User] (Email, FirstName, LastName, DateJoined) " +
-                        "VALUES (@email, @firstName, @lastName, @dateJoined)";
+                    int userID = -1;
+                    string sql = "Select UserID from [User] where Email = @email";
                     SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@email", NewUser.Email);
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        ModelState.AddModelError(string.Empty, "You already have an Account");
+                        if (!ModelState.IsValid)
+                        {
+                            return Page();
+                        }
+                    }
+
+                    conn.Close();
+                    sql = "INSERT INTO [User] (Email, FirstName, LastName, DateJoined) " +
+                        "VALUES (@email, @firstName, @lastName, @dateJoined)";
+                    cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@email", NewUser.Email);
                     cmd.Parameters.AddWithValue("@firstName", NewUser.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", NewUser.LastName);
@@ -65,9 +82,8 @@ namespace NintendoInventory.UI.Pages.Account
                     cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@email", NewUser.Email);
 
-                    int userID = 0;
                     conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader = cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
                         while (reader.Read())

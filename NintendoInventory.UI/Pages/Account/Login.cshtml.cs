@@ -27,8 +27,8 @@ namespace NintendoInventory.UI.Pages.Account
             {
                 using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
                 {
-                    int userID = -1;
                     string validPswd = string.Empty;
+                    int userID = -1;
                     string sql = "Select UserID from [User] where Email = @email";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@email", LoginInfo.Email);
@@ -66,6 +66,59 @@ namespace NintendoInventory.UI.Pages.Account
                     //verify user creditianl
                     if (LoginInfo.Email == "admin@mysite.com" && LoginInfo.Password == "NintendoInventory1988!" || enteredPasswordHash.SequenceEqual(storedPasswordHash))
                     {
+                        int AdminRoleID = -1;
+                        sql = "Select SystemRoleID from SystemRole where SystemRoleName = @Admin";
+                        cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@Admin", "Administrator");
+
+                        conn.Open();
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                AdminRoleID = reader.GetInt32(0);
+
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Database Error");
+                            if (!ModelState.IsValid)
+                            {
+                                return Page();
+                            }
+                        }
+                        conn.Close();
+
+                        int currentSystemRole = -1;
+                        sql = "Select SystemRoleID from UserSystemRole where UserID = @userID";
+                        cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@userID", userID);
+
+                        conn.Open();
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                currentSystemRole = reader.GetInt32(0);
+
+                            }
+                        }
+                        else
+                        {
+                            conn.Close();
+                            sql = "Insert INTO UserSystemRole (UserID, SystemRoleID) " +
+                                                   "VALUES (@userID, @SystemRoleID)";
+                            cmd = new SqlCommand(sql, conn);
+                            cmd.Parameters.AddWithValue("@userID", userID);
+                            cmd.Parameters.AddWithValue("@SystemRoleID", AdminRoleID);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                        }
+                        conn.Close();
+
                         //create security context
 
                         var claims = new List<Claim>
@@ -86,6 +139,59 @@ namespace NintendoInventory.UI.Pages.Account
                     }
                     else if (enteredPasswordHash.SequenceEqual(storedPasswordHash))
                     {
+                        int UserRoleID = -1;
+                        sql = "Select SystemRoleID from SystemRole where SystemRoleName = @User";
+                        cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@User", "User");
+
+                        conn.Open();
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                UserRoleID = reader.GetInt32(0);
+
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Database Error");
+                            if (!ModelState.IsValid)
+                            {
+                                return Page();
+                            }
+                        }
+                        conn.Close();
+
+                        int currentSystemRole = -1;
+                        sql = "Select SystemRoleID from UserSystemRole where UserID = @userID";
+                        cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@userID", userID);
+
+                        conn.Open();
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                currentSystemRole = reader.GetInt32(0);
+
+                            }
+                        }
+                        else
+                        {
+                            conn.Close();
+                            sql = "Insert INTO UserSystemRole (UserID, SystemRoleID) " +
+                                                   "VALUES (@userID, @SystemRoleID)";
+                            cmd = new SqlCommand(sql, conn);
+                            cmd.Parameters.AddWithValue("@userID", userID);
+                            cmd.Parameters.AddWithValue("@SystemRoleID", UserRoleID);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                        }
+                        conn.Close();
+
                         var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Email, LoginInfo.Email),
@@ -124,14 +230,14 @@ namespace NintendoInventory.UI.Pages.Account
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows && reader.Read())
                 {
-                    
+
                     string passwordHashStr = (string)reader["PasswordHash"];
 
-/*                    ModelState.AddModelError(string.Empty, "byte empty?  " + passwordHashStr);
-                    if (!ModelState.IsValid)
-                    {
-                        return (new byte[0], new byte[0]);
-                    }*/
+                    /*                    ModelState.AddModelError(string.Empty, "byte empty?  " + passwordHashStr);
+                                        if (!ModelState.IsValid)
+                                        {
+                                            return (new byte[0], new byte[0]);
+                                        }*/
                     // Extract the salt and password hash from the combined password hash
                     byte[] passwordHash = Convert.FromBase64String(passwordHashStr);
                     const int SaltSize = 128 / 8; // 128 bits

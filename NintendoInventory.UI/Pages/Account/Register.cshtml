@@ -10,6 +10,8 @@
     <div class="login">
         <form method="post">
             <div class="login-content">
+                <div class="text-danger login-validation" asp-validation-summary="All"></div>
+
                 <h5>Choose Profile Picture:</h5>
                 <div class="profile-images row">
 
@@ -21,7 +23,6 @@
                         </div>
                     }
                 </div>
-                <div class="text-danger login-validation" asp-validation-summary="All"></div>
                 <div class="form-group input-icons">
                     <i class="bi bi-person-fill icon"></i>
                     <input type="text" placeholder="First Name" asp-for="NewUser.FirstName" class="form-control login-input" />
