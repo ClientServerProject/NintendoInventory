@@ -52,7 +52,7 @@
                     </a>
                     @if (wishlistConsoleIds.Contains(Console.ConsoleID))
                     {
-                        <a id="consoleDeleteFromWL" asp-page="/Wishlist/DeleteConsole" asp-route-id="@Console.ConsoleID" asp-route-itemType="console" class="btn btn-primary rounded-circle align-items-center justify-content-center"><i class="bi bi-x"></i></a>
+                        <a id="consoleDeleteFromWL" asp-page="/Wishlist/DeleteConsole" asp-route-id="@Console.ConsoleID" asp-route-itemType="console" onclick="delConsoleFromWL()" class="btn btn-primary rounded-circle align-items-center justify-content-center"><i class="bi bi-x"></i></a>
                     }
                     else
                     {
@@ -115,6 +115,12 @@
         function addConsoleToWL() {
             event.stopPropagation();
             ATWLbtn.style.display = "none";
+        }
+
+        var consoleDeleteFromWL = document.getElementById("consoleDeleteFromWL");
+        function delConsoleFromWL() {
+            event.stopPropagation();
+            consoleDeleteFromWL.style.display = "none";
         }
 
         var detailsID;

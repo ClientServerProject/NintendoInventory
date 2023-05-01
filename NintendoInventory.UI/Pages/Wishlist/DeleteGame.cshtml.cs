@@ -7,7 +7,7 @@ namespace NintendoInventory.UI.Pages.Wishlist
 {
     public class DeleteGameModel : PageModel
     {
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int id, string itemType)
         {
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
@@ -16,7 +16,15 @@ namespace NintendoInventory.UI.Pages.Wishlist
                 cmd.Parameters.AddWithValue("@gameID", id);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                return RedirectToPage("Index");
+
+                if(itemType == "deleteFromWishlistPg")
+                {
+                    return RedirectToPage("Index");
+                }
+                else
+                {
+                    return RedirectToPage("/Games/Index");
+                }
             }
         }
     }

@@ -53,7 +53,7 @@
                 <h5 class="fw-bold">Are you sure you want to delete @console.ConsoleName?</h5>
                 <p> This action cannot be undone.</p>
                 <div id="modalButtons">
-                    <a asp-page="DeleteConsole" asp-route-id="@console.ConsoleID" class="confirmBtn btn btn-primary">Confirm</a>
+                    <a asp-page="DeleteConsole" asp-itemType="deleteFromWishlistPg" asp-route-id="@console.ConsoleID" class="confirmBtn btn btn-primary">Confirm</a>
                     <button id="cancelBtn_@console.ConsoleID" onclick="closeDeleteModal('deleteModal_@console.ConsoleID')" class="cancelBtn btn btn-secondary">Cancel</button>
                 </div>
             </div>
