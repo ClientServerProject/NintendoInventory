@@ -64,7 +64,7 @@ namespace NintendoInventory.UI.Pages.Account
 
 
                     //verify user creditianl
-                    if (LoginInfo.Email == "admin@mysite.com" && LoginInfo.Password == "NintendoInventory1988!" || enteredPasswordHash.SequenceEqual(storedPasswordHash))
+                    if (LoginInfo.Email == "admin@mysite.com" && enteredPasswordHash.SequenceEqual(storedPasswordHash))
                     {
                         int AdminRoleID = -1;
                         sql = "Select SystemRoleID from SystemRole where SystemRoleName = @Admin";

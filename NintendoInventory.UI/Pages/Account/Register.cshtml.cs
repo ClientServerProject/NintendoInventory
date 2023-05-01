@@ -47,7 +47,14 @@ namespace NintendoInventory.UI.Pages.Account
 
                 var random = RandomNumberGenerator.Create();
                 var passwordHash = HashPasswordV2(NewUser.Password, random);
-
+                if (NewUser.ProfileImageID == -1)
+                {
+                    ModelState.AddModelError(string.Empty, "Profile Image is required");
+                    if (!ModelState.IsValid)
+                    {
+                        return Page();
+                    }
+                }
 
                 using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
                 {
@@ -89,7 +96,7 @@ namespace NintendoInventory.UI.Pages.Account
                     {
                         while (reader.Read())
                         {
-                            userID = reader.GetInt32(0); 
+                            userID = reader.GetInt32(0);
                         }
                     }
                     conn.Close();

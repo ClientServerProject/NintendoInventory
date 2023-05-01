@@ -7,6 +7,12 @@
 );
 
 
+GO
+ALTER TABLE [dbo].[UserSystemRole] NOCHECK CONSTRAINT [FK_UserSystemRole_User];
+
+
+
+
 
 
 
