@@ -3,49 +3,48 @@
 @{
 }
 
-<div class="container border p-3">
-    <form method="post">
+<div class="login-container">
+    <div class="login-title">
+    <h3>Create an Account</h3>
+    </div>
+    <div class="login">
+        <form method="post">
+            <div class="login-content">
+                <h5>Choose Profile Picture:</h5>
+                <div class="profile-images row">
 
-        <div class="row mb-2">
-            <div class="col-sm-2">
-                <label asp-for="NewUser.FirstName" class="form-label"></label>
+                    @foreach (var profileImage in Model.profileImages)
+                    {
+                        var URL = @profileImage.ProfileImageURL;
+                        <div class="profile-img col-md-2">
+                            <img class="img-thumbnail" src="@URL" />
+                        </div>
+                    }
+                </div>
+                <div class="text-danger login-validation" asp-validation-summary="All"></div>
+                <div class="form-group input-icons">
+                    <i class="bi bi-person-fill icon"></i>
+                    <input type="text" placeholder="First Name" asp-for="NewUser.FirstName" class="form-control login-input" />
+                    <span asp-validation-for="NewUser.FirstName" class="text-danger login-validation"></span>
+                </div>
+                <div class="form-group input-icons">
+                    <i class="bi bi-person-fill icon"></i>
+                    <input type="text" placeholder="Last Name" asp-for="NewUser.LastName" class="form-control login-input" />
+                    <span asp-validation-for="NewUser.LastName" class="text-danger login-validation"></span>
+                </div>
+                <div class="form-group input-icons">
+                    <i class="bi bi-envelope-fill icon"></i>
+                    <input type="text" placeholder="Email" asp-for="NewUser.Email" class="form-control login-input" />
+                    <span asp-validation-for="NewUser.Email" class="text-danger login-validation"></span>
+                </div>
+                <div class="form-group input-icons">
+                    <i class="bi bi-lock-fill icon"></i>
+                    <input type="password" placeholder="Password" asp-for="NewUser.Password" class="form-control login-input" />
+                    <span asp-validation-for="NewUser.Password" class="text-danger login-validation"></span>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <input type="text" asp-for="NewUser.FirstName" class="form-control" />
-                <span asp-validation-for="NewUser.FirstName" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-2">
-                <label asp-for="NewUser.LastName" class="form-label"></label>
-            </div>
-            <div class="col-sm-10">
-                <input type="text" asp-for="NewUser.LastName" class="form-control" />
-                <span asp-validation-for="NewUser.LastName" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-2">
-                <label asp-for="NewUser.Email" class="form-label"></label>
-            </div>
-            <div class="col-sm-10">
-                <input type="text" asp-for="NewUser.Email" class="form-control" />
-                <span asp-validation-for="NewUser.Email" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-2">
-                <label asp-for="NewUser.Password" class="form-label"></label>
-            </div>
-            <div class="col-sm-10">
-                <input type="password" asp-for="NewUser.Password" class="form-control" />
-                <span asp-validation-for="NewUser.Password" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-2">
-                <button type="submit" class="btn btn-primary">Register</button>
-            </div>
-        </div>
-    </form>
+            <button type="submit" class="btn btn-primary login-button">Sign up</button>
+            <a asp-page="Login">already have an account?</a>
+        </form>
+    </div>
 </div>

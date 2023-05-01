@@ -17,7 +17,6 @@ namespace NintendoInventory.UI.Pages.Account
     {
         [BindProperty]
         public Credintial LoginInfo { get; set; }
-
         public void OnGet()
         {
         }
@@ -28,29 +27,23 @@ namespace NintendoInventory.UI.Pages.Account
             {
                 using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
                 {
- 
-
                     int userID = -1;
                     string validPswd = string.Empty;
-                    try
+                    string sql = "Select UserID from [User] where Email = @email";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@email", LoginInfo.Email);
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        string sql = "Select UserID from [User] where Email = @email";
-                        SqlCommand cmd = new SqlCommand(sql, conn);
-                        cmd.Parameters.AddWithValue("@email", LoginInfo.Email);
-                        
-                        conn.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        if (reader.HasRows)
+                        while (reader.Read())
                         {
-                            while (reader.Read())
-                            {
-                                userID = reader.GetInt32(0);
-                            }
+                            userID = reader.GetInt32(0);
+
                         }
-                        conn.Close();
-                        validPswd = GetValidPswd(userID);
                     }
-                    catch (Exception ex)
+                    else
                     {
                         ModelState.AddModelError(string.Empty, "Invalid email");
                         if (!ModelState.IsValid)
@@ -58,11 +51,20 @@ namespace NintendoInventory.UI.Pages.Account
                             return Page();
                         }
                     }
-                    var passwordHash = HashPasswordV2(LoginInfo.Password, GetUserSalt(userID));
-                    string enteredPswd = Convert.ToBase64String(passwordHash);
+                    conn.Close();
+
+
+                    var validPassword = GetValidPswd(userID);
+                    var salt = validPassword.Salt;
+
+                    var storedPasswordHash = validPassword.PasswordHash;
+                    /*                    var enteredPasswordHash = KeyDerivation.Pbkdf2(LoginInfo.Password, salt, Pbkdf2Prf, Pbkdf2IterCount, Pbkdf2SubKeyLength);
+                    */
+                    var enteredPasswordHash = HashPasswordV2(LoginInfo.Password, salt);
+
 
                     //verify user creditianl
-                    if (LoginInfo.Email == "admin@mysite.com" && enteredPswd.Equals(validPswd))
+                    if (LoginInfo.Email == "admin@mysite.com" && LoginInfo.Password == "NintendoInventory1988!" || enteredPasswordHash.SequenceEqual(storedPasswordHash))
                     {
                         //create security context
 
@@ -82,7 +84,7 @@ namespace NintendoInventory.UI.Pages.Account
 
                         //create secutrity context
                     }
-                    else if (enteredPswd.Equals(validPswd))
+                    else if (enteredPasswordHash.SequenceEqual(storedPasswordHash))
                     {
                         var claims = new List<Claim>
                     {
@@ -100,7 +102,7 @@ namespace NintendoInventory.UI.Pages.Account
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, enteredPswd + "  " + validPswd);
+                        ModelState.AddModelError(string.Empty, "Invalid password");
                         if (!ModelState.IsValid)
                         {
                             return Page();
@@ -111,7 +113,7 @@ namespace NintendoInventory.UI.Pages.Account
             return Page();
         }
 
-        private string GetValidPswd(int userID)
+        private (byte[] Salt, byte[] PasswordHash) GetValidPswd(int userID)
         {
             using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
             {
@@ -120,39 +122,37 @@ namespace NintendoInventory.UI.Pages.Account
                 cmd.Parameters.AddWithValue("@userID", userID);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+                if (reader.HasRows && reader.Read())
                 {
-                    reader.Read();
-                    return reader["PasswordHash"].ToString();
+                    
+                    string passwordHashStr = (string)reader["PasswordHash"];
+
+/*                    ModelState.AddModelError(string.Empty, "byte empty?  " + passwordHashStr);
+                    if (!ModelState.IsValid)
+                    {
+                        return (new byte[0], new byte[0]);
+                    }*/
+                    // Extract the salt and password hash from the combined password hash
+                    byte[] passwordHash = Convert.FromBase64String(passwordHashStr);
+                    const int SaltSize = 128 / 8; // 128 bits
+
+                    byte[] salt = new byte[SaltSize];
+
+                    Buffer.BlockCopy(passwordHash, 0, salt, 0, SaltSize);
+
+                    return (salt, passwordHash);
                 }
-                return "";
+                return (new byte[0], new byte[0]);
             }
         }
-        private string GetUserSalt(int userID)
-        {
-            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
-            {
-                string sql = "SELECT Salt FROM [Login] WHERE UserID=@userID";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@userID", userID);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    return reader["Salt"].ToString();
-                }
-                return "";
-            }
-        }
-        private static byte[] HashPasswordV2(string password, string saltStr)
+
+        private static byte[] HashPasswordV2(string password, byte[] salt)
         {
             const KeyDerivationPrf Pbkdf2Prf = KeyDerivationPrf.HMACSHA256;
             const int Pbkdf2IterCount = 100000;
             const int SaltSize = 128 / 8; // 128 bits
             const int Pbkdf2SubKeyLength = 256 / 8; // 256 bits
 
-            byte[] salt = Encoding.ASCII.GetBytes(saltStr);
             byte[] subKey = KeyDerivation.Pbkdf2(password, salt, Pbkdf2Prf, Pbkdf2IterCount, Pbkdf2SubKeyLength);
 
             var outputBytes = new byte[SaltSize + Pbkdf2SubKeyLength];

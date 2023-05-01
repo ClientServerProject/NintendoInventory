@@ -11,19 +11,43 @@ namespace NintendoInventory.UI.Pages.Account
     {
         [BindProperty]
         public User NewUser { get; set; }
+        [BindProperty]
+        public List<Models.ProfileImage> profileImages { get; set; } = new List<Models.ProfileImage>();
 
         public void OnGet()
         {
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            {
+                // step 2
+                string sql = "SELECT * FROM ProfileImage";
+                // step 3
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                // step 4
+                conn.Open();
+                // step 5
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ProfileImage profileImage = new ProfileImage();
+                        profileImage.ProfileImageURL = reader["ProfileImageURL"].ToString();
+                        profileImage.ProfileImageID = (int)reader["ProfileImageID"];
+                        profileImages.Add(profileImage);
+                    }
+                }
+            }
         }
 
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
+                const int Pbkdf2SubKeyLength = 256 / 8; // 256 bits
+
                 var random = RandomNumberGenerator.Create();
                 var passwordHash = HashPasswordV2(NewUser.Password, random);
-                byte[] salt = new byte[128 / 8];
-                Buffer.BlockCopy(passwordHash, 1, salt, 0, salt.Length);
+
 
                 using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
                 {
@@ -52,14 +76,14 @@ namespace NintendoInventory.UI.Pages.Account
                         }
                     }
                     conn.Close();
-                    sql = "Insert INTO Login (UserID, PasswordHash, Salt, LastLoginTime) " +
-                        "VALUES (@userID, @passwordHash, @salt, @lastLoginTime)";
+                    sql = "Insert INTO Login (UserID, PasswordHash, LastLoginTime) " +
+                        "VALUES (@userID, @passwordHash, @lastLoginTime)";
                     cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@salt", Convert.ToBase64String(salt));
                     cmd.Parameters.AddWithValue("@passwordHash", Convert.ToBase64String(passwordHash));
                     cmd.Parameters.AddWithValue("@lastLoginTime", DateTime.Now);
                     cmd.Parameters.AddWithValue("@userID", userID);
                     conn.Open();
+
                     cmd.ExecuteNonQuery();
                 }
 
@@ -68,12 +92,6 @@ namespace NintendoInventory.UI.Pages.Account
             return Page();
         }
 
-        private static byte[] GenerateSalt(int length)
-        {
-            using RSACryptoServiceProvider rngCsp = new();
-            byte[] randomBytes = new byte[length];
-            return randomBytes;
-        }
 
         private static byte[] HashPasswordV2(string password, RandomNumberGenerator rng)
         {
@@ -87,7 +105,6 @@ namespace NintendoInventory.UI.Pages.Account
             byte[] subKey = KeyDerivation.Pbkdf2(password, salt, Pbkdf2Prf, Pbkdf2IterCount, Pbkdf2SubKeyLength);
 
             var outputBytes = new byte[SaltSize + Pbkdf2SubKeyLength];
-            //outputBytes[0] = 0x00; // format marker
             Buffer.BlockCopy(salt, 0, outputBytes, 0, SaltSize);
             Buffer.BlockCopy(subKey, 0, outputBytes, SaltSize, Pbkdf2SubKeyLength);
             return outputBytes;
