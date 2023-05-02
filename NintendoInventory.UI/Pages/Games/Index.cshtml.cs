@@ -11,6 +11,7 @@ namespace NintendoInventory.UI.Pages.Games
     public class IndexModel : PageModel
     {
         [BindProperty]
+        public string SearchText { get; set; }
         public List<Models.Game> GameList { get; set; } = new List<Models.Game>();
         public void OnGet()
         {
@@ -64,6 +65,44 @@ namespace NintendoInventory.UI.Pages.Games
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 return RedirectToPage("Index");
+            }
+        }
+
+        public void OnPost()
+        {
+            string sql = "";
+            if (SearchText == "")
+            {
+                sql = "SELECT * FROM Game Order By GameTitle";
+            }
+            else
+            {
+                sql = "SELECT * FROM Game WHERE GameTitle LIKE @gameTitle Order By GameTitle";
+            }
+                using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@gameTitle", "%" + SearchText + "%");
+                conn.Open();
+                // step 5
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Game game = new Game();
+                        game.GameTitle = reader["GameTitle"].ToString();
+                        game.ReleaseYear = reader["ReleaseYear"].ToString();
+                        //game.ConsoleID = (int)reader["ConsoleID"];
+                        game.GameImageURL = (string)reader["GameImageURL"];
+                        game.Price = reader["Price"].ToString();
+                        game.GameDescription = reader["GameDescription"].ToString();
+                        //game.ESBRRatingID = (int)reader["ESBRRatingID"];
+                        game.GameID = int.Parse(reader["GameId"].ToString());
+                        GameList.Add(game);
+                        //WishlistItem.Add(game);
+                    }
+                }
             }
         }
     }

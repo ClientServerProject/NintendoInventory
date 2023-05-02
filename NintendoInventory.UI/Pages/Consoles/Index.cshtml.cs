@@ -10,6 +10,7 @@ namespace NintendoInventory.UI.Pages.Consoles
     public class IndexModel : PageModel
     {
         [BindProperty]
+        public string SearchText { get; set; }
         public List<Models.Console> ConsoleList { get; set; } = new List<Models.Console>();
         public void OnGet()
         {
@@ -48,6 +49,43 @@ namespace NintendoInventory.UI.Pages.Consoles
                 }
             }
         }
+
+        public void OnPost()
+        {
+            string sql = "";
+            if(SearchText == "")
+            {
+                sql = "SELECT * FROM Console Order By ConsoleName";
+            }
+            else
+            {
+                sql = "SELECT * FROM Console WHERE ConsoleName LIKE @consoleName Order By ConsoleName";
+            }
+            using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+            {
+                
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@consoleName", "%" + SearchText + "%");
+                conn.Open();
+                // step 5
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Console console = new Console();
+                        console.ConsoleName = reader["ConsoleName"].ToString();
+                        console.ReleaseYear = reader["ReleaseYear"].ToString();
+                        console.ConsoleImageURL = reader["ConsoleImageURL"].ToString();
+                        console.Price = reader["Price"].ToString();
+                        console.ConsoleID = (int)reader["ConsoleID"];
+                        console.ConsoleDescription = reader["ConsoleDescription"].ToString();
+                        ConsoleList.Add(console);
+                    }
+                }
+            }
+        }
+
     }
 }
 
