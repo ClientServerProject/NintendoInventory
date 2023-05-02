@@ -10,12 +10,12 @@
 @using Microsoft.Data.SqlClient
 @{
     List<int> wishlistConsoleIds = new List<int>();
-    string connectionString = NintendoInventory.UI.Models.DBhelper.GetConnectionString(); // Replace with your actual connection string
+    string connectionString = NintendoInventory.UI.Models.DBhelper.GetConnectionString(); 
 
     // Execute SQL Query and retrieve GameIDs
     using (SqlConnection connection = new SqlConnection(connectionString))
     {
-        string query = "SELECT ConsoleID FROM ConsoleWishlist"; // Replace with your actual SQL query
+        string query = "SELECT ConsoleID FROM ConsoleWishlist"; 
         using (SqlCommand command = new SqlCommand(query, connection))
         {
             connection.Open();
@@ -32,26 +32,26 @@
 }
 
 <div id="container" class="d-inline m-auto">
-    <div class="col-sm-3">
-        <h1 class='title'>Consoles</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <h1 class='title'>Consoles</h1>
+        </div>
+        <div class="col-sm-6 d-flex align-items-center justify-content-end">
+            <form method="post">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" asp-for="SearchText" placeholder="Search consoles" />
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="col-sm-3">
         <a id="addButton" class="btn btn-primary" asp-page="Add">Add Console</a>
     </div>
-    <form method="post">
-    <div class="col-sm-3">
-        <div class="col-sm-2">
-            <label class="form-label">Search Consoles</label>
-        </div>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="SearchText" />
-           
-        </div>
-        <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </div>
-    </form>
 </div>
 
 <div class="row m-4">
@@ -98,16 +98,24 @@
         <!-- details Modal -->
         <div id="detailsModal_@Console.ConsoleID" class="modal">
             <!-- Modal content -->
-            <div class="modal-content px-5 py-3">
-                <h3>@Console.ConsoleName</h3>
-                <p>
-                    @Console.ConsoleDescription<br><br>
-                    Release Year: @Console.ReleaseYear<br><br>
-                    Price: $@Console.Price<br><br>
-                </p>
+            <div class="modal-content">
+                <div class="details-row">
+                    <div class="image-container">
+                        <img class="gameImg" src="@URL">
+                    </div>
+                    <div class="details-container">
+                        <h3>@Console.ConsoleName</h3>
+                        <p>
+                            Release Year: @Console.ReleaseYear<br>
+                            Price: $@Console.Price
+                        </p>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <p>@Console.ConsoleDescription</p>
+                </div>
                 <button onclick="closeDetails('detailsModal_@Console.ConsoleID')" class="confirmBtn btn btn-primary">Close</button>
             </div>
-
         </div>
         <!-- delete Modal -->
         <div id="deleteModal_@Console.ConsoleID" class="modal">

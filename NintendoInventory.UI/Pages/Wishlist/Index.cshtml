@@ -35,16 +35,23 @@
         <div id="detailsModal_@console.ConsoleID" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <h3>@console.ConsoleName</h3>
-                <p>
-                    @console.ConsoleDescription<br>
-                    Release Year: @console.ReleaseYear<br>
-                    Price: $@console.Price<br>
-
-                </p>
-                <button id="confirmBtn_@console.ConsoleID" onclick="closeDetails('detailsModal_@console.ConsoleID')" class="btn btn-primary">Okay</button>
+                <div class="details-row">
+                    <div class="image-container">
+                        <img class="gameImg" src="@URL">
+                    </div>
+                    <div class="details-container">
+                        <h3>@console.ConsoleName</h3>
+                        <p>
+                            Release Year: @console.ReleaseYear<br>
+                            Price: $@console.Price
+                        </p>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <p>@console.ConsoleDescription</p>
+                </div>
+                <button onclick="closeDetails('detailsModal_@console.ConsoleID')" class="confirmBtn btn btn-primary">Close</button>
             </div>
-
         </div>
         <!-- delete Modal -->
         <div id="deleteModal_@console.ConsoleID" class="modal">
@@ -80,16 +87,23 @@
         <div id="detailsModal_@game.GameID" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <h3>@game.GameTitle</h3>
-                <p>
-                    @game.GameDescription<br>
-                    Release Year: @game.ReleaseYear<br>
-                    Price: $@game.Price<br>
-
-                </p>
+                <div class="details-row">
+                    <div class="image-container">
+                        <img class="gameImg" src="@URL">
+                    </div>
+                    <div class="details-container">
+                        <h3>@game.GameTitle</h3>
+                        <p>
+                            Release Year: @game.ReleaseYear<br>
+                            Price: $@game.Price
+                        </p>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <p>@game.GameDescription</p>
+                </div>
                 <button id="confirmBtn_@game.GameID" onclick="closeDetails('detailsModal_@game.GameID')" class="btn btn-primary">Okay</button>
             </div>
-
         </div>
         <!-- delete Modal -->
         <div id="deleteModal_@game.GameID" class="modal">
