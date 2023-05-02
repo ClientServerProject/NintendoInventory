@@ -39,6 +39,20 @@
         <a id="addButton" class="btn btn-primary" asp-page="AddGame">Add Game</a>
         <!--<a id="deleteButton" class="btn btn-primary">Delete Game</a>-->
     </div>
+    <form method="post">
+        <div class="col-sm-3">
+            <div class="col-sm-2">
+                <label class="form-label">Search Games</label>
+            </div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="SearchText" />
+
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div class="row m-4">
