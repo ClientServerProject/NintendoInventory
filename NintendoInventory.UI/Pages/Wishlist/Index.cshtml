@@ -14,9 +14,56 @@
 </div>
 
 <div class="row m-4">
+
+    @foreach (var console in Model.ConsoleWishlistList)
+    {
+        var URL = @console.ConsoleImageURL;
+        <div id="@console.ConsoleID" asp-route-id="@console.ConsoleID" onclick="showDetails('detailsModal_@console.ConsoleID')" class="card">
+            <a href="#" class="card_Link"></a>
+            <img class="card-img-top" src="@console.ConsoleImageURL">
+            <div class="card-body">
+                <h5 class="card-title">@console.ConsoleName</h5>
+                <!--<h7 class="card-date">game.ReleaseDate</h7>-->
+            </div>
+            <div id="consolePrice" class="col-sm-12">$@console.Price</div>
+            <div>
+                <a id="delButtonWL" onclick="showDeleteModal('deleteModal_@console.ConsoleID')" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>
+                <!--<a id="removeGame_@console.ConsoleID" asp-page-handler="RemoveFromWishlist" asp-route-id="Console.ConsoleID" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>-->
+            </div>
+        </div>
+        <!-- details Modal -->
+        <div id="detailsModal_@console.ConsoleID" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h3>@console.ConsoleName</h3>
+                <p>
+                    @console.ConsoleDescription<br>
+                    Release Year: @console.ReleaseYear<br>
+                    Price: $@console.Price<br>
+
+                </p>
+                <button id="confirmBtn_@console.ConsoleID" onclick="closeDetails('detailsModal_@console.ConsoleID')" class="btn btn-primary">Okay</button>
+            </div>
+
+        </div>
+        <!-- delete Modal -->
+        <div id="deleteModal_@console.ConsoleID" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content px-5 py-3">
+                <h5 class="fw-bold">Are you sure you want to delete @console.ConsoleName?</h5>
+                <p> This action cannot be undone.</p>
+                <div id="modalButtons">
+                    <a asp-page="DeleteConsole" asp-itemType="deleteFromWishlistPg" asp-route-id="@console.ConsoleID" class="confirmBtn btn btn-primary">Confirm</a>
+                    <button id="cancelBtn_@console.ConsoleID" onclick="closeDeleteModal('deleteModal_@console.ConsoleID')" class="cancelBtn btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    }
     @foreach (var game in Model.WishlistList)
     {
-        <div id="@game.GameID" class="card">
+        var URL = @game.GameImageURL;
+        <div id="@game.GameID" asp-route-id="@game.GameID" onclick="showDetails('detailsModal_@game.GameID')" class="card">
             <a href="#" class="card_Link"></a>
             <img class="card-img-top" src="@game.GameImageURL">
             <div class="card-body">
@@ -29,51 +76,57 @@
                 <!--<a id="removeGame_@game.GameID" asp-page-handler="RemoveFromWishlist" asp-route-id="game.GameID" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>-->
             </div>
         </div>
+        <!-- details Modal -->
+        <div id="detailsModal_@game.GameID" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h3>@game.GameTitle</h3>
+                <p>
+                    @game.GameDescription<br>
+                    Release Year: @game.ReleaseYear<br>
+                    Price: $@game.Price<br>
 
+                </p>
+                <button id="confirmBtn_@game.GameID" onclick="closeDetails('detailsModal_@game.GameID')" class="btn btn-primary">Okay</button>
+            </div>
+
+        </div>
         <!-- delete Modal -->
         <div id="deleteModal_@game.GameID" class="modal">
             <!-- Modal content -->
             <div class="modal-content px-5 py-3">
                 <h5 class="fw-bold">Are you sure you want to delete @game.GameTitle?</h5>
-                <p> You can always add it back from the Games page.</p>
+                <p> This action cannot be undone.</p>
                 <div id="modalButtons">
                     <a asp-page="DeleteGame" asp-route-id="@game.GameID" class="confirmBtn btn btn-primary">Confirm</a>
                     <button id="cancelBtn_@game.GameID" onclick="closeDeleteModal('deleteModal_@game.GameID')" class="cancelBtn btn btn-secondary">Cancel</button>
                 </div>
             </div>
         </div>
-    }
-    @foreach (var console in Model.ConsoleWishlistItem)
-    {
-        <div id="@console.ConsoleID" class="card">
-            <a href="#" class="card_Link"></a>
-            <img class="card-img-top" src="@console.ConsoleImageURL">
-            <div class="card-body">
-                <h5 class="card-title">@console.ConsoleName</h5>
-                <!--<h7 class="card-date">game.ReleaseDate</h7>-->
-            </div>
-            <div id="gamePrice" class="col-sm-12">$@console.Price</div>
-            <div>
-                <a id="delButtonWL" onclick="showDeleteModal('deleteModal_@console.ConsoleID')" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>
-                <!--<a id="removeGame_@console.ConsoleID" asp-page-handler="RemoveFromWishlist" asp-route-id="game.GameID" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>-->
-            </div>
-        </div>
 
-        <!-- delete Modal -->
-        <div id="deleteModal_@console.ConsoleID" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content px-5 py-3">
-                <h5 class="fw-bold">Are you sure you want to delete @console.ConsoleName?</h5>
-                <p> You can always add it back from the Games page.</p>
-                <div id="modalButtons">
-                    <a asp-page="DeleteGame" asp-route-id="@console.ConsoleID" class="confirmBtn btn btn-primary">Confirm</a>
-                    <button id="cancelBtn_@console.ConsoleID" onclick="closeDeleteModal('deleteModal_@console.ConsoleID')" class="cancelBtn btn btn-secondary">Cancel</button>
-                </div>
-            </div>
-        </div>
     }
+ 
+
+
 
     <script>
+        var gameATWLbtn = document.getElementById("gamesATWLbtn");
+        function addGameToWL() {
+            event.stopPropagation();
+            gameATWLbtn.style.display = "none";
+        }
+
+        var detailsID;
+        function showDetails(detailsModalID) {
+            var detailsModal = document.getElementById(detailsModalID)
+            detailsModal.style.display = "block";
+            detailsID = detailsModal;
+        }
+        function closeDetails(detailsModalID) {
+            var detailsModal = document.getElementById(detailsModalID)
+            detailsModal.style.display = "none";
+            return false;
+        }
 
         var deleteID;
         function showDeleteModal(deleteModalID) {
@@ -87,6 +140,17 @@
             var deleteModal = document.getElementById(detailsModalID)
             deleteModal.style.display = "none";
             return false;
+        }
+
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == deleteID) {
+                deleteID.style.display = "none";
+            }
+            if (event.target == detailsID) {
+                detailsID.style.display = "none";
+            }
         }
     </script>
 

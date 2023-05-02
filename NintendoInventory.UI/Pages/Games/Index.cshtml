@@ -7,6 +7,30 @@
     }
 }
 
+@using Microsoft.Data.SqlClient
+@{
+    List<int> wishlistGameIds = new List<int>();
+    string connectionString = NintendoInventory.UI.Models.DBhelper.GetConnectionString(); // Replace with your actual connection string
+
+    // Execute SQL Query and retrieve GameIDs
+    using (SqlConnection connection = new SqlConnection(connectionString))
+    {
+        string query = "SELECT GameID FROM GameWishlist"; // Replace with your actual SQL query
+        using (SqlCommand command = new SqlCommand(query, connection))
+        {
+            connection.Open();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int gameId = reader.GetInt32(0);
+                    wishlistGameIds.Add(gameId);
+                }
+            }
+        }
+    }
+}
+
 <div id="container" class="d-inline m-auto">
     <div class="col-sm-3">
         <h1 class='title'>Games</h1>
@@ -20,7 +44,6 @@
 <div class="row m-4">
     @foreach (var Game in Model.GameList)
     {
-        
         var URL = @Game.GameImageURL;
         <div id="@Game.GameID" asp-route-id="@Game.GameID" onclick="showDetails('detailsModal_@Game.GameID')" class="card">
             <a href="#" class="card_Link"></a>
@@ -31,7 +54,14 @@
             </div>
             <div id="gamePrice" class="col-sm-12">$@Game.Price</div>
             <div>
-                <a id="gamesATWLbtn" asp-page="/Wishlist/AddGame" asp-route-id="@Game.GameID" onclick="addGameToWL('addGame_@Game.GameID')" class="btn btn-primary rounded-circle "><i class="bi bi-plus"></i></a>
+                @if (wishlistGameIds.Contains(Game.GameID))
+                {
+                    <a id="deleteFromWL" asp-page="/Wishlist/DeleteGame" asp-route-id="@Game.GameID" asp-route-itemType="game" onclick="delGameFromWL('addGame_@Game.GameID')" class="btn btn-danger rounded-circle"><i class="bi bi-x"></i></a>
+                }
+                else
+                {
+                    <a id="gamesATWLbtn" asp-page="/Wishlist/AddGame" asp-route-id="@Game.GameID" asp-route-itemType="game" onclick="addGameToWL('addGame_@Game.GameID')" class="btn btn-primary rounded-circle"><i class="bi bi-plus"></i></a>
+                }
                 <a  id="delButton"  onclick="showDeleteModal('deleteModal_@Game.GameID')" class="btn btn-primary rounded-circle"><i class="bi bi-x"></i></a>
             </div>
         </div>
@@ -70,6 +100,11 @@
         function addGameToWL() {
             event.stopPropagation();
             gameATWLbtn.style.display = "none";
+        }
+        var deleteFromWL = document.getElementById("deleteFromWL");
+        function delGameFromWL() {
+            event.stopPropagation();
+            deleteFromWL.style.display = "none";
         }
 
         var detailsID;

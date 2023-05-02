@@ -1,6 +1,10 @@
 ﻿@page
 @model NintendoInventory.UI.Pages.Games.AddGameModel
 @{
+    if (HttpContext.User.Identity != null)
+    {
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenicatedLayout" : "_Layout";
+    }
 }
 
 <script type="text/javascript">

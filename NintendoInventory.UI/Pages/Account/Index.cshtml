@@ -1,0 +1,75 @@
+﻿@page
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.Data.SqlClient;
+@using NintendoInventory.UI.Models;
+
+@model NintendoInventory.UI.Pages.Account.IndexModel
+@{
+    if (HttpContext.User.Identity != null)
+    {
+        Layout = HttpContext.User.Identity.IsAuthenticated ? "_AuthenicatedLayout" : "_Layout";
+    }
+    string userIDstr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    int userID = int.Parse(userIDstr);
+    User CurrentUser = new User();
+    ProfileImage UserProfileImage = new ProfileImage();
+    using (SqlConnection conn = new SqlConnection(DBhelper.GetConnectionString()))
+    {
+        string sql = "SELECT * FROM [User] where UserID = @userID";
+        SqlCommand cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@userID", userID);
+        conn.Open();
+        SqlDataReader reader = cmd.ExecuteReader();
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                User user = new User();
+                user.FirstName = reader["FirstName"].ToString();
+                user.LastName = reader["LastName"].ToString();
+                user.Email = reader["Email"].ToString();
+                user.ProfileImageID = (int)reader["ProfileImageID"];
+                CurrentUser = user;
+            }
+        }
+        conn.Close();
+        sql = "SELECT * FROM ProfileImage where ProfileImageID = @profileImageID";
+        cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@profileImageID", CurrentUser.ProfileImageID);
+        conn.Open();
+        reader = cmd.ExecuteReader();
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                ProfileImage profileImage = new ProfileImage();
+                profileImage.ProfileImageURL = reader["ProfileImageURL"].ToString();
+                profileImage.ProfileImageID = (int)reader["ProfileImageID"];
+                UserProfileImage = profileImage;
+            }
+        }
+        conn.Close();
+    }
+}
+
+<div class="account-container">
+    <div class="text-center">
+        <h3>Account Info</h3>
+    </div>
+    <div class="account-box">
+        <div class="account-content">
+            <img class="w-50 rounded-circle" src="@UserProfileImage.ProfileImageURL" />
+            <div class="account-info">
+                <h4>Account name:</h4>
+                <p>@CurrentUser.FirstName @CurrentUser.LastName</p>
+                <h4>Account Email:</h4>
+                <p>@CurrentUser.Email</p>
+            </div>
+        </div>
+        <div class="logout-container">
+            <a class="btn logout-btn text-white" asp-area="" asp-page="/Account/Logout">Logout </a>
+        </div>
+    </div>
+</div>

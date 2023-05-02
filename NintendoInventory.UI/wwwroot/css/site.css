@@ -15,6 +15,7 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-image: url(../lib/images/nintendo-bg.jpg);
 }
 
 @font-face {
@@ -50,7 +51,7 @@ body {
     height: 40px;
 }
 
-li {
+.nav-item {
     color: #000000;
     text-decoration: none;
     font-size: 15px;
@@ -59,7 +60,7 @@ li {
     padding: 0px 20px;
 }
 
-    li::after {
+    .nav-item::after {
         content: '';
         width: 0%;
         height: 5px;
@@ -69,15 +70,72 @@ li {
         transition: 0.5s;
     }
 
-    li:hover:after {
+    .nav-item:hover:after {
         width: 100%;
     }
+
+.nav-profile {
+    color: #000000;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: right;
+    padding: 0px 20px;
+    display: inherit;
+}
+
+.nav-profile-name {
+    text-decoration: none;
+    font-weight: bold;
+    color: #FFF;
+}
+
+    .nav-profile-name:hover {
+        text-decoration: underline;
+        color: #FFF;
+    }
+
+.nav-profile-image {
+    width: 8%;
+}
+/*Account Page------------------------------------------------------------------------------*/
+.account-title {
+    text-align: center;
+}
+
+.account-container {
+    width: fit-content;
+    height: auto;
+    margin: 10% auto;
+}
+.account-box {
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+}
+.account-content {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+.account-info {
+    margin: 20px;
+}
+
+.logout-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.logout-btn {
+    background-color: #E7000A;
+}
 /*Home Page------------------------------------------------------------------------------*/
 .preview-title {
     color: #777;
     font-weight: bold;
-    
 }
+
 .preview {
     display: flex;
     align-items: center;
@@ -159,65 +217,145 @@ li {
     width: 100%;
     height: auto;
 }
-
-/*.preview-container {
-    width: 100%;
-    height: 100%;
+/*Login------------------------------------------------------------------------------*/
+.login-container {
+    margin: 10% auto; /* 15% from the top and centered */
+    max-width: 30%;
     padding: 20px;
-    scroll-snap-type: x mandatory;
-    overflow-x: hidden;
-    display: flex;
-    border: 3px solid #343444;
-    border-radius: 5px;
-    margin-bottom: 80px;
-    background-color: #E7000A;
 }
 
-.preview-item {
-    background-color: #FFF;
-    height: 200px;
-    width: 200px;
-    border: 2px solid #000;
-    margin: 20px;
-    position: relative;
+.login {
+    background-color: #EEEEEE;
+    /*margin: 10% auto;*/ /* 15% from the top and centered */
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 15px;
 }
 
-.preview-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
+.login-title {
+    text-align: center;
+}
+
+.login-content {
+    max-width: 400px;
+    margin: auto;
+}
+
+.input-icons i {
     position: absolute;
 }
 
-    .preview-content:hover {
-        transition: .2s;
-        opacity: 1;
-        background-image: none;
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+    margin-bottom: 3px;
+}
+
+.login-input-box {
+    margin: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.login-validation {
+    color: #E7000A;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.login-button {
+    margin: 10px;
+    background-color: #E7000A;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+    .login-button:hover {
+        transition: all 0.2s ease-out;
+        background-color: #E7000A99;
+        border-color: transparent;
     }
 
-.preview-img-div {
+.profile-images {
+    height: 250px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    background-color: #FFF;
 }
 
-    .preview-img-div:hover {
-        transition: .2s;
-        opacity: 0;
+    .profile-img:hover {
+        text-shadow: 0px 3px 6px #000000AA;
     }
 
-.preview-img {
-    width: 100%;
-    height: auto;
-}*/
+.profile-img-label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
 
+    .profile-img-label:hover {
+        opacity: 0.9;
+        border: 2px solid #777;
+        border-radius: 6px;
+    }
+
+    .profile-img-label input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .profile-img-label img {
+        pointer-events: none;
+    }
+
+    .profile-img-label::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    .profile-img-label input[type="radio"]:checked + img {
+        border: 4px solid #777;
+        opacity: 1;
+    }
+
+        .profile-img-label input[type="radio"]:checked + img::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #000;
+            opacity: 1;
+        }
 /*Console------------------------------------------------------------------------------*/
 /* The Modal (background) */
 .modal {
@@ -263,6 +401,7 @@ li {
     .confirmBtn:hover {
         transition: all 0.2s ease-out;
         background-color: #E7000A99;
+        border-color: transparent;
     }
 
 .cancelBtn {
@@ -295,6 +434,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #FFF;
 }
 
     .consoleDiv:hover {
@@ -324,6 +464,17 @@ li {
 
 #ATWLbtn {
     background-color: #58FA86;
+    border-color: #D8D8D8;
+    width: 30px;
+    height: 30px;
+    color: #595959;
+    font-weight: bold;
+    display: inline-flex;
+    float: right;
+}
+
+#consoleDeleteFromWL {
+    background-color: red;
     border-color: #D8D8D8;
     width: 30px;
     height: 30px;
@@ -452,6 +603,21 @@ li {
     align-items: center;
 }
 
+#deleteFromWL {
+    background-color: red;
+    border-color: #D8D8D8;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    margin-bottom: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #delButton {
     background-color: red;
     border-color: #D8D8D8;
@@ -493,7 +659,12 @@ li {
     margin-left: auto;
 }
 /*Wishlist------------------------------------------------------------------------------------------------------*/
-
+#consolePrice {
+    position: absolute;
+    bottom: 0;
+    right: -223px;
+    margin-bottom: 5px;
+}
 
 /*Timeline------------------------------------------------------------------------------------------------------*/
 
@@ -504,6 +675,7 @@ li {
 h3{
     
 }
+
 .timeline-container {
     list-style: none;
     padding: 20px;
@@ -537,9 +709,6 @@ h3{
         background: #00BBE2;
         margin: auto;
         position: absolute;
-        
-        
-        
     }
 
     .timeline-item:hover {
@@ -551,7 +720,6 @@ h3{
 .timeline-content {
     padding: 20px;
     margin: 20px;
-    
 }
 
 .timeline-item-img {
