@@ -546,6 +546,39 @@ body {
     border-radius: 10px;
     border-color: transparent;
 }
+.console-search-container{
+    padding: 20px;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.search-console-header {
+    font-weight: bold;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 2px;
+}
+
+.console-search-bar{
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.console-search-button{
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 0px;
+}
 
 /*Console- Add*/
 
@@ -683,6 +716,39 @@ body {
     margin-bottom: 0;
     margin-left: auto;
 }
+.game-search-container {
+    padding: 20px;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.search-game-header {
+    font-weight: bold;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 2px;
+}
+
+.game-search-bar {
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.game-search-button {
+    position: relative;
+    width: 400px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 0px;
+}
 /*Wishlist------------------------------------------------------------------------------------------------------*/
 #consolePrice {
     position: absolute;
@@ -697,9 +763,7 @@ body {
     text-align: center;
     
 }
-h3{
-    
-}
+
 
 .timeline-container {
     list-style: none;
@@ -709,9 +773,12 @@ h3{
     border-radius: 25px;
     border: 5px dashed black;
     width: 400px;
+    height: 500px;
     margin: auto;
     width: 50%;
     margin-bottom: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .timeline-item {

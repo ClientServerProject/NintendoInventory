@@ -20,7 +20,7 @@
     <div class="timeline-container">
         @foreach (var Console in Model.ConsoleTimeline)
         {
-            <div class="timeline-item">
+            <div class="timeline-item" id="@Console.ConsoleID" asp-route-id="@Console.ConsoleID" onclick="showDetails('detailsModal_@Console.ConsoleID')">
                 <div class="timeline-content">
                     <h2>@Console.ReleaseYear</h2>
                     @*<div class="image timeline-item-img">
@@ -28,8 +28,44 @@
                     </div>*@
                     <p>@Console.ConsoleName</p>
                 </div>
+                
             </div>
+            <!-- details Modal -->
+            <div id="detailsModal_@Console.ConsoleID" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content px-5 py-3">
+                    <h3>@Console.ConsoleName</h3>
+                    <p>
+                        @Console.ConsoleDescription<br><br>
+                        Release Year: @Console.ReleaseYear<br><br>
+                        Price: $@Console.Price<br><br>
+                    </p>
+                    <button onclick="closeDetails('detailsModal_@Console.ConsoleID')" class="confirmBtn btn btn-primary">Close</button>
+                </div>
+
+            </div>
+
         }
+        <script>
+            var detailsID;
+            function showDetails(detailsModalID) {
+                var detailsModal = document.getElementById(detailsModalID)
+                detailsModal.style.display = "block";
+                detailsID = detailsModal;
+            }
+            function closeDetails(detailsModalID) {
+                var detailsModal = document.getElementById(detailsModalID)
+                detailsModal.style.display = "none";
+                return false;
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == detailsID) {
+                    detailsID.style.display = "none";
+                }
+            }
+        </script>
     </div>
 
     <!--Game Timeline-->
@@ -38,7 +74,7 @@
 
         @foreach (var Game in Model.GameTimeline)
         {
-            <div class="timeline-item">
+            <div class="timeline-item" id="@Game.GameID" asp-route-id="@Game.GameID" onclick="showDetails('detailsModal_@Game.GameID')">
                 <div class="timeline-content">
                     <h2>@Game.ReleaseYear</h2>
                    @* <div class="image timeline-item-img">
@@ -47,11 +83,22 @@
                     <p>@Game.GameTitle</p>
                 </div>
             </div>
+
+            <div id="detailsModal_@Game.GameID" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content px-5 py-3">
+                    <h3>@Game.GameTitle</h3>
+                    <p>
+                        @Game.GameDescription<br><br>
+                        Release Year: @Game.ReleaseYear<br><br>
+                        Price: $@Game.Price<br><br>
+                    </p>
+                    <button onclick="closeDetails('detailsModal_@Game.GameID')" class="confirmBtn btn btn-primary">Close</button>
+                </div>
+
+            </div>
         }
     </div>
-    <!--Games modal-->
-    <div>
-
-    </div>
-
+    
+   
 </div>

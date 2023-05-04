@@ -32,26 +32,25 @@
 }
 
 <div id="container" class="d-inline m-auto">
-    <div class="row">
-        <div class="col-sm-6">
-            <h1 class='title'>Consoles</h1>
-        </div>
-        <div class="col-sm-6 d-flex align-items-center justify-content-end">
-            <form method="post">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" asp-for="SearchText" placeholder="Search consoles" />
-                    </div>
-                    <div class="col-sm-4">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div class="col-sm-3">
+        <h1 class='title'>Consoles</h1>
     </div>
     <div class="col-sm-3">
         <a id="addButton" class="btn btn-primary" asp-page="Add">Add Console</a>
     </div>
+    <form method="post">
+        <div class="console-search-container">
+            <div class="search-console-header">
+                <label class="form-label">Search Consoles</label>
+            </div>
+            <div class="console-search-bar">
+                <input type="text" class="form-control" asp-for="SearchText" />
+            </div>
+            <div class="console-search-button">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div class="row m-4">
