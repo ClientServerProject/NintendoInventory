@@ -39,18 +39,17 @@
         <a id="addButton" class="btn btn-primary" asp-page="Add">Add Console</a>
     </div>
     <form method="post">
-    <div class="col-sm-3">
-        <div class="col-sm-2">
-            <label class="form-label">Search Consoles</label>
+        <div class="console-search-container">
+            <div class="search-console-header">
+                <label class="form-label">Search Consoles</label>
+            </div>
+            <div class="console-search-bar">
+                <input type="text" class="form-control" asp-for="SearchText" />
+            </div>
+            <div class="console-search-button">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
         </div>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="SearchText" />
-           
-        </div>
-        <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </div>
     </form>
 </div>
 
