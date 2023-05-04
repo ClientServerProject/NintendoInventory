@@ -377,7 +377,7 @@ body {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 10px;
     border: 5px solid #E7000A;
-    max-width: 50%;
+    max-width: 60%;
     width: fit-content; /* Could be more or less, depending on screen size */
     display: flex;
     align-items: center;
@@ -407,6 +407,31 @@ body {
 .cancelBtn {
     color: aliceblue;
 }
+
+.details-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+}
+.details-row .image-container {
+    grid-column: 1;
+    aspect-ratio: 16/9;
+}
+
+.details-row .gameImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details-row .details-container {
+    grid-column: 2;
+}
+
+.description-container {
+    margin-top: 10px;
+}
+
 
 /* The Close Button */
 .close {

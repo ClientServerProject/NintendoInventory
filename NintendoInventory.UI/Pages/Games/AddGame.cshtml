@@ -65,5 +65,19 @@
         <input type="text" class="form-control" id="inputGameDescription" placeholder="Game Description" asp-for="NewGame.GameDescription" />
         <span asp-validation-for="NewGame.GameDescription" class="text-danger" id="gameDescriptionError"></span>
     </div>
+    <div class="form-group mb-3">
+        <label id="labelText" for="inputESBRRating">ESRB Rating:</label>
+        <div class="input-group">
+            <select class="form-control" id="inputESBRRating" asp-for="NewGame.ESBRRatingID">
+                <option value="" disabled selected>Select rating</option>
+                <option value="1">E</option>
+                <option value="2">E10+</option>
+                <option value="3">T</option>
+                <option value="4">M</option>
+                <option value="5">A</option>
+                <option value="6">RP</option>
+            </select>
+        </div>
+    </div>
     <button type="submit" id="gameAddButton" class="btn btn-primary">Add Game</button>
 </form>

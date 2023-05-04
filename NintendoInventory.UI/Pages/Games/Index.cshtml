@@ -31,6 +31,7 @@
     }
 }
 
+
 <div id="container" class="d-inline m-auto">
     <div class="col-sm-3">
         <h1 class='title'>Games</h1>
@@ -83,17 +84,25 @@
         <div id="detailsModal_@Game.GameID" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <h3>@Game.GameTitle</h3>
-                <p>
-                    @Game.GameDescription<br>
-                    Release Year: @Game.ReleaseYear<br>
-                    Price: $@Game.Price<br>
-
-                </p>
+                <div class="details-row">
+                    <div class="image-container">
+                        <img class="gameImg" src="@URL">
+                    </div>
+                    <div class="details-container">
+                        <h3>@Game.GameTitle</h3>
+                        <p>
+                            Release Year: @Game.ReleaseYear<br>
+                            Price: $@Game.Price
+                        </p>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <p>@Game.GameDescription</p>
+                </div>
                 <button id="confirmBtn_@Game.GameID" onclick="closeDetails('detailsModal_@Game.GameID')" class="btn btn-primary">Okay</button>
             </div>
-
         </div>
+
         <!-- delete Modal -->
         <div id="deleteModal_@Game.GameID" class="modal">
             <!-- Modal content -->

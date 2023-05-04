@@ -1,4 +1,5 @@
 using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,6 +8,7 @@ using NintendoInventory.UI.Models;
 
 namespace NintendoInventory.UI.Pages.Wishlist
 {
+    [Authorize]
     public class addModel : PageModel
     {
 

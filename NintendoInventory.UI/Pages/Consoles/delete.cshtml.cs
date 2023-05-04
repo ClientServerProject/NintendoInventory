@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -5,6 +6,7 @@ using NintendoInventory.UI.Models;
 
 namespace NintendoInventory.UI.Pages.Consoles
 {
+    [Authorize]
     public class deleteModel : PageModel
     {
         public IActionResult OnGet(int id)
