@@ -773,9 +773,12 @@ body {
     border-radius: 25px;
     border: 5px dashed black;
     width: 400px;
+    height: 500px;
     margin: auto;
     width: 50%;
     margin-bottom: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .timeline-item {

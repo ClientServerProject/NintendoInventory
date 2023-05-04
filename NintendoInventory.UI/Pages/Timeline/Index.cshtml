@@ -74,7 +74,7 @@
 
         @foreach (var Game in Model.GameTimeline)
         {
-            <div class="timeline-item">
+            <div class="timeline-item" id="@Game.GameID" asp-route-id="@Game.GameID" onclick="showDetails('detailsModal_@Game.GameID')">
                 <div class="timeline-content">
                     <h2>@Game.ReleaseYear</h2>
                    @* <div class="image timeline-item-img">
@@ -83,12 +83,22 @@
                     <p>@Game.GameTitle</p>
                 </div>
             </div>
+
+            <div id="detailsModal_@Game.GameID" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content px-5 py-3">
+                    <h3>@Game.GameTitle</h3>
+                    <p>
+                        @Game.GameDescription<br><br>
+                        Release Year: @Game.ReleaseYear<br><br>
+                        Price: $@Game.Price<br><br>
+                    </p>
+                    <button onclick="closeDetails('detailsModal_@Game.GameID')" class="confirmBtn btn btn-primary">Close</button>
+                </div>
+
+            </div>
         }
     </div>
-    <!--Games modal-->
-
-    <div>
-
-    </div>
+    
    
 </div>
